@@ -224,7 +224,7 @@ function Find-VideoFiles {
     param($Directory)
     
     Write-Host "[SCAN] Scanning for video files (including subdirectories)..." -ForegroundColor Yellow
-    $videoFiles = Get-ChildItem -Path $Directory -File -Recurse | Where-Object { 
+    $videoFiles = Get-ChildItem -LiteralPath $Directory -File -Recurse | Where-Object { 
         $VideoExtensions -contains $_.Extension.ToLower() 
     } | Sort-Object FullName
     
@@ -371,7 +371,7 @@ function Get-SafeFileName {
 }
 
 function Show-Preview {
-    param($Operations)
+    param($Operations, $WorkingDirectory, $SeriesId, $EnglishSeriesName)
     
     Write-Host ""
     Write-Host "==========================================================================" -ForegroundColor Magenta
@@ -379,6 +379,20 @@ function Show-Preview {
     Write-Host "                        (NO CHANGES MADE YET)                        " -ForegroundColor Yellow
     Write-Host "==========================================================================" -ForegroundColor Magenta
     Write-Host ""
+    
+    # Check if folder needs TVDB ID renaming
+    $currentFolderName = Split-Path $WorkingDirectory -Leaf
+    $tvdbPattern = '\[tvdb-\d+\]'
+    $folderRenameNeeded = $currentFolderName -notmatch $tvdbPattern
+    
+    if ($folderRenameNeeded) {
+        $cleanSeriesName = Remove-InvalidFileNameChars -FileName $EnglishSeriesName
+        $newFolderName = "$cleanSeriesName [tvdb-$SeriesId]"
+        Write-Host "FOLDER RENAME (for Hama scanner compatibility):" -ForegroundColor Magenta
+        Write-Host "   FROM: $currentFolderName" -ForegroundColor Yellow
+        Write-Host "     TO: $newFolderName" -ForegroundColor Green
+        Write-Host ""
+    }
     
     Write-Debug-Info "Generating preview for $($Operations.Count) operations"
     
@@ -442,7 +456,7 @@ function Confirm-Operations {
 }
 
 function Execute-FileOperations {
-    param($Operations, $WorkingDirectory)
+    param($Operations, $WorkingDirectory, $SeriesId, $EnglishSeriesName)
     
     Write-Host ""
     Write-Host "==========================================================================" -ForegroundColor Green
@@ -455,6 +469,32 @@ function Execute-FileOperations {
     $folderCreateCount = 0
     
     Write-Debug-Info "Starting execution of $($Operations.Count) operations"
+    
+    # First, handle folder renaming if needed
+    $currentFolderName = Split-Path $WorkingDirectory -Leaf
+    $tvdbPattern = '\[tvdb-\d+\]'
+    
+    if ($currentFolderName -notmatch $tvdbPattern) {
+        $cleanSeriesName = Remove-InvalidFileNameChars -FileName $EnglishSeriesName
+        $newFolderName = "$cleanSeriesName [tvdb-$SeriesId]"
+        $parentPath = Split-Path $WorkingDirectory -Parent
+        $newWorkingDirectory = Join-Path $parentPath $newFolderName
+        
+        Write-Host "[INFO] Renaming series folder for Hama scanner compatibility..." -ForegroundColor Cyan
+        Write-Debug-Info "Renaming: '$currentFolderName' -> '$newFolderName'"
+        
+        try {
+            Rename-Item -Path $WorkingDirectory -NewName $newFolderName -ErrorAction Stop
+            $WorkingDirectory = $newWorkingDirectory
+            Write-Host "[SUCCESS] Folder renamed to: $newFolderName" -ForegroundColor Green
+            Write-Debug-Info "Updated working directory: $WorkingDirectory"
+        }
+        catch {
+            Write-Host "[ERROR] Could not rename folder: $($_.Exception.Message)" -ForegroundColor Red
+            Write-Debug-Info "Folder rename failed: $($_.Exception.Message)" "Red"
+            $errorCount++
+        }
+    }
     
     # Create folders first
     $foldersToCreate = $Operations | Select-Object -ExpandProperty TargetFolder | Sort-Object -Unique
@@ -583,7 +623,10 @@ if ($Interactive) {
                 Write-Host "Exiting..." -ForegroundColor Yellow
                 exit 0
             }
-            if (Test-Path $newDir) {
+            # Clean up the path (remove quotes, trim whitespace)
+            $newDir = $newDir.Trim().Trim('"').Trim("'")
+            Write-Debug-Info "Testing path: '$newDir'"
+            if (Test-Path -LiteralPath $newDir) {
                 $WorkingDirectory = $newDir
                 break
             } else {
@@ -694,6 +737,7 @@ if ($episodes.Count -eq 0) {
 }
 
 Write-Host "[SUCCESS] Found $($episodes.Count) episodes across all seasons" -ForegroundColor Green
+
 
 # Find video files
 Write-Debug-Info "Scanning for video files in: $WorkingDirectory"
@@ -832,14 +876,14 @@ if ($operations.Count -eq 0) {
 }
 
 # Show preview
-Show-Preview -Operations $operations
+Show-Preview -Operations $operations -WorkingDirectory $WorkingDirectory -SeriesId $SeriesId -EnglishSeriesName $seriesInfo.EnglishName
 
 # Get confirmation and execute
 if ($Interactive) {
     $userChoice = Confirm-Operations
     switch ($userChoice) {
         "proceed" {
-            Execute-FileOperations -Operations $operations -WorkingDirectory $WorkingDirectory
+            Execute-FileOperations -Operations $operations -WorkingDirectory $WorkingDirectory -SeriesId $SeriesId -EnglishSeriesName $seriesInfo.EnglishName
         }
         "cancel" {
             Write-Host "[CANCELLED] Operation cancelled by user." -ForegroundColor Yellow
@@ -883,7 +927,7 @@ if ($Interactive) {
     }
 } else {
     Write-Debug-Info "Running in non-interactive mode, proceeding with operations"
-    $result = Execute-FileOperations -Operations $operations -WorkingDirectory $WorkingDirectory
+    $result = Execute-FileOperations -Operations $operations -WorkingDirectory $WorkingDirectory -SeriesId $SeriesId -EnglishSeriesName $seriesInfo.EnglishName
     if ($result) {
         Write-Host "All operations completed successfully in non-interactive mode." -ForegroundColor Green
     } else {
