@@ -877,8 +877,10 @@ $regularFiles = @()
 
 foreach ($file in $videoFiles) {
     $relativePath = $file.FullName.Replace($WorkingDirectory, "").TrimStart("\")
-    $isInSpecialFolder = $relativePath -match "(?i)(Specials?|OVA|OAD|Movies?|Extra)"
-    $isSpecialFile = $file.Name -match "(?i)(Special|OVA|OAD)"
+    # Only detect specials from folder names; avoid false-positive OVA in words like 'NOVA'
+    $isInSpecialFolder = $relativePath -match "(?i)(?:^|\\)(Specials?|OAD|Movies?|Extras?)(?:$|\\)"
+    # Do not use filename-based special detection to avoid misclassifications
+    $isSpecialFile = $false
     
     if ($isInSpecialFolder -or $isSpecialFile) {
         $specialFiles += $file
@@ -888,6 +890,9 @@ foreach ($file in $videoFiles) {
 }
 
 Write-Debug-Info "Found $($specialFiles.Count) special files and $($regularFiles.Count) regular files"
+
+# Initialize episode version tracking (used by both specials and regular episodes)
+$episodeVersionCounts = @{}
 
 # Process special files first
 if ($specialFiles.Count -gt 0) {
@@ -1007,8 +1012,7 @@ if ($specialFiles.Count -gt 0) {
 # Process regular files normally
 Write-Host "[INFO] Processing $($regularFiles.Count) regular files..." -ForegroundColor Cyan
 
-# Track episode numbers to detect duplicates and add version numbers
-$episodeVersionCounts = @{}
+# Track episode numbers to detect duplicates and add version numbers (initialized earlier)
 
 foreach ($file in $regularFiles) {
     $parsedFile = Parse-EpisodeNumber -FileName $file.Name
@@ -1018,7 +1022,7 @@ foreach ($file in $regularFiles) {
         continue
     }
     
-    # Find matching episode from TheTVDB data
+    # Find matching episode(s) from TheTVDB data by episode number
     $matchingEpisodes = $episodes | Where-Object { $_.number -eq $parsedFile.EpisodeNumber }
     
     if ($matchingEpisodes.Count -eq 0) {
@@ -1026,21 +1030,19 @@ foreach ($file in $regularFiles) {
         continue
     }
     
-    # For regular files, prefer non-special episodes
-    $episode = $matchingEpisodes | Where-Object { $_.seasonNumber -ne 0 } | Select-Object -First 1
+    # Determine season strictly from parsed filename (supports mixed seasons in same folder)
+    $detectedSeason = $parsedFile.SeasonNumber
+    
+    # Select the episode that belongs to the detected season; fallback to any if not found
+    $episode = $matchingEpisodes | Where-Object { $_.seasonNumber -eq $detectedSeason } | Select-Object -First 1
     if (-not $episode) {
         $episode = $matchingEpisodes | Select-Object -First 1
+        Write-Warning "[WARNING] No Season $detectedSeason match for E$($parsedFile.EpisodeNumber). Using closest available season $($episode.seasonNumber)."
     }
     Write-Debug-Info "Regular file - selected episode (season $($episode.seasonNumber))"
     
     # Use the series name from API
     $englishSeriesName = $seriesInfo.name
-    
-    # Use season number from API data
-    $detectedSeason = $episode.seasonNumber
-    if ($detectedSeason -eq 0) {
-        $detectedSeason = 1  # Default to season 1 for specials if needed
-    }
     
     # Determine target folder and filename
     $episodeTitle = Get-SafeFileName -FileName $episode.name
