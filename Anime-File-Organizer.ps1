@@ -712,30 +712,32 @@ if ($Interactive) {
     
     Write-Host ""
     Write-Host "Working Directory: $WorkingDirectory" -ForegroundColor Cyan
-    $changeDir = Read-Host "Change directory? (Y/N/Q, default: Y)"
     
-    if ($changeDir.ToUpper() -eq "Q" -or $changeDir.ToLower() -eq "quit") {
-        Write-Host "Exiting..." -ForegroundColor Yellow
-        exit 0
-    }
-    if ($changeDir.ToUpper() -eq "Y" -or $changeDir.ToUpper() -eq "YES" -or [string]::IsNullOrWhiteSpace($changeDir)) {
-        do {
-            $newDir = Read-Host "Enter new directory path (or 'Q' to quit)"
-            if ($newDir.ToUpper() -eq "Q" -or $newDir.ToLower() -eq "quit") {
-                Write-Host "Exiting..." -ForegroundColor Yellow
-                exit 0
-            }
-            # Clean up the path (remove quotes, trim whitespace)
-            $newDir = $newDir.Trim().Trim('"').Trim("'")
-            Write-Debug-Info "Testing path: '$newDir'"
-            if (Test-Path -LiteralPath $newDir) {
-                $WorkingDirectory = $newDir
-                break
-            } else {
-                Write-Host "[ERROR] Directory does not exist. Please enter a valid path." -ForegroundColor Red
-            }
-        } while ($true)
-    }
+    do {
+        $newDir = Read-Host "Enter working directory path (or '.' for current directory, 'Q' to quit)"
+        if ($newDir.ToUpper() -eq "Q" -or $newDir.ToLower() -eq "quit") {
+            Write-Host "Exiting..." -ForegroundColor Yellow
+            exit 0
+        }
+        # Clean up the path (remove quotes, trim whitespace)
+        $newDir = $newDir.Trim().Trim('"').Trim("'")
+        
+        # Handle current directory (.)
+        if ($newDir -eq ".") {
+            $WorkingDirectory = (Get-Location).Path
+            Write-Host "[INFO] Using current directory: $WorkingDirectory" -ForegroundColor Green
+            break
+        }
+        
+        Write-Debug-Info "Testing path: '$newDir'"
+        if (Test-Path -LiteralPath $newDir) {
+            $WorkingDirectory = $newDir
+            Write-Host "[INFO] Working directory set to: $WorkingDirectory" -ForegroundColor Green
+            break
+        } else {
+            Write-Host "[ERROR] Directory does not exist. Please enter a valid path." -ForegroundColor Red
+        }
+    } while ($true)
     
     # Choose operation type
     Write-Host ""
