@@ -444,7 +444,7 @@ function Confirm-Operations {
     Write-Host ""
     
     do {
-        $choice = Read-Host "Do you want to proceed? (Y/N/Q/R)"
+        $choice = Read-Host "Do you want to proceed? (Y/N/Q/R, default: Y)"
         $choice = $choice.ToUpper()
         
         Write-Debug-Info "User choice: $choice"
@@ -493,7 +493,7 @@ function Rename-SeriesFolder {
     Write-Host ""
     
     do {
-        $choice = Read-Host "Rename folder for Hama compatibility? (Y/N)"
+        $choice = Read-Host "Rename folder for Hama compatibility? (Y/N, default: Y)"
         switch ($choice.ToUpper()) {
             "Y" {
                 try {
@@ -681,7 +681,7 @@ if ($Interactive) {
                 # Ask for confirmation and handle response
                 $seriesVerificationDone = $false
                 do {
-                    $confirm = Read-Host "Is this the correct series? (Y/N/Q)"
+                    $confirm = Read-Host "Is this the correct series? (Y/N/Q, default: Y)"
                     switch ($confirm.ToUpper()) {
                         "Y" {
                             Write-Host "[SUCCESS] Series confirmed!" -ForegroundColor Green
