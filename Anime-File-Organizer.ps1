@@ -774,6 +774,7 @@ foreach ($file in $videoFiles) {
         if ($renameOnly) {
             $targetFolder = Split-Path $file.FullName -Parent
             $targetFolder = $targetFolder.Replace($WorkingDirectory, "").TrimStart("\")
+            if ([string]::IsNullOrEmpty($targetFolder)) { $targetFolder = "." }
         } else {
             $targetFolder = "Specials"
         }
@@ -782,6 +783,7 @@ foreach ($file in $videoFiles) {
         if ($renameOnly) {
             $targetFolder = Split-Path $file.FullName -Parent
             $targetFolder = $targetFolder.Replace($WorkingDirectory, "").TrimStart("\")
+            if ([string]::IsNullOrEmpty($targetFolder)) { $targetFolder = "." }
         } else {
             $targetFolder = "Season {0:D2}" -f $detectedSeason
         }
