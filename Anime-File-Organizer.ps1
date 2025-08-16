@@ -371,7 +371,7 @@ function Get-SafeFileName {
 }
 
 function Show-Preview {
-    param($Operations, $WorkingDirectory, $SeriesId, $EnglishSeriesName)
+    param($Operations)
     
     Write-Host ""
     Write-Host "==========================================================================" -ForegroundColor Magenta
@@ -380,19 +380,6 @@ function Show-Preview {
     Write-Host "==========================================================================" -ForegroundColor Magenta
     Write-Host ""
     
-    # Check if folder needs TVDB ID renaming
-    $currentFolderName = Split-Path $WorkingDirectory -Leaf
-    $tvdbPattern = '\[tvdb-\d+\]'
-    $folderRenameNeeded = $currentFolderName -notmatch $tvdbPattern
-    
-    if ($folderRenameNeeded) {
-        $cleanSeriesName = Get-SafeFileName -FileName $EnglishSeriesName
-        $newFolderName = "$cleanSeriesName [tvdb-$SeriesId]"
-        Write-Host "FOLDER RENAME (for Hama scanner compatibility):" -ForegroundColor Magenta
-        Write-Host "   FROM: $currentFolderName" -ForegroundColor Yellow
-        Write-Host "     TO: $newFolderName" -ForegroundColor Green
-        Write-Host ""
-    }
     
     Write-Debug-Info "Generating preview for $($Operations.Count) operations"
     
@@ -455,8 +442,62 @@ function Confirm-Operations {
     } while ($true)
 }
 
+function Rename-SeriesFolder {
+    param($WorkingDirectory, $SeriesId, $EnglishSeriesName)
+    
+    $currentFolderName = Split-Path $WorkingDirectory -Leaf
+    $tvdbPattern = '\[tvdb-\d+\]'
+    
+    if ($currentFolderName -match $tvdbPattern) {
+        Write-Host "[INFO] Folder already has TVDB ID format: $currentFolderName" -ForegroundColor Green
+        return $WorkingDirectory
+    }
+    
+    $cleanSeriesName = Get-SafeFileName -FileName $EnglishSeriesName
+    $newFolderName = "$cleanSeriesName [tvdb-$SeriesId]"
+    
+    Write-Host ""
+    Write-Host "==========================================================================" -ForegroundColor Cyan
+    Write-Host "                         FOLDER RENAME OPTION                          " -ForegroundColor Cyan
+    Write-Host "==========================================================================" -ForegroundColor Cyan
+    Write-Host ""
+    Write-Host "For optimal Hama scanner compatibility, the series folder can be renamed:" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "   FROM: $currentFolderName" -ForegroundColor Yellow
+    Write-Host "     TO: $newFolderName" -ForegroundColor Green
+    Write-Host ""
+    
+    do {
+        $choice = Read-Host "Rename folder for Hama compatibility? (Y/N)"
+        switch ($choice.ToUpper()) {
+            "Y" {
+                try {
+                    $parentPath = Split-Path $WorkingDirectory -Parent
+                    $newWorkingDirectory = Join-Path $parentPath $newFolderName
+                    
+                    Write-Host "[INFO] Renaming series folder..." -ForegroundColor Cyan
+                    Rename-Item -LiteralPath $WorkingDirectory -NewName $newFolderName -ErrorAction Stop
+                    Write-Host "[SUCCESS] Folder renamed to: $newFolderName" -ForegroundColor Green
+                    return $newWorkingDirectory
+                }
+                catch {
+                    Write-Host "[ERROR] Could not rename folder: $($_.Exception.Message)" -ForegroundColor Red
+                    return $WorkingDirectory
+                }
+            }
+            "N" {
+                Write-Host "[INFO] Folder rename skipped." -ForegroundColor Yellow
+                return $WorkingDirectory
+            }
+            default {
+                Write-Host "Please enter Y (Yes) or N (No)" -ForegroundColor Red
+            }
+        }
+    } while ($true)
+}
+
 function Execute-FileOperations {
-    param($Operations, $WorkingDirectory, $SeriesId, $EnglishSeriesName)
+    param($Operations, $WorkingDirectory)
     
     Write-Host ""
     Write-Host "==========================================================================" -ForegroundColor Green
@@ -470,31 +511,6 @@ function Execute-FileOperations {
     
     Write-Debug-Info "Starting execution of $($Operations.Count) operations"
     
-    # First, handle folder renaming if needed
-    $currentFolderName = Split-Path $WorkingDirectory -Leaf
-    $tvdbPattern = '\[tvdb-\d+\]'
-    
-    if ($currentFolderName -notmatch $tvdbPattern) {
-        $cleanSeriesName = Get-SafeFileName -FileName $EnglishSeriesName
-        $newFolderName = "$cleanSeriesName [tvdb-$SeriesId]"
-        $parentPath = Split-Path $WorkingDirectory -Parent
-        $newWorkingDirectory = Join-Path $parentPath $newFolderName
-        
-        Write-Host "[INFO] Renaming series folder for Hama scanner compatibility..." -ForegroundColor Cyan
-        Write-Debug-Info "Renaming: '$currentFolderName' -> '$newFolderName'"
-        
-        try {
-            Rename-Item -Path $WorkingDirectory -NewName $newFolderName -ErrorAction Stop
-            $WorkingDirectory = $newWorkingDirectory
-            Write-Host "[SUCCESS] Folder renamed to: $newFolderName" -ForegroundColor Green
-            Write-Debug-Info "Updated working directory: $WorkingDirectory"
-        }
-        catch {
-            Write-Host "[ERROR] Could not rename folder: $($_.Exception.Message)" -ForegroundColor Red
-            Write-Debug-Info "Folder rename failed: $($_.Exception.Message)" "Red"
-            $errorCount++
-        }
-    }
     
     # Create folders first
     $foldersToCreate = $Operations | Select-Object -ExpandProperty TargetFolder | Sort-Object -Unique
@@ -504,7 +520,7 @@ function Execute-FileOperations {
         $fullPath = Join-Path -Path $WorkingDirectory -ChildPath $folder
         Write-Debug-Info "Checking folder: $fullPath"
         
-        if (-not (Test-Path $fullPath)) {
+        if (-not (Test-Path -LiteralPath $fullPath)) {
             try {
                 New-Item -Path $fullPath -ItemType Directory -Force | Out-Null
                 Write-Host "[SUCCESS] Created folder: $folder" -ForegroundColor Green
@@ -594,18 +610,72 @@ if ($Interactive) {
         Write-Host "Example: For Attack on Titan, use ID: 290434" -ForegroundColor Gray
         Write-Host ""
         
-        do {
+        while ($SeriesId -eq 0) {
             $input = Read-Host "TheTVDB Series ID (or 'Q' to quit)"
             if ($input.ToUpper() -eq "Q" -or $input.ToLower() -eq "quit") {
                 Write-Host "Exiting..." -ForegroundColor Yellow
                 exit 0
             }
+            
             if ([int]::TryParse($input, [ref]$SeriesId) -and $SeriesId -gt 0) {
-                break
+                # Authenticate with TheTVDB
+                Write-Host ""
+                Write-Host "[INFO] Authenticating with TheTVDB..." -ForegroundColor Cyan
+                $token = Get-TheTVDBToken -ApiKey $ApiKey -Pin $Pin
+                if (-not $token) {
+                    Write-Host "[ERROR] Cannot proceed without authentication. Please try again." -ForegroundColor Red
+                    $SeriesId = 0
+                    continue
+                }
+                
+                # Get and verify series information
+                Write-Host "[INFO] Fetching series information for ID: $SeriesId..." -ForegroundColor Cyan
+                $seriesInfo = Get-SeriesInfo -Token $token -SeriesId $SeriesId
+                if (-not $seriesInfo) {
+                    Write-Host "[ERROR] Cannot retrieve series information. Please check the Series ID." -ForegroundColor Red
+                    Write-Host "Try a different Series ID or check TheTVDB.com" -ForegroundColor Yellow
+                    $SeriesId = 0
+                    continue
+                }
+                
+                # Show series info and ask for confirmation
+                Write-Host ""
+                Write-Host "==========================================================================" -ForegroundColor Green
+                Write-Host "                           SERIES VERIFICATION                         " -ForegroundColor Green  
+                Write-Host "==========================================================================" -ForegroundColor Green
+                Write-Host ""
+                Write-Host "Series ID: $SeriesId" -ForegroundColor Cyan
+                Write-Host "Series Name: $($seriesInfo.name)" -ForegroundColor Yellow
+                Write-Host ""
+                
+                # Ask for confirmation and handle response
+                do {
+                    $confirm = Read-Host "Is this the correct series? (Y/N/Q)"
+                    switch ($confirm.ToUpper()) {
+                        "Y" {
+                            Write-Host "[SUCCESS] Series confirmed!" -ForegroundColor Green
+                            Write-Host ""
+                            # $SeriesId stays > 0, so outer loop will exit
+                            break
+                        }
+                        "N" {
+                            Write-Host "[INFO] Please enter a different Series ID." -ForegroundColor Yellow
+                            $SeriesId = 0  # This will cause outer loop to continue
+                            break
+                        }
+                        "Q" {
+                            Write-Host "Exiting..." -ForegroundColor Yellow
+                            exit 0
+                        }
+                        default {
+                            Write-Host "Please enter Y (Yes), N (No), or Q (Quit)" -ForegroundColor Red
+                        }
+                    }
+                } while ($true)
             } else {
                 Write-Host "[ERROR] Please enter a valid positive number" -ForegroundColor Red
             }
-        } while ($true)
+        }
     }
     
     Write-Host ""
@@ -658,44 +728,22 @@ if ($Interactive) {
     $renameOnly = ($operation -eq "1")
 }
 
-# Authenticate with TheTVDB
-$token = Get-TheTVDBToken -ApiKey $ApiKey -Pin $Pin
-if (-not $token) {
-    Write-Host "[ERROR] Cannot proceed without authentication. Exiting." -ForegroundColor Red
-    exit 1
-}
-
-# Get series information
-Write-Debug-Info "Fetching series information for ID: $SeriesId"
-$seriesInfo = Get-SeriesInfo -Token $token -SeriesId $SeriesId
-if (-not $seriesInfo) {
-    Write-Host "[ERROR] Cannot retrieve series information. Please check the Series ID." -ForegroundColor Red
-    Write-Debug-Info "Failed to retrieve series information for ID: $SeriesId" "Red"
+# Authentication and series info already handled in interactive mode above
+# For non-interactive mode, we still need to authenticate and get series info
+if (-not $Interactive) {
+    # Authenticate with TheTVDB
+    $token = Get-TheTVDBToken -ApiKey $ApiKey -Pin $Pin
+    if (-not $token) {
+        Write-Host "[ERROR] Cannot proceed without authentication. Exiting." -ForegroundColor Red
+        exit 1
+    }
     
-    do {
-        Write-Host "What would you like to do?" -ForegroundColor Cyan
-        Write-Host "  R/Restart - Try with a different Series ID" -ForegroundColor Green
-        Write-Host "  Q/Quit    - Exit the program" -ForegroundColor Red
-        $choice = Read-Host "Choose (R/Q)"
-        $choice = $choice.ToUpper()
-        
-        if ($choice -eq "R" -or $choice -eq "RESTART") {
-            Write-Debug-Info "User chose to restart after series error"
-            $shouldRestart = $true
-            $SeriesId = 0
-            $WorkingDirectory = (Get-Location).Path
-            break
-        } elseif ($choice -eq "Q" -or $choice -eq "QUIT") {
-            Write-Debug-Info "User chose to quit after series error"
-            Write-Host "Goodbye!" -ForegroundColor Yellow
-            exit 1
-        } else {
-            Write-Host "Please enter R (Restart) or Q (Quit)" -ForegroundColor Red
-        }
-    } while ($true)
-    
-    if ($shouldRestart) {
-        continue
+    # Get series information
+    Write-Debug-Info "Fetching series information for ID: $SeriesId"
+    $seriesInfo = Get-SeriesInfo -Token $token -SeriesId $SeriesId
+    if (-not $seriesInfo) {
+        Write-Host "[ERROR] Cannot retrieve series information for Series ID: $SeriesId" -ForegroundColor Red
+        exit 1
     }
 }
 
@@ -737,6 +785,17 @@ if ($episodes.Count -eq 0) {
 }
 
 Write-Host "[SUCCESS] Found $($episodes.Count) episodes across all seasons" -ForegroundColor Green
+
+# Store the English series name from API for consistent use
+$globalEnglishSeriesName = $seriesInfo.name
+Write-Debug-Info "Stored global English series name: '$globalEnglishSeriesName'"
+
+# If the series name seems to be missing the main title (like "Queen's Blade"), 
+# we might need to use a different approach or manually handle known series
+if ([string]::IsNullOrWhiteSpace($globalEnglishSeriesName)) {
+    Write-Host "[WARNING] API returned empty series name. Using Series ID as fallback." -ForegroundColor Yellow
+    $globalEnglishSeriesName = "Series-$SeriesId"
+}
 
 
 # Find video files
@@ -895,14 +954,17 @@ if ($operations.Count -eq 0) {
 }
 
 # Show preview
-Show-Preview -Operations $operations -WorkingDirectory $WorkingDirectory -SeriesId $SeriesId -EnglishSeriesName $seriesInfo.EnglishName
+Show-Preview -Operations $operations
 
 # Get confirmation and execute
 if ($Interactive) {
     $userChoice = Confirm-Operations
     switch ($userChoice) {
         "proceed" {
-            Execute-FileOperations -Operations $operations -WorkingDirectory $WorkingDirectory -SeriesId $SeriesId -EnglishSeriesName $seriesInfo.EnglishName
+            $result = Execute-FileOperations -Operations $operations -WorkingDirectory $WorkingDirectory
+            # Always offer folder renaming, regardless of file operation success
+            # (folder renaming is independent of file operations)
+            $WorkingDirectory = Rename-SeriesFolder -WorkingDirectory $WorkingDirectory -SeriesId $SeriesId -EnglishSeriesName $globalEnglishSeriesName
         }
         "cancel" {
             Write-Host "[CANCELLED] Operation cancelled by user." -ForegroundColor Yellow
@@ -946,9 +1008,11 @@ if ($Interactive) {
     }
 } else {
     Write-Debug-Info "Running in non-interactive mode, proceeding with operations"
-    $result = Execute-FileOperations -Operations $operations -WorkingDirectory $WorkingDirectory -SeriesId $SeriesId -EnglishSeriesName $seriesInfo.EnglishName
+    $result = Execute-FileOperations -Operations $operations -WorkingDirectory $WorkingDirectory
     if ($result) {
         Write-Host "All operations completed successfully in non-interactive mode." -ForegroundColor Green
+        # Note: Folder renaming skipped in non-interactive mode
+        Write-Host "[INFO] Folder renaming skipped in non-interactive mode. Use interactive mode for folder renaming." -ForegroundColor Yellow
     } else {
         Write-Host "Some operations failed in non-interactive mode." -ForegroundColor Red
     }
