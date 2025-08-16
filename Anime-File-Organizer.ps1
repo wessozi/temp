@@ -256,6 +256,7 @@ function Parse-EpisodeNumber {
         # 2. Standard SxxExx formats
         '^[Ss](\d+)[Ee](\d+).*\..*$',                                         # S01E01 Title.mkv or s01e09.mkv
         '^(.+?)\s+[Ss](\d+)[Ee](\d+).*\..*$',                                 # Series S01E01 Title.mkv
+        '^(.+?)[Ss](\d+)[Ee](\d+).*\..*$',                                    # Series.S01E01 Title.mkv (no spaces)
         
         # 3. Series - Episode formats (with dash separator)
         '^(.+?)\s*-\s*(\d+).*\..*$',                                          # Series - 01.mkv
@@ -309,25 +310,33 @@ function Parse-EpisodeNumber {
             $seasonNum = 1  # Default season
             
             # Handle different pattern types based on capture groups
-            switch ($Matches.Count) {
-                2 {
-                    # Single capture group - episode number only
-                    $episodeNum = [int]$Matches[1]
-                    $seriesName = "Unknown Series"  # Will use API series name
-                    Write-Debug-Info "Single capture: Episode $episodeNum"
-                }
-                3 {
-                    # Two capture groups - series and episode
-                    $seriesName = $Matches[1].Trim()
-                    $episodeNum = [int]$Matches[2]
-                    Write-Debug-Info "Series+Episode: '$seriesName', Episode $episodeNum"
-                }
-                4 {
-                    # Three capture groups - series, season, episode (SxxExx format)
-                    $seriesName = $Matches[1].Trim()
-                    $seasonNum = [int]$Matches[2]
-                    $episodeNum = [int]$Matches[3]
-                    Write-Debug-Info "Series+Season+Episode: '$seriesName', Season $seasonNum, Episode $episodeNum"
+            # Special handling for Specials/OVA without an explicit number
+            if ($pattern -eq '^(.+?)\s+(?:OVA|OAD|Special)\s*(\d+)?\..*$' -and $Matches.Count -eq 2) {
+                $seriesName = $Matches[1].Trim()
+                $episodeNum = 1
+                Write-Debug-Info "Special/OVA without number detected. Defaulting to Episode 1"
+            }
+            else {
+                switch ($Matches.Count) {
+                    2 {
+                        # Single capture group - episode number only
+                        $episodeNum = [int]$Matches[1]
+                        $seriesName = "Unknown Series"  # Will use API series name
+                        Write-Debug-Info "Single capture: Episode $episodeNum"
+                    }
+                    3 {
+                        # Two capture groups - series and episode
+                        $seriesName = $Matches[1].Trim()
+                        $episodeNum = [int]$Matches[2]
+                        Write-Debug-Info "Series+Episode: '$seriesName', Episode $episodeNum"
+                    }
+                    4 {
+                        # Three capture groups - series, season, episode (SxxExx format)
+                        $seriesName = $Matches[1].Trim()
+                        $seasonNum = [int]$Matches[2]
+                        $episodeNum = [int]$Matches[3]
+                        Write-Debug-Info "Series+Season+Episode: '$seriesName', Season $seasonNum, Episode $episodeNum"
+                    }
                 }
             }
             
@@ -366,8 +375,24 @@ function Parse-EpisodeNumber {
 function Get-SafeFileName {
     param($FileName)
     
-    $invalidChars = '[<>:"/\\|?*]'
-    return $FileName -replace $invalidChars, ''
+    # Windows invalid characters: < > : " / \ | ? *
+    # Replace with safe alternatives
+    $safeFileName = $FileName -replace ':', ' - '      # Replace colons with space-dash-space
+    $safeFileName = $safeFileName -replace '/', ' - '  # Replace forward slashes with space-dash-space
+    $safeFileName = $safeFileName -replace '\\', ' - ' # Replace backslashes with space-dash-space
+    $safeFileName = $safeFileName -replace '\|', ' - ' # Replace pipes with space-dash-space
+    $safeFileName = $safeFileName -replace '\?', ''    # Remove question marks
+    $safeFileName = $safeFileName -replace '\*', ''    # Remove asterisks
+    $safeFileName = $safeFileName -replace '<', ''     # Remove less than
+    $safeFileName = $safeFileName -replace '>', ''     # Remove greater than
+    $safeFileName = $safeFileName -replace '"', ''     # Remove double quotes
+    
+    # Clean up multiple dashes and trim
+    $safeFileName = $safeFileName -replace '-+', '-'   # Replace multiple dashes with single dash
+    $safeFileName = $safeFileName -replace '^-|-$', '' # Remove leading/trailing dashes
+    $safeFileName = $safeFileName.Trim()
+    
+    return $safeFileName
 }
 
 function Show-Preview {
@@ -545,7 +570,12 @@ function Execute-FileOperations {
     # Move and rename files
     foreach ($operation in $Operations) {
         $sourcePath = $operation.SourcePath
-        $targetPath = Join-Path -Path $WorkingDirectory -ChildPath (Join-Path -Path $operation.TargetFolder -ChildPath $operation.NewFileName)
+        # Handle the case where TargetFolder is "." (current directory)
+        if ($operation.TargetFolder -eq ".") {
+            $targetPath = Join-Path -Path $WorkingDirectory -ChildPath $operation.NewFileName
+        } else {
+            $targetPath = Join-Path -Path $WorkingDirectory -ChildPath (Join-Path -Path $operation.TargetFolder -ChildPath $operation.NewFileName)
+        }
         
         Write-Debug-Info "Processing: $($operation.OriginalFile)"
         Write-Debug-Info "  Source: $sourcePath"
@@ -649,6 +679,7 @@ if ($Interactive) {
                 Write-Host ""
                 
                 # Ask for confirmation and handle response
+                $seriesVerificationDone = $false
                 do {
                     $confirm = Read-Host "Is this the correct series? (Y/N/Q)"
                     switch ($confirm.ToUpper()) {
@@ -656,12 +687,12 @@ if ($Interactive) {
                             Write-Host "[SUCCESS] Series confirmed!" -ForegroundColor Green
                             Write-Host ""
                             # $SeriesId stays > 0, so outer loop will exit
-                            break
+                            $seriesVerificationDone = $true
                         }
                         "N" {
                             Write-Host "[INFO] Please enter a different Series ID." -ForegroundColor Yellow
                             $SeriesId = 0  # This will cause outer loop to continue
-                            break
+                            $seriesVerificationDone = $true
                         }
                         "Q" {
                             Write-Host "Exiting..." -ForegroundColor Yellow
@@ -671,6 +702,7 @@ if ($Interactive) {
                             Write-Host "Please enter Y (Yes), N (No), or Q (Quit)" -ForegroundColor Red
                         }
                     }
+                    if ($seriesVerificationDone) { break }
                 } while ($true)
             } else {
                 Write-Host "[ERROR] Please enter a valid positive number" -ForegroundColor Red
@@ -680,13 +712,13 @@ if ($Interactive) {
     
     Write-Host ""
     Write-Host "Working Directory: $WorkingDirectory" -ForegroundColor Cyan
-    $changeDir = Read-Host "Change directory? (Y/N/Q, default: N)"
+    $changeDir = Read-Host "Change directory? (Y/N/Q, default: Y)"
     
     if ($changeDir.ToUpper() -eq "Q" -or $changeDir.ToLower() -eq "quit") {
         Write-Host "Exiting..." -ForegroundColor Yellow
         exit 0
     }
-    if ($changeDir.ToUpper() -eq "Y" -or $changeDir.ToUpper() -eq "YES") {
+    if ($changeDir.ToUpper() -eq "Y" -or $changeDir.ToUpper() -eq "YES" -or [string]::IsNullOrWhiteSpace($changeDir)) {
         do {
             $newDir = Read-Host "Enter new directory path (or 'Q' to quit)"
             if ($newDir.ToUpper() -eq "Q" -or $newDir.ToLower() -eq "quit") {
@@ -833,7 +865,150 @@ if ($videoFiles.Count -eq 0) {
 Write-Host "[PROCESS] Analyzing files and matching with episode data..." -ForegroundColor Yellow
 $operations = @()
 
+# FIRST PASS: Check if TheTVDB has any official specials (season 0 episodes)
+$hasOfficialSpecials = $episodes | Where-Object { $_.seasonNumber -eq 0 } | Measure-Object | Select-Object -ExpandProperty Count
+Write-Debug-Info "TheTVDB has $hasOfficialSpecials official special episodes (season 0)"
+
+# Separate special files from regular files
+$specialFiles = @()
+$regularFiles = @()
+
 foreach ($file in $videoFiles) {
+    $relativePath = $file.FullName.Replace($WorkingDirectory, "").TrimStart("\")
+    $isInSpecialFolder = $relativePath -match "(?i)(Specials?|OVA|OAD|Movies?|Extra)"
+    $isSpecialFile = $file.Name -match "(?i)(Special|OVA|OAD)"
+    
+    if ($isInSpecialFolder -or $isSpecialFile) {
+        $specialFiles += $file
+    } else {
+        $regularFiles += $file
+    }
+}
+
+Write-Debug-Info "Found $($specialFiles.Count) special files and $($regularFiles.Count) regular files"
+
+# Process special files first
+if ($specialFiles.Count -gt 0) {
+    Write-Host "[INFO] Processing $($specialFiles.Count) special files..." -ForegroundColor Cyan
+    
+    # Sort special files by name for consistent S00E numbering
+    $specialFiles = $specialFiles | Sort-Object Name
+    
+    if ($hasOfficialSpecials -gt 0) {
+        Write-Host "[INFO] Using TheTVDB special episode data (found $hasOfficialSpecials episodes)" -ForegroundColor Green
+        # Use existing logic - match with actual episode data
+        foreach ($file in $specialFiles) {
+            $parsedFile = Parse-EpisodeNumber -FileName $file.Name
+            
+            if (-not $parsedFile) {
+                Write-Warning "[WARNING] Could not parse episode number from: $($file.Name)"
+                continue
+            }
+            
+            # Find matching episode from TheTVDB data
+            $matchingEpisodes = $episodes | Where-Object { $_.number -eq $parsedFile.EpisodeNumber }
+            
+            if ($matchingEpisodes.Count -eq 0) {
+                Write-Warning "[WARNING] No episode data found for episode $($parsedFile.EpisodeNumber): $($file.Name)"
+                continue
+            }
+            
+            # For special files, prefer special episodes (season 0) or use first available
+            $episode = $matchingEpisodes | Where-Object { $_.seasonNumber -eq 0 } | Select-Object -First 1
+            if (-not $episode) {
+                $episode = $matchingEpisodes | Select-Object -First 1
+            }
+            Write-Debug-Info "Special file - selected episode (season $($episode.seasonNumber))"
+            
+            # Use the series name from API
+            $englishSeriesName = $seriesInfo.name
+            
+            # Determine target folder and filename
+            $episodeTitle = Get-SafeFileName -FileName $episode.name
+            
+            Write-Host "[INFO] Using API title for S00E$($parsedFile.EpisodeNumber.ToString('D2')): $episodeTitle" -ForegroundColor Green
+            
+            if ($renameOnly) {
+                $targetFolder = Split-Path $file.FullName -Parent
+                $targetFolder = $targetFolder.Replace($WorkingDirectory, "").TrimStart("\")
+                if ([string]::IsNullOrEmpty($targetFolder)) { $targetFolder = "." }
+            } else {
+                $targetFolder = "Specials"
+            }
+            
+            $safeSeriesName = Get-SafeFileName -FileName $englishSeriesName
+            # Check for duplicate special episodes and add version numbers
+        $episodeKey = "S00E{0:D2}" -f $parsedFile.EpisodeNumber
+        if ($episodeVersionCounts.ContainsKey($episodeKey)) {
+            $episodeVersionCounts[$episodeKey]++
+            $versionSuffix = " v$($episodeVersionCounts[$episodeKey])"
+            Write-Debug-Info "Duplicate special episode detected: $episodeKey - adding version $($episodeVersionCounts[$episodeKey])"
+        } else {
+            $episodeVersionCounts[$episodeKey] = 1
+            $versionSuffix = ""
+        }
+        
+        $newFileName = "$safeSeriesName - $episodeKey$versionSuffix - $episodeTitle$($file.Extension)"
+            
+            $operation = New-Object PSObject -Property @{
+                OriginalFile = $file.FullName.Replace($WorkingDirectory, "").TrimStart("\")
+                SourcePath = $file.FullName
+                NewFileName = $newFileName
+                TargetFolder = $targetFolder
+                EpisodeData = $episode
+            }
+            $operations += $operation
+        }
+    } else {
+        Write-Host "[INFO] No TheTVDB special episodes found - assigning sequential S00E numbers" -ForegroundColor Yellow
+        
+        # No official specials - assign sequential S00E01, S00E02, etc.
+        $specialEpisodeCounter = 1
+        foreach ($file in $specialFiles) {
+            if ($renameOnly) {
+                $targetFolder = Split-Path $file.FullName -Parent
+                $targetFolder = $targetFolder.Replace($WorkingDirectory, "").TrimStart("\")
+                if ([string]::IsNullOrEmpty($targetFolder)) { $targetFolder = "." }
+            } else {
+                $targetFolder = "Specials"
+            }
+            
+                    $safeSeriesName = Get-SafeFileName -FileName $seriesInfo.name
+        
+        # Check for duplicate special episodes and add version numbers
+        $episodeKey = "S00E{0:D2}" -f $specialEpisodeCounter
+        if ($episodeVersionCounts.ContainsKey($episodeKey)) {
+            $episodeVersionCounts[$episodeKey]++
+            $versionSuffix = " v$($episodeVersionCounts[$episodeKey])"
+            Write-Debug-Info "Duplicate sequential special episode detected: $episodeKey - adding version $($episodeVersionCounts[$episodeKey])"
+        } else {
+            $episodeVersionCounts[$episodeKey] = 1
+            $versionSuffix = ""
+        }
+        
+        $newFileName = "$safeSeriesName - $episodeKey$versionSuffix - $($file.BaseName)$($file.Extension)"
+            
+            $operation = New-Object PSObject -Property @{
+                OriginalFile = $file.FullName.Replace($WorkingDirectory, "").TrimStart("\")
+                SourcePath = $file.FullName
+                NewFileName = $newFileName
+                TargetFolder = $targetFolder
+                EpisodeData = $null
+            }
+            $operations += $operation
+            
+            $specialEpisodeCounter++
+        }
+    }
+}
+
+# Process regular files normally
+Write-Host "[INFO] Processing $($regularFiles.Count) regular files..." -ForegroundColor Cyan
+
+# Track episode numbers to detect duplicates and add version numbers
+$episodeVersionCounts = @{}
+
+foreach ($file in $regularFiles) {
     $parsedFile = Parse-EpisodeNumber -FileName $file.Name
     
     if (-not $parsedFile) {
@@ -849,28 +1024,14 @@ foreach ($file in $videoFiles) {
         continue
     }
     
-    # Check if this file is in a special folder first
-    $relativePath = $file.FullName.Replace($WorkingDirectory, "").TrimStart("\")
-    $isInSpecialFolder = $relativePath -match "(?i)(Specials?|OVA|OAD|Movies?|Extra)"
-    
-    # Choose episode based on file location
-    if ($isInSpecialFolder) {
-        # For files in special folders, prefer special episodes (season 0)
-        $episode = $matchingEpisodes | Where-Object { $_.seasonNumber -eq 0 } | Select-Object -First 1
-        if (-not $episode) {
-            $episode = $matchingEpisodes | Select-Object -First 1
-        }
-        Write-Debug-Info "File in special folder - selected special episode (season $($episode.seasonNumber))"
-    } else {
-        # For regular files, prefer non-special episodes
-        $episode = $matchingEpisodes | Where-Object { $_.seasonNumber -ne 0 } | Select-Object -First 1
-        if (-not $episode) {
-            $episode = $matchingEpisodes | Select-Object -First 1
-        }
-        Write-Debug-Info "File in regular folder - selected regular episode (season $($episode.seasonNumber))"
+    # For regular files, prefer non-special episodes
+    $episode = $matchingEpisodes | Where-Object { $_.seasonNumber -ne 0 } | Select-Object -First 1
+    if (-not $episode) {
+        $episode = $matchingEpisodes | Select-Object -First 1
     }
+    Write-Debug-Info "Regular file - selected episode (season $($episode.seasonNumber))"
     
-    # Use the series name from API (with English override for known series)
+    # Use the series name from API
     $englishSeriesName = $seriesInfo.name
     
     # Use season number from API data
@@ -880,37 +1041,31 @@ foreach ($file in $videoFiles) {
     }
     
     # Determine target folder and filename
-    $seasonNumber = $episode.seasonNumber
     $episodeTitle = Get-SafeFileName -FileName $episode.name
     
     Write-Host "[INFO] Using API title for S${detectedSeason}E$($parsedFile.EpisodeNumber): $episodeTitle" -ForegroundColor Green
     
-    # Check if this is a special episode (using already calculated values plus additional checks)
-    $isSpecial = ($episode.seasonNumber -eq 0) -or ($file.Name -match "OVA") -or $isInSpecialFolder
-    
-    Write-Debug-Info "File path analysis: '$relativePath'"
-    Write-Debug-Info "Is in special folder: $isInSpecialFolder"
-    Write-Debug-Info "Final isSpecial determination: $isSpecial"
-    
-    if ($isSpecial) {
-        if ($renameOnly) {
-            $targetFolder = Split-Path $file.FullName -Parent
-            $targetFolder = $targetFolder.Replace($WorkingDirectory, "").TrimStart("\")
-            if ([string]::IsNullOrEmpty($targetFolder)) { $targetFolder = "." }
-        } else {
-            $targetFolder = "Specials"
-        }
-        $newFileName = "$englishSeriesName - S00E{0:D2} - $episodeTitle$($file.Extension)" -f $parsedFile.EpisodeNumber
+    if ($renameOnly) {
+        $targetFolder = Split-Path $file.FullName -Parent
+        $targetFolder = $targetFolder.Replace($WorkingDirectory, "").TrimStart("\")
+        if ([string]::IsNullOrEmpty($targetFolder)) { $targetFolder = "." }
     } else {
-        if ($renameOnly) {
-            $targetFolder = Split-Path $file.FullName -Parent
-            $targetFolder = $targetFolder.Replace($WorkingDirectory, "").TrimStart("\")
-            if ([string]::IsNullOrEmpty($targetFolder)) { $targetFolder = "." }
-        } else {
-            $targetFolder = "Season {0:D2}" -f $detectedSeason
-        }
-        $newFileName = "$englishSeriesName - S{0:D2}E{1:D2} - $episodeTitle$($file.Extension)" -f $detectedSeason, $parsedFile.EpisodeNumber
+        $targetFolder = "Season {0:D2}" -f $detectedSeason
     }
+    
+    $safeSeriesName = Get-SafeFileName -FileName $englishSeriesName
+            # Check for duplicate episodes and add version numbers
+        $episodeKey = "S{0:D2}E{1:D2}" -f $detectedSeason, $parsedFile.EpisodeNumber
+        if ($episodeVersionCounts.ContainsKey($episodeKey)) {
+            $episodeVersionCounts[$episodeKey]++
+            $versionSuffix = " v$($episodeVersionCounts[$episodeKey])"
+            Write-Debug-Info "Duplicate episode detected: $episodeKey - adding version $($episodeVersionCounts[$episodeKey])"
+        } else {
+            $episodeVersionCounts[$episodeKey] = 1
+            $versionSuffix = ""
+        }
+        
+        $newFileName = "$safeSeriesName - $episodeKey$versionSuffix - $episodeTitle$($file.Extension)"
     
     $operation = New-Object PSObject -Property @{
         OriginalFile = $file.FullName.Replace($WorkingDirectory, "").TrimStart("\")
