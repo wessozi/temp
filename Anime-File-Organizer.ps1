@@ -386,7 +386,7 @@ function Show-Preview {
     $folderRenameNeeded = $currentFolderName -notmatch $tvdbPattern
     
     if ($folderRenameNeeded) {
-        $cleanSeriesName = Remove-InvalidFileNameChars -FileName $EnglishSeriesName
+        $cleanSeriesName = Get-SafeFileName -FileName $EnglishSeriesName
         $newFolderName = "$cleanSeriesName [tvdb-$SeriesId]"
         Write-Host "FOLDER RENAME (for Hama scanner compatibility):" -ForegroundColor Magenta
         Write-Host "   FROM: $currentFolderName" -ForegroundColor Yellow
@@ -475,7 +475,7 @@ function Execute-FileOperations {
     $tvdbPattern = '\[tvdb-\d+\]'
     
     if ($currentFolderName -notmatch $tvdbPattern) {
-        $cleanSeriesName = Remove-InvalidFileNameChars -FileName $EnglishSeriesName
+        $cleanSeriesName = Get-SafeFileName -FileName $EnglishSeriesName
         $newFolderName = "$cleanSeriesName [tvdb-$SeriesId]"
         $parentPath = Split-Path $WorkingDirectory -Parent
         $newWorkingDirectory = Join-Path $parentPath $newFolderName
@@ -790,10 +790,25 @@ foreach ($file in $videoFiles) {
         continue
     }
     
-    # If multiple matches, prefer non-special episodes
-    $episode = $matchingEpisodes | Where-Object { $_.seasonNumber -ne 0 } | Select-Object -First 1
-    if (-not $episode) {
-        $episode = $matchingEpisodes | Select-Object -First 1
+    # Check if this file is in a special folder first
+    $relativePath = $file.FullName.Replace($WorkingDirectory, "").TrimStart("\")
+    $isInSpecialFolder = $relativePath -match "(?i)(Specials?|OVA|OAD|Movies?|Extra)"
+    
+    # Choose episode based on file location
+    if ($isInSpecialFolder) {
+        # For files in special folders, prefer special episodes (season 0)
+        $episode = $matchingEpisodes | Where-Object { $_.seasonNumber -eq 0 } | Select-Object -First 1
+        if (-not $episode) {
+            $episode = $matchingEpisodes | Select-Object -First 1
+        }
+        Write-Debug-Info "File in special folder - selected special episode (season $($episode.seasonNumber))"
+    } else {
+        # For regular files, prefer non-special episodes
+        $episode = $matchingEpisodes | Where-Object { $_.seasonNumber -ne 0 } | Select-Object -First 1
+        if (-not $episode) {
+            $episode = $matchingEpisodes | Select-Object -First 1
+        }
+        Write-Debug-Info "File in regular folder - selected regular episode (season $($episode.seasonNumber))"
     }
     
     # Use the series name from API (with English override for known series)
@@ -811,8 +826,12 @@ foreach ($file in $videoFiles) {
     
     Write-Host "[INFO] Using API title for S${detectedSeason}E$($parsedFile.EpisodeNumber): $episodeTitle" -ForegroundColor Green
     
-    # Check if this is a special episode (OVA files or season 0)
-    $isSpecial = ($seasonNumber -eq 0) -or ($file.Name -match "OVA")
+    # Check if this is a special episode (using already calculated values plus additional checks)
+    $isSpecial = ($episode.seasonNumber -eq 0) -or ($file.Name -match "OVA") -or $isInSpecialFolder
+    
+    Write-Debug-Info "File path analysis: '$relativePath'"
+    Write-Debug-Info "Is in special folder: $isInSpecialFolder"
+    Write-Debug-Info "Final isSpecial determination: $isSpecial"
     
     if ($isSpecial) {
         if ($renameOnly) {
