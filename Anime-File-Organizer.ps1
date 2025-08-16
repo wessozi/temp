@@ -39,6 +39,17 @@ function Write-Debug-Info {
     }
 }
 
+# Heuristic check: returns $true if a name looks like romanized Japanese rather than a localized English title
+function Test-IsRomanizedJapaneseName {
+    param([string]$Name)
+    if ([string]::IsNullOrWhiteSpace($Name)) { return $false }
+    # Indicators: macrons (āēīōū), common romanized particles, or typical romaji terms
+    $hasMacrons = $Name -match '[āēīōū]'
+    $hasParticles = $Name -match '(?i)\b(no|ni|wo|ga|to|de|wa|ka)\b'
+    $hasRomajiTerms = $Name -match '(?i)(mahou|mahō|jutsushi|yarinaoshi|shoujo|shōjo|otome|seishun|monogatari|senpai|kouhai)'
+    return ($hasMacrons -or $hasParticles -or $hasRomajiTerms)
+}
+
 function Write-Header {
     Clear-Host
     Write-Host "==========================================================================" -ForegroundColor Cyan
@@ -104,45 +115,55 @@ function Get-SeriesInfo {
         try {
             Write-Debug-Info "Trying English translations endpoint..."
             $translationResponse = Invoke-RestMethod -Uri "$BaseApiUrl/series/$SeriesId/translations/eng" -Method GET -Headers $authHeaders
+            Write-Debug-Info "Translation response: $($translationResponse | ConvertTo-Json -Depth 3)"
             if ($translationResponse.data -and $translationResponse.data.name) {
                 $englishName = $translationResponse.data.name
                 Write-Debug-Info "Found English translation: $englishName"
+            } else {
+                Write-Debug-Info "No translation data or name found in response"
             }
         }
         catch {
             Write-Debug-Info "English translations endpoint failed: $($_.Exception.Message)"
         }
         
-        # Method 2: Check if the original name contains only ASCII characters
-        if (-not $englishName -and $seriesData.name -match '^[\x20-\x7E]+$') {
-            $englishName = $seriesData.name
-            Write-Debug-Info "Original name appears to be English: $englishName"
-        }
+        # Method 2: Removed - ASCII check is misleading (romanized Japanese ≠ English)
         
-        # Method 3: Try to get alternate names/aliases
+        # Method 3: Try to get alternate names/aliases  
         try {
             Write-Debug-Info "Trying series extended info for aliases..."
             $extendedResponse = Invoke-RestMethod -Uri "$BaseApiUrl/series/$SeriesId/extended" -Method GET -Headers $authHeaders
             if ($extendedResponse.data.aliases) {
+                Write-Debug-Info "Found $($extendedResponse.data.aliases.Count) aliases to check"
                 foreach ($alias in $extendedResponse.data.aliases) {
-                    if ($alias.name -match '^[\x20-\x7E]+$') {
+                    Write-Debug-Info "Checking alias: '$($alias.name)' (Language: $($alias.language))"
+                    # Only accept aliases that are clearly English translations, not romanized Japanese
+                    if ($alias.language -eq "eng" -and 
+                        $alias.name -match '^[\x20-\x7E]+$' -and
+                        $alias.name -notmatch '(?i)(kaifuku|jutsushi|yarinaoshi|sokushi|mahō|mahou|skill|copy|choetsu|heal|kaiyari)' -and
+                        $alias.name -match '\b(of|the|and|in|on|at|for|with|by|from|up|about|into|over|after)\b') {
                         $englishName = $alias.name
                         Write-Debug-Info "Found English alias: $englishName"
                         break
+                    } else {
+                        Write-Debug-Info "Rejected alias '$($alias.name)' - reason: language=$($alias.language), contains_japanese=$($alias.name -match '(?i)(kaifuku|jutsushi|yarinaoshi|sokushi|mahō|mahou|skill|copy|choetsu|heal|kaiyari)')"
                     }
                 }
+            } else {
+                Write-Debug-Info "No aliases found in extended data"
             }
         }
         catch {
             Write-Debug-Info "Extended series info failed: $($_.Exception.Message)"
         }
         
-        # Use English name if found, otherwise use original
+        # Use English name if found, otherwise use original with warning
         if ($englishName) {
             $seriesData.name = $englishName
-            Write-Host "[SUCCESS] Using English name: $englishName" -ForegroundColor Green
+            Write-Host "[SUCCESS] Using English translated name: $englishName" -ForegroundColor Green
         } else {
-            Write-Host "[WARNING] No English name found, using: $($seriesData.name)" -ForegroundColor Yellow
+            Write-Host "[WARNING] No English translation found, using original/romanized name: $($seriesData.name)" -ForegroundColor Yellow
+            Write-Host "[INFO] Consider adding the English title to TheTVDB if you know it" -ForegroundColor Gray
         }
         
         return $seriesData
@@ -253,24 +274,27 @@ function Parse-EpisodeNumber {
         # 1. Hash/pound formats (most specific first)
         '^#(\d+)\..*$',                                                       # #02. Title.mkv
         
-        # 2. Standard SxxExx formats
+        # 2. Episode number only formats (at start of filename)
+        '^(\d+)(?:\s*-\s*)(.+?)\..*$',                                        # 10 - Title.mkv
+        
+        # 3. Standard SxxExx formats
         '^[Ss](\d+)[Ee](\d+).*\..*$',                                         # S01E01 Title.mkv or s01e09.mkv
         '^(.+?)\s+[Ss](\d+)[Ee](\d+).*\..*$',                                 # Series S01E01 Title.mkv
         '^(.+?)[Ss](\d+)[Ee](\d+).*\..*$',                                    # Series.S01E01 Title.mkv (no spaces)
         
-        # 3. Series - Episode formats (with dash separator)
+        # 4. Series - Episode formats (with dash separator)
         '^(.+?)\s*-\s*(\d+).*\..*$',                                          # Series - 01.mkv
         
-        # 4. Episode/Ep keyword formats
+        # 5. Episode/Ep keyword formats
         '^(.+?)\s+(?:Episode|Ep|E)\s*(\d+).*\..*$',                           # Series Episode 01.mkv
         
-        # 5. Numbered episode formats (space separated)
+        # 6. Numbered episode formats (space separated)
         '^(.+?)\s+(\d{1,3})(?:\s+.*)?\..*$',                                  # Series 01 Title.mkv
         
-        # 6. OVA/Special formats
+        # 7. OVA/Special formats
         '^(.+?)\s+(?:OVA|OAD|Special)\s*(\d+)?.*\..*$',                       # Series OVA 1.mkv
         
-        # 7. Bracketed episode numbers
+        # 8. Bracketed episode numbers
         '^(.+?)\s*\[(\d+)\].*\..*$',                                          # Series [01] Title.mkv
         '^(.+?)\s*\((\d+)\).*\..*$'                                           # Series (01) Title.mkv
     )
@@ -300,13 +324,24 @@ function Parse-EpisodeNumber {
         }
     }
     
+    # Test basic episode number pattern (like "01 - Title.mkv")
+    if ($FileName -match '^(\d{1,2})\s*-\s*(.+?)\.') {
+        Write-Debug-Info "BASIC EPISODE NUMBER PATTERN MATCHED: Episode $($Matches[1])"
+        return @{
+            SeriesName = "Unknown Series"
+            EpisodeNumber = [int]$Matches[1]
+            SeasonNumber = 1
+            DetectedPattern = "basic-episode-number"
+        }
+    }
+    
     foreach ($pattern in $patterns) {
         Write-Debug-Info "Trying pattern: $pattern"
         if ($FileName -match $pattern) {
             Write-Debug-Info "Pattern matched! Matches count: $($Matches.Count)"
             
             $seriesName = ""
-            $episodeNum = 0
+            $episodeNum = 1  # Default episode (never 0)
             $seasonNum = 1  # Default season
             
             # Handle different pattern types based on capture groups
@@ -325,10 +360,19 @@ function Parse-EpisodeNumber {
                         Write-Debug-Info "Single capture: Episode $episodeNum"
                     }
                     3 {
-                        # Two capture groups - series and episode
-                        $seriesName = $Matches[1].Trim()
-                        $episodeNum = [int]$Matches[2]
-                        Write-Debug-Info "Series+Episode: '$seriesName', Episode $episodeNum"
+                        # Two capture groups - could be "Series - Episode" or "Episode - Title"
+                        # Check if first group is numeric (episode number)
+                        if ($Matches[1] -match '^\d+$') {
+                            # Pattern: "10 - Title.mkv" (episode number + title)
+                            $episodeNum = [int]$Matches[1]
+                            $seriesName = "Unknown Series"  # Will use API series name
+                            Write-Debug-Info "Episode+Title: Episode $episodeNum, Title: '$($Matches[2])'"
+                        } else {
+                            # Pattern: "Series - 10.mkv" (series + episode)
+                            $seriesName = $Matches[1].Trim()
+                            $episodeNum = [int]$Matches[2]
+                            Write-Debug-Info "Series+Episode: '$seriesName', Episode $episodeNum"
+                        }
                     }
                     4 {
                         # Three capture groups - series, season, episode (SxxExx format)
@@ -957,6 +1001,12 @@ if ($specialFiles.Count -gt 0) {
         
         $newFileName = "$safeSeriesName - $episodeKey$versionSuffix - $episodeTitle$($file.Extension)"
             
+        # Skip if filename is already correct (optimization for NAS performance)
+        if ($file.Name -eq $newFileName) {
+            Write-Debug-Info "Skipping $($file.Name) - already has correct name"
+            continue
+        }
+            
             $operation = New-Object PSObject -Property @{
                 OriginalFile = $file.FullName.Replace($WorkingDirectory, "").TrimStart("\")
                 SourcePath = $file.FullName
@@ -994,6 +1044,12 @@ if ($specialFiles.Count -gt 0) {
         }
         
         $newFileName = "$safeSeriesName - $episodeKey$versionSuffix - $($file.BaseName)$($file.Extension)"
+            
+        # Skip if filename is already correct (optimization for NAS performance)
+        if ($file.Name -eq $newFileName) {
+            Write-Debug-Info "Skipping $($file.Name) - already has correct name"
+            continue
+        }
             
             $operation = New-Object PSObject -Property @{
                 OriginalFile = $file.FullName.Replace($WorkingDirectory, "").TrimStart("\")
@@ -1070,6 +1126,12 @@ foreach ($file in $regularFiles) {
         }
         
         $newFileName = "$safeSeriesName - $episodeKey$versionSuffix - $episodeTitle$($file.Extension)"
+    
+    # Skip if filename is already correct (optimization for NAS performance)
+    if ($file.Name -eq $newFileName) {
+        Write-Debug-Info "Skipping $($file.Name) - already has correct name"
+        continue
+    }
     
     $operation = New-Object PSObject -Property @{
         OriginalFile = $file.FullName.Replace($WorkingDirectory, "").TrimStart("\")
