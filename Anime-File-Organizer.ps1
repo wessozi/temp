@@ -111,56 +111,66 @@ function Get-SeriesInfo {
         # FORCE English translations - try multiple approaches
         $englishName = $null
         
-        # Method 1: Try English translations endpoint
-        try {
-            Write-Debug-Info "Trying English translations endpoint..."
-            $translationResponse = Invoke-RestMethod -Uri "$BaseApiUrl/series/$SeriesId/translations/eng" -Method GET -Headers $authHeaders
-            Write-Debug-Info "Translation response: $($translationResponse | ConvertTo-Json -Depth 3)"
-            if ($translationResponse.data -and $translationResponse.data.name) {
-                $englishName = $translationResponse.data.name
-                Write-Debug-Info "Found English translation: $englishName"
-            } else {
-                Write-Debug-Info "No translation data or name found in response"
-            }
-        }
-        catch {
-            Write-Debug-Info "English translations endpoint failed: $($_.Exception.Message)"
+        # Method 1: Check if original name is already in English (prioritize main title if English)
+        if ($seriesData.name -match '^[\x20-\x7E]+$' -and 
+            $seriesData.name -match '\b(the|and|in|on|at|for|with|by|from|up|about|into|over|after|of|to|a|an)\b' -and
+            $seriesData.name -notmatch '(?i)(kaifuku|jutsushi|yarinaoshi|sokushi|mahō|mahou|skill|copy|choetsu|heal|kaiyari)') {
+            $englishName = $seriesData.name
+            Write-Debug-Info "Original name appears to be English: $englishName"
         }
         
-        # Method 2: Removed - ASCII check is misleading (romanized Japanese ≠ English)
-        
-        # Method 3: Try to get alternate names/aliases  
-        try {
-            Write-Debug-Info "Trying series extended info for aliases..."
-            $extendedResponse = Invoke-RestMethod -Uri "$BaseApiUrl/series/$SeriesId/extended" -Method GET -Headers $authHeaders
-            if ($extendedResponse.data.aliases) {
-                Write-Debug-Info "Found $($extendedResponse.data.aliases.Count) aliases to check"
-                foreach ($alias in $extendedResponse.data.aliases) {
-                    Write-Debug-Info "Checking alias: '$($alias.name)' (Language: $($alias.language))"
-                    # Only accept aliases that are clearly English translations, not romanized Japanese
-                    if ($alias.language -eq "eng" -and 
-                        $alias.name -match '^[\x20-\x7E]+$' -and
-                        $alias.name -notmatch '(?i)(kaifuku|jutsushi|yarinaoshi|sokushi|mahō|mahou|skill|copy|choetsu|heal|kaiyari)' -and
-                        $alias.name -match '\b(of|the|and|in|on|at|for|with|by|from|up|about|into|over|after)\b') {
-                        $englishName = $alias.name
-                        Write-Debug-Info "Found English alias: $englishName"
-                        break
-                    } else {
-                        Write-Debug-Info "Rejected alias '$($alias.name)' - reason: language=$($alias.language), contains_japanese=$($alias.name -match '(?i)(kaifuku|jutsushi|yarinaoshi|sokushi|mahō|mahou|skill|copy|choetsu|heal|kaiyari)')"
-                    }
+        # Method 2: Try English translations endpoint (only if original wasn't English)
+        if (-not $englishName) {
+            try {
+                Write-Debug-Info "Trying English translations endpoint..."
+                $translationResponse = Invoke-RestMethod -Uri "$BaseApiUrl/series/$SeriesId/translations/eng" -Method GET -Headers $authHeaders
+                Write-Debug-Info "Translation response: $($translationResponse | ConvertTo-Json -Depth 3)"
+                if ($translationResponse.data -and $translationResponse.data.name) {
+                    $englishName = $translationResponse.data.name
+                    Write-Debug-Info "Found English translation: $englishName"
+                } else {
+                    Write-Debug-Info "No translation data or name found in response"
                 }
-            } else {
-                Write-Debug-Info "No aliases found in extended data"
+            }
+            catch {
+                Write-Debug-Info "English translations endpoint failed: $($_.Exception.Message)"
             }
         }
-        catch {
-            Write-Debug-Info "Extended series info failed: $($_.Exception.Message)"
+        
+        # Method 3: Try to get alternate names/aliases (only if still no English name found)
+        if (-not $englishName) {
+            try {
+                Write-Debug-Info "Trying series extended info for aliases..."
+                $extendedResponse = Invoke-RestMethod -Uri "$BaseApiUrl/series/$SeriesId/extended" -Method GET -Headers $authHeaders
+                if ($extendedResponse.data.aliases) {
+                    Write-Debug-Info "Found $($extendedResponse.data.aliases.Count) aliases to check"
+                    foreach ($alias in $extendedResponse.data.aliases) {
+                        Write-Debug-Info "Checking alias: '$($alias.name)' (Language: $($alias.language))"
+                        # Only accept aliases that are clearly English translations, not romanized Japanese
+                        if ($alias.language -eq "eng" -and 
+                            $alias.name -match '^[\x20-\x7E]+$' -and
+                            $alias.name -notmatch '(?i)(kaifuku|jutsushi|yarinaoshi|sokushi|mahō|mahou|skill|copy|choetsu|heal|kaiyari)' -and
+                            $alias.name -match '\b(of|the|and|in|on|at|for|with|by|from|up|about|into|over|after)\b') {
+                            $englishName = $alias.name
+                            Write-Debug-Info "Found English alias: $englishName"
+                            break
+                        } else {
+                            Write-Debug-Info "Rejected alias '$($alias.name)' - reason: language=$($alias.language), contains_japanese=$($alias.name -match '(?i)(kaifuku|jutsushi|yarinaoshi|sokushi|mahō|mahou|skill|copy|choetsu|heal|kaiyari)')"
+                        }
+                    }
+                } else {
+                    Write-Debug-Info "No aliases found in extended data"
+                }
+            }
+            catch {
+                Write-Debug-Info "Extended series info failed: $($_.Exception.Message)"
+            }
         }
         
         # Use English name if found, otherwise use original with warning
         if ($englishName) {
             $seriesData.name = $englishName
-            Write-Host "[SUCCESS] Using English translated name: $englishName" -ForegroundColor Green
+            Write-Host "[SUCCESS] Using English name: $englishName" -ForegroundColor Green
         } else {
             Write-Host "[WARNING] No English translation found, using original/romanized name: $($seriesData.name)" -ForegroundColor Yellow
             Write-Host "[INFO] Consider adding the English title to TheTVDB if you know it" -ForegroundColor Gray
@@ -286,6 +296,7 @@ function Parse-EpisodeNumber {
         
         # 2. Episode number only formats (at start of filename)
         '^(\d+)(?:\s*-\s*)(.+?)\..*$',                                        # 10 - Title.mkv
+        '^(\d+)\..*$',                                                        # 07.mkv, 08.mkv (simple numbered files)
         
         # 3. Standard SxxExx formats
         '^[Ss](\d+)[Ee](\d+).*\..*$',                                         # S01E01 Title.mkv or s01e09.mkv
@@ -353,6 +364,17 @@ function Parse-EpisodeNumber {
             EpisodeNumber = [int]$Matches[1]
             SeasonNumber = 1
             DetectedPattern = "sub-episode"
+        }
+    }
+    
+    # Test simple numbered files (like "07.mkv", "08.mkv")
+    if ($FileName -match '^(\d{1,2})\..*$') {
+        Write-Debug-Info "SIMPLE NUMBERED PATTERN MATCHED: Episode $($Matches[1])"
+        return @{
+            SeriesName = "Unknown Series"
+            EpisodeNumber = [int]$Matches[1]
+            SeasonNumber = 1
+            DetectedPattern = "simple-numbered"
         }
     }
     
@@ -442,10 +464,10 @@ function Get-SafeFileName {
     
     # Windows invalid characters: < > : " / \ | ? *
     # Replace with safe alternatives
-    $safeFileName = $FileName -replace ':', ' - '      # Replace colons with space-dash-space
-    $safeFileName = $safeFileName -replace '/', ' - '  # Replace forward slashes with space-dash-space
-    $safeFileName = $safeFileName -replace '\\', ' - ' # Replace backslashes with space-dash-space
-    $safeFileName = $safeFileName -replace '\|', ' - ' # Replace pipes with space-dash-space
+    $safeFileName = $FileName -replace ':', '-'        # Replace colons with dash
+    $safeFileName = $safeFileName -replace '/', '-'    # Replace forward slashes with dash
+    $safeFileName = $safeFileName -replace '\\', '-'   # Replace backslashes with dash
+    $safeFileName = $safeFileName -replace '\|', '-'   # Replace pipes with dash
     $safeFileName = $safeFileName -replace '\?', ''    # Remove question marks
     $safeFileName = $safeFileName -replace '\*', ''    # Remove asterisks
     $safeFileName = $safeFileName -replace '<', ''     # Remove less than
@@ -453,11 +475,60 @@ function Get-SafeFileName {
     $safeFileName = $safeFileName -replace '"', ''     # Remove double quotes
     
     # Clean up multiple dashes and trim
-    $safeFileName = $safeFileName -replace '-+', '-'   # Replace multiple dashes with single dash
-    $safeFileName = $safeFileName -replace '^-|-$', '' # Remove leading/trailing dashes
+    $safeFileName = $safeFileName -replace '\s*-\s*', '-'  # Normalize spacing around dashes
+    $safeFileName = $safeFileName -replace '-+', '-'       # Replace multiple dashes with single dash
+    $safeFileName = $safeFileName -replace '^-|-$', ''     # Remove leading/trailing dashes
     $safeFileName = $safeFileName.Trim()
     
     return $safeFileName
+}
+
+function Write-OperationLog {
+    param(
+        [Parameter(Mandatory=$true)]
+        [array]$Operations,
+        [Parameter(Mandatory=$true)]
+        [string]$WorkingDirectory,
+        [Parameter(Mandatory=$true)]
+        [string]$SeriesName
+    )
+    
+    if ($Operations.Count -eq 0) {
+        Write-Debug-Info "No operations to log"
+        return
+    }
+    
+    $timestamp = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
+    $safeSeriesName = Get-SafeFileName -FileName $SeriesName
+    $logFileName = "rename_log_${safeSeriesName}_${timestamp}.txt"
+    $logPath = Join-Path $WorkingDirectory $logFileName
+    
+    try {
+        $logContent = @()
+        $logContent += "# Anime File Organizer - Rename Log"
+        $logContent += "# Date: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
+        $logContent += "# Series: $SeriesName"
+        $logContent += "# Total Operations: $($Operations.Count)"
+        $logContent += ""
+        
+        foreach ($op in $Operations) {
+            $originalPath = $op.OriginalFile
+            if ($op.TargetFolder -eq ".") {
+                $newPath = $op.NewFileName
+            } else {
+                $newPath = "$($op.TargetFolder)\$($op.NewFileName)"
+            }
+            $logContent += "$originalPath --> $newPath"
+        }
+        
+        $logContent | Out-File -FilePath $logPath -Encoding UTF8
+        Write-Host "[LOG] Created rename log: $logFileName" -ForegroundColor Green
+        Write-Debug-Info "Rename log written to: $logPath"
+        
+    } catch {
+        Write-Warning "[WARNING] Failed to create rename log: $($_.Exception.Message)"
+        Write-Debug-Info "Log creation error: $($_.Exception.Message)"
+    }
 }
 
 function Show-Preview {
@@ -1225,6 +1296,10 @@ if ($Interactive) {
     switch ($userChoice) {
         "proceed" {
             $result = Execute-FileOperations -Operations $operations -WorkingDirectory $WorkingDirectory
+            # Create operation log after successful execution
+            if ($operations.Count -gt 0) {
+                Write-OperationLog -Operations $operations -WorkingDirectory $WorkingDirectory -SeriesName $globalEnglishSeriesName
+            }
             # Always offer folder renaming, regardless of file operation success
             # (folder renaming is independent of file operations)
             $WorkingDirectory = Rename-SeriesFolder -WorkingDirectory $WorkingDirectory -SeriesId $SeriesId -EnglishSeriesName $globalEnglishSeriesName
@@ -1272,6 +1347,10 @@ if ($Interactive) {
 } else {
     Write-Debug-Info "Running in non-interactive mode, proceeding with operations"
     $result = Execute-FileOperations -Operations $operations -WorkingDirectory $WorkingDirectory
+    # Create operation log after execution in non-interactive mode
+    if ($operations.Count -gt 0) {
+        Write-OperationLog -Operations $operations -WorkingDirectory $WorkingDirectory -SeriesName $globalEnglishSeriesName
+    }
     if ($result) {
         Write-Host "All operations completed successfully in non-interactive mode." -ForegroundColor Green
         # Note: Folder renaming skipped in non-interactive mode
