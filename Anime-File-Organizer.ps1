@@ -245,8 +245,18 @@ function Find-VideoFiles {
     param($Directory)
     
     Write-Host "[SCAN] Scanning for video files (including subdirectories)..." -ForegroundColor Yellow
+    Write-Host "[INFO] Ignoring 'Extras' folders (contain random content like openings/endings)" -ForegroundColor Cyan
+    
     $videoFiles = Get-ChildItem -LiteralPath $Directory -File -Recurse | Where-Object { 
-        $VideoExtensions -contains $_.Extension.ToLower() 
+        # Skip files in any folder called "Extras" (case-insensitive)
+        $relativePath = $_.FullName.Replace($Directory, "").TrimStart("\")
+        if ($relativePath -match "(?i)(?:^|\\)Extras(?:$|\\)") {
+            Write-Debug-Info "Skipping file in Extras folder: $relativePath"
+            return $false
+        }
+        
+        # Only include video files
+        return $VideoExtensions -contains $_.Extension.ToLower()
     } | Sort-Object FullName
     
     if ($videoFiles.Count -eq 0) {
@@ -332,6 +342,17 @@ function Parse-EpisodeNumber {
             EpisodeNumber = [int]$Matches[1]
             SeasonNumber = 1
             DetectedPattern = "basic-episode-number"
+        }
+    }
+    
+    # Test sub-episode pattern (like "01a.mkv", "01b.mkv")
+    if ($FileName -match '^(\d{1,2})([a-z])\..*$') {
+        Write-Debug-Info "SUB-EPISODE PATTERN MATCHED: Episode $($Matches[1])$($Matches[2])"
+        return @{
+            SeriesName = "Unknown Series"
+            EpisodeNumber = [int]$Matches[1]
+            SeasonNumber = 1
+            DetectedPattern = "sub-episode"
         }
     }
     
@@ -919,21 +940,38 @@ Write-Debug-Info "TheTVDB has $hasOfficialSpecials official special episodes (se
 $specialFiles = @()
 $regularFiles = @()
 
+# First pass: Detect special content folders across all seasons (OVAs, OADs, Specials, Extras, Movies)
+$specialFolders = @()
+$regularFolders = @()
+
 foreach ($file in $videoFiles) {
     $relativePath = $file.FullName.Replace($WorkingDirectory, "").TrimStart("\")
-    # Only detect specials from folder names; avoid false-positive OVA in words like 'NOVA'
-    $isInSpecialFolder = $relativePath -match "(?i)(?:^|\\)(Specials?|OAD|Movies?|Extras?)(?:$|\\)"
-    # Do not use filename-based special detection to avoid misclassifications
-    $isSpecialFile = $false
+    $folderPath = Split-Path $relativePath -Parent
     
-    if ($isInSpecialFolder -or $isSpecialFile) {
+    # Check if file is in any special content folder (OVAs, OADs, Specials, Extras, Movies, etc.)
+    if ($folderPath -match "(?i)(?:^|\\)(S\d+\s+)?(OVAs?|OADs?|Specials?|Extras?|Movies?)(?:$|\\)") {
+        $specialFolders += $folderPath
         $specialFiles += $file
+        Write-Debug-Info "Special content file detected: $relativePath (in folder: $folderPath)"
     } else {
         $regularFiles += $file
     }
 }
 
+# Remove duplicate folder paths
+$specialFolders = $specialFolders | Sort-Object -Unique
+Write-Debug-Info "Found special content folders: $($specialFolders -join ', ')"
+
 Write-Debug-Info "Found $($specialFiles.Count) special files and $($regularFiles.Count) regular files"
+
+if ($specialFolders.Count -gt 0) {
+    Write-Host "[INFO] Detected special content folders across multiple seasons:" -ForegroundColor Cyan
+    foreach ($folder in $specialFolders) {
+        $folderFileCount = ($specialFiles | Where-Object { (Split-Path $_.FullName -Parent) -eq $folder }).Count
+        Write-Host "  - $folder ($folderFileCount files)" -ForegroundColor Gray
+    }
+    Write-Host "[INFO] All special content will be consolidated into a single Specials folder with sequential numbering" -ForegroundColor Green
+}
 
 # Initialize episode version tracking (used by both specials and regular episodes)
 $episodeVersionCounts = @{}
@@ -1016,12 +1054,16 @@ if ($specialFiles.Count -gt 0) {
             }
             $operations += $operation
         }
-    } else {
-        Write-Host "[INFO] No TheTVDB special episodes found - assigning sequential S00E numbers" -ForegroundColor Yellow
+        } else {
+        Write-Host "[INFO] No TheTVDB special episodes found - assigning sequential S00E numbers across all seasons" -ForegroundColor Yellow
         
-        # No official specials - assign sequential S00E01, S00E02, etc.
+        # No official specials - assign sequential S00E01, S00E02, etc. across all OVA folders
         $specialEpisodeCounter = 1
-        foreach ($file in $specialFiles) {
+        
+        # Sort special files by folder path and then by filename for consistent ordering
+        $sortedSpecialFiles = $specialFiles | Sort-Object @{Expression={Split-Path $_.FullName -Parent}; Ascending=$true}, Name
+        
+        foreach ($file in $sortedSpecialFiles) {
             if ($renameOnly) {
                 $targetFolder = Split-Path $file.FullName -Parent
                 $targetFolder = $targetFolder.Replace($WorkingDirectory, "").TrimStart("\")
@@ -1030,7 +1072,7 @@ if ($specialFiles.Count -gt 0) {
                 $targetFolder = "Specials"
             }
             
-                    $safeSeriesName = Get-SafeFileName -FileName $seriesInfo.name
+            $safeSeriesName = Get-SafeFileName -FileName $seriesInfo.name
         
         # Check for duplicate special episodes and add version numbers
         $episodeKey = "S00E{0:D2}" -f $specialEpisodeCounter
