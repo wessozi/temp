@@ -1,0 +1,16 @@
+﻿{"Message":"Logging module loaded successfully","Timestamp":"2025-08-24 01:23:08.259","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"TheTVDB module loaded successfully","Timestamp":"2025-08-24 01:23:08.347","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileParser module loaded successfully","Timestamp":"2025-08-24 01:23:08.381","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"ErrorHandling module loaded successfully","Timestamp":"2025-08-24 01:23:08.406","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"=======================================================================","Timestamp":"2025-08-24 01:23:08.419","Level":"INFO","Category":"UI"}
+{"Message":"                 Universal Anime File Organizer (Modular)            ","Timestamp":"2025-08-24 01:23:08.421","Level":"INFO","Category":"UI"}
+{"Message":"                        Using TheTVDB API (Free)                     ","Timestamp":"2025-08-24 01:23:08.424","Level":"INFO","Category":"UI"}
+{"Message":"=======================================================================","Timestamp":"2025-08-24 01:23:08.425","Level":"INFO","Category":"UI"}
+{"Message":"","Timestamp":"2025-08-24 01:23:08.427","Level":"INFO","Category":"UI"}
+{"Message":"Testing TheTVDB module...","Timestamp":"2025-08-24 01:23:08.437","Level":"INFO","Category":"API"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 332.2238ms","Timestamp":"2025-08-24 01:23:08.781","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":332.22380000000004},"Category":"Performance"}
+{"Message":"TheTVDB module is working correctly!","Timestamp":"2025-08-24 01:23:08.785","Level":"INFO","Category":"API"}
+{"Message":"","Timestamp":"2025-08-24 01:23:08.789","Level":"INFO","Category":"UI"}
+{"Message":"Modular version is currently in development.","Timestamp":"2025-08-24 01:23:08.790","Level":"INFO","Category":"Info"}
+{"Message":"Use the original Anime-File-Organizer.ps1 for full functionality.","Timestamp":"2025-08-24 01:23:08.792","Level":"INFO","Category":"Info"}
+{"Message":"This modular version currently demonstrates TheTVDB API functionality.","Timestamp":"2025-08-24 01:23:08.794","Level":"INFO","Category":"Info"}
