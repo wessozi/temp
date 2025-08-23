@@ -4,6 +4,11 @@
 # Load configuration
 $script:Config = $null
 
+# Performance caching
+$script:SeriesCache = @{}
+$script:EpisodesCache = @{}
+$script:CacheDuration = [TimeSpan]::FromMinutes(30)  # Cache for 30 minutes
+
 function Get-AnimeOrganizerConfig {
     if ($null -eq $script:Config) {
         $configPath = Join-Path $PSScriptRoot "..\..\Config\settings.json"
@@ -27,12 +32,19 @@ function Get-AnimeOrganizerConfig {
     return $script:Config
 }
 
-# Debug function for compatibility
+# Logging function for compatibility (will use new logging system if available)
 function Write-Debug-Info {
     param($Message, $Color = "Cyan")
-    $config = Get-AnimeOrganizerConfig
-    if ($config.behavior.debug_mode) {
-        Write-Host "[DEBUG] $Message" -ForegroundColor $Color
+    
+    # Try to use new logging system if available
+    if (Get-Command -Name Write-DebugLog -ErrorAction SilentlyContinue) {
+        Write-DebugLog -Message $Message -Category "TheTVDB"
+    } else {
+        # Fallback to old behavior
+        $config = Get-AnimeOrganizerConfig
+        if ($config.behavior.debug_mode) {
+            Write-Host "[DEBUG] $Message" -ForegroundColor $Color
+        }
     }
 }
 
@@ -47,6 +59,79 @@ function Get-TheTVDBHeaders {
 function Get-TheTVDBBaseUrl {
     $config = Get-AnimeOrganizerConfig
     return $config.api.base_url
+}
+
+# Cache management functions
+function Get-CachedSeries {
+    param([int]$SeriesId)
+    
+    if ($script:SeriesCache.ContainsKey($SeriesId)) {
+        $cachedItem = $script:SeriesCache[$SeriesId]
+        if ((Get-Date) - $cachedItem.Timestamp -le $script:CacheDuration) {
+            Write-Debug-Info "Cache hit for series ID: $SeriesId" "Green"
+            return $cachedItem.Data
+        } else {
+            Write-Debug-Info "Cache expired for series ID: $SeriesId" "Yellow"
+            $script:SeriesCache.Remove($SeriesId)
+        }
+    }
+    return $null
+}
+
+function Set-CachedSeries {
+    param([int]$SeriesId, $SeriesData)
+    
+    $script:SeriesCache[$SeriesId] = @{
+        Data = $SeriesData
+        Timestamp = Get-Date
+    }
+    Write-Debug-Info "Cached series ID: $SeriesId" "Gray"
+}
+
+function Get-CachedEpisodes {
+    param([int]$SeriesId)
+    
+    if ($script:EpisodesCache.ContainsKey($SeriesId)) {
+        $cachedItem = $script:EpisodesCache[$SeriesId]
+        if ((Get-Date) - $cachedItem.Timestamp -le $script:CacheDuration) {
+            Write-Debug-Info "Cache hit for episodes of series ID: $SeriesId" "Green"
+            return $cachedItem.Data
+        } else {
+            Write-Debug-Info "Cache expired for episodes of series ID: $SeriesId" "Yellow"
+            $script:EpisodesCache.Remove($SeriesId)
+        }
+    }
+    return $null
+}
+
+function Set-CachedEpisodes {
+    param([int]$SeriesId, $EpisodesData)
+    
+    $script:EpisodesCache[$SeriesId] = @{
+        Data = $EpisodesData
+        Timestamp = Get-Date
+    }
+    Write-Debug-Info "Cached episodes for series ID: $SeriesId" "Gray"
+}
+
+function Clear-Cache {
+    param([string]$CacheType = "All")
+    
+    switch ($CacheType.ToLower()) {
+        "series" {
+            $script:SeriesCache.Clear()
+            Write-Debug-Info "Cleared series cache" "Yellow"
+        }
+        "episodes" {
+            $script:EpisodesCache.Clear()
+            Write-Debug-Info "Cleared episodes cache" "Yellow"
+        }
+        "all" {
+            $script:SeriesCache.Clear()
+            $script:EpisodesCache.Clear()
+            Write-Debug-Info "Cleared all caches" "Yellow"
+        }
+    }
 }
 
 # Exported Functions
@@ -94,6 +179,13 @@ function Get-TheTVDBToken {
 function Get-SeriesInfo {
     param($Token, $SeriesId)
     
+    # Check cache first
+    $cachedSeries = Get-CachedSeries -SeriesId $SeriesId
+    if ($cachedSeries) {
+        Write-Host "[CACHE] Using cached series information" -ForegroundColor Green
+        return $cachedSeries
+    }
+    
     $BaseApiUrl = Get-TheTVDBBaseUrl
     $Headers = Get-TheTVDBHeaders
     
@@ -105,6 +197,9 @@ function Get-SeriesInfo {
         Write-Debug-Info "Fetching series data for ID: $SeriesId"
         $response = Invoke-RestMethod -Uri "$BaseApiUrl/series/$SeriesId" -Method GET -Headers $authHeaders
         $seriesData = $response.data
+        
+        # Cache the result
+        Set-CachedSeries -SeriesId $SeriesId -SeriesData $seriesData
         
         Write-Debug-Info "Original series name: $($seriesData.name)"
         
@@ -188,6 +283,13 @@ function Get-SeriesInfo {
 function Get-SeriesEpisodes {
     param($Token, $SeriesId)
     
+    # Check cache first
+    $cachedEpisodes = Get-CachedEpisodes -SeriesId $SeriesId
+    if ($cachedEpisodes) {
+        Write-Host "[CACHE] Using cached episodes information" -ForegroundColor Green
+        return $cachedEpisodes
+    }
+    
     $BaseApiUrl = Get-TheTVDBBaseUrl
     $Headers = Get-TheTVDBHeaders
     
@@ -245,6 +347,9 @@ function Get-SeriesEpisodes {
             }
         }
         
+        # Cache the result
+        Set-CachedEpisodes -SeriesId $SeriesId -EpisodesData $allEpisodes
+        
         return $allEpisodes
     }
     catch {
@@ -255,4 +360,4 @@ function Get-SeriesEpisodes {
 }
 
 # Export functions
-Export-ModuleMember -Function Get-TheTVDBToken, Get-SeriesInfo, Get-SeriesEpisodes
+Export-ModuleMember -Function Get-TheTVDBToken, Get-SeriesInfo, Get-SeriesEpisodes, Clear-Cache

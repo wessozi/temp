@@ -1,0 +1,18 @@
+﻿{"Message":"Logging module loaded successfully","Timestamp":"2025-08-24 01:05:37.466","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"TheTVDB module loaded successfully","Timestamp":"2025-08-24 01:05:37.547","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileParser module loaded successfully","Timestamp":"2025-08-24 01:05:37.561","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"=======================================================================","Timestamp":"2025-08-24 01:05:37.576","Level":"INFO","Category":"UI"}
+{"Message":"                 Universal Anime File Organizer (Modular)            ","Timestamp":"2025-08-24 01:05:37.578","Level":"INFO","Category":"UI"}
+{"Message":"                        Using TheTVDB API (Free)                     ","Timestamp":"2025-08-24 01:05:37.581","Level":"INFO","Category":"UI"}
+{"Message":"=======================================================================","Timestamp":"2025-08-24 01:05:37.582","Level":"INFO","Category":"UI"}
+{"Message":"","Timestamp":"2025-08-24 01:05:37.584","Level":"INFO","Category":"UI"}
+{"Message":"Testing TheTVDB module...","Timestamp":"2025-08-24 01:05:37.610","Level":"INFO","Category":"API"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 336.648ms","Timestamp":"2025-08-24 01:05:37.960","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":336.648},"Category":"Performance"}
+{"Message":"TheTVDB module is working correctly!","Timestamp":"2025-08-24 01:05:37.964","Level":"INFO","Category":"API"}
+{"Message":"Testing with Series ID: 452826","Timestamp":"2025-08-24 01:05:37.970","Level":"INFO","Category":"API"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 401.3946ms","Timestamp":"2025-08-24 01:05:38.374","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":401.3946},"Category":"Performance"}
+{"Message":"Retrieved series: Please Put Them On, Takamine-san","Timestamp":"2025-08-24 01:05:38.376","Level":"INFO","Category":"API"}
+{"Message":"","Timestamp":"2025-08-24 01:05:38.378","Level":"INFO","Category":"UI"}
+{"Message":"Modular version is currently in development.","Timestamp":"2025-08-24 01:05:38.379","Level":"INFO","Category":"Info"}
+{"Message":"Use the original Anime-File-Organizer.ps1 for full functionality.","Timestamp":"2025-08-24 01:05:38.381","Level":"INFO","Category":"Info"}
+{"Message":"This modular version currently demonstrates TheTVDB API functionality.","Timestamp":"2025-08-24 01:05:38.383","Level":"INFO","Category":"Info"}

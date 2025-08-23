@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(powershell -Command \"Get-Command mcp* -ErrorAction SilentlyContinue\")"
+      "Bash(powershell -Command \"Get-Command mcp* -ErrorAction SilentlyContinue\")",
+      "Bash(powershell -Command \"Import-Module .\\AnimeOrganizer\\AnimeOrganizer.psm1 -Force; Start-AnimeOrganization -SeriesId 452826\")",
+      "Bash(powershell -Command \".\\AnimeOrganizer\\Tests\\Logging.Tests.ps1\")",
+      "Bash(powershell -Command \".\\AnimeOrganizer\\Tests\\ErrorHandling.Tests.ps1\")",
+      "Bash(powershell -Command \".\\AnimeOrganizer\\Tests\\Performance.Tests.ps1\")"
     ],
     "deny": [],
     "ask": []
