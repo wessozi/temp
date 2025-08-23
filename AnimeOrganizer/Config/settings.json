@@ -1,0 +1,63 @@
+{
+  "api": {
+    "tvdb_key": "2cb4e65a-f9a9-46e4-98f9-2d44f55342db",
+    "base_url": "https://api4.thetvdb.com/v4",
+    "timeout": 30,
+    "retry_count": 3
+  },
+  "files": {
+    "extensions": [".mkv", ".mp4", ".avi", ".m4v", ".wmv", ".flv", ".webm"],
+    "skip_folders": ["Extras"],
+    "backup_originals": false
+  },
+  "parsing": {
+    "debug_mode": true,
+    "patterns": {
+      "basic": {
+        "hash": "^#(\\d+)\\..*$",
+        "sxxexx": "^[Ss](\\d+)[Ee](\\d+)",
+        "episode_number": "^(\\d{1,2})\\s*-\\s*(.+?)\\..*$",
+        "sub_episode": "^(\\d{1,2})([a-z])\\..*$",
+        "simple_numbered": "^(\\d{1,2})\\..*$"
+      },
+      "advanced": [
+        "^#(\\d+)\\..*$",
+        "^(\\d+)(?:\\s*-\\s*)(.+?)\\..*$",
+        "^(\\d+)\\..*$",
+        "^[Ss](\\d+)[Ee](\\d+).*\\..*$",
+        "^(.+?)\\s+[Ss](\\d+)[Ee](\\d+).*\\..*$",
+        "^(.+?)[Ss](\\d+)[Ee](\\d+).*\\..*$",
+        "^(.+?)\\s*-\\s*(\\d+).*\\..*$",
+        "^(.+?)\\s+(?:Episode|Ep|E)\\s*(\\d+).*\\..*$",
+        "^(.+?)\\s+(\\d{1,3})(?:\\s+.*)?\\..*$",
+        "^(.+?)\\s+(?:OVA|OAD|Special)\\s*(\\d+)?.*\\..*$",
+        "^(.+?)\\s*\\[(\\d+)\\].*\\..*$",
+        "^(.+?)\\s*\\((\\d+)\\).*\\..*$"
+      ]
+    },
+    "series_name_cleaning": {
+      "remove_brackets": [
+        "\\[.*?\\]",
+        "\\(.*?\\)",
+        "【.*?】",
+        "『.*?』",
+        "「.*?」"
+      ],
+      "replace_patterns": {
+        "\\.+": " ",
+        "_+": " ",
+        "\\s+": " "
+      }
+    }
+  },
+  "naming": {
+    "series_format": "{series} - S{season:D2}E{episode:D2} - {title}",
+    "special_format": "{series} - S00E{episode:D2} - {title}",
+    "include_tvdb_id": true
+  },
+  "behavior": {
+    "interactive": true,
+    "debug_mode": true,
+    "auto_rename_folders": true
+  }
+}
