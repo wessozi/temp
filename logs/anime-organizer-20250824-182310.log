@@ -1,0 +1,66 @@
+﻿{"Message":"Logging module loaded successfully","Timestamp":"2025-08-24 18:23:10.086","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"TheTVDB module loaded successfully","Timestamp":"2025-08-24 18:23:10.163","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileParser module loaded successfully","Timestamp":"2025-08-24 18:23:10.178","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"ErrorHandling module loaded successfully","Timestamp":"2025-08-24 18:23:10.218","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileOperations module loaded successfully","Timestamp":"2025-08-24 18:23:10.250","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"UserInterface module loaded successfully","Timestamp":"2025-08-24 18:23:10.265","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 18:23:10.325","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 408.7491ms","Timestamp":"2025-08-24 18:23:10.741","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":408.7491},"Category":"Performance"}
+{"Message":"User entered Series ID: 371662","Timestamp":"2025-08-24 18:23:24.634","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 588.07ms","Timestamp":"2025-08-24 18:23:25.260","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":588.07},"Category":"Performance"}
+{"Message":"Displaying series verification for: Interspecies Reviewers (ID: 371662)","Timestamp":"2025-08-24 18:23:25.268","Level":"INFO","Category":"UserInterface"}
+{"Message":"User confirmed series: Interspecies Reviewers","Timestamp":"2025-08-24 18:23:28.091","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected working directory: Z:\\Media\\NSFW\\Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:23:35.971","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected operation type: Rename Only","Timestamp":"2025-08-24 18:23:39.353","Level":"INFO","Category":"UserInterface"}
+{"Message":"Found 15 video files in directory: Z:\\Media\\NSFW\\Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:23:39.402","Level":"INFO","Category":"FileOperations"}
+{"Message":"Operation \u0027Episode Info Retrieval\u0027 completed in 3834.3197ms","Timestamp":"2025-08-24 18:23:43.249","Level":"INFO","ExtraData":{"Operation":"Episode Info Retrieval","Success":true,"DurationMs":3834.3197},"Category":"Performance"}
+{"Message":"Displaying preview of 12 file operations","Timestamp":"2025-08-24 18:23:43.437","Level":"INFO","Category":"UserInterface"}
+{"Message":"Preview displayed - Operations: 12, Folders: 12","Timestamp":"2025-08-24 18:23:43.478","Level":"INFO","Category":"UserInterface"}
+{"Message":"Displaying confirmation dialog","Timestamp":"2025-08-24 18:23:43.487","Level":"INFO","Category":"UserInterface"}
+{"Message":"User confirmed to proceed with file operations","Timestamp":"2025-08-24 18:23:54.181","Level":"INFO","Category":"UserInterface"}
+{"Message":"Log creation error: The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:23:54.213","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Starting file operations for 12 files","Timestamp":"2025-08-24 18:23:54.223","Level":"INFO","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:23:54.259","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:23:54.284","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:23:54.304","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:23:54.323","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:23:54.339","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:23:54.360","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:23:54.381","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:23:54.400","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:23:54.414","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:23:54.435","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:23:54.452","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:23:54.468","Level":"ERROR","Category":"FileOperations"}
+{"Message":"File operations completed - Success: 0, Errors: 12, Folders: 0","Timestamp":"2025-08-24 18:23:54.477","Level":"INFO","Category":"FileOperations"}
+{"Message":"12 operations failed","Timestamp":"2025-08-24 18:23:54.477","Level":"ERROR","Category":"FileOperations"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 18:27:01.596","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 239.8141ms","Timestamp":"2025-08-24 18:27:01.834","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":239.81410000000002},"Category":"Performance"}
+{"Message":"User entered Series ID: 371662","Timestamp":"2025-08-24 18:27:07.650","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 6.0059ms","Timestamp":"2025-08-24 18:27:07.657","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":6.0059000000000005},"Category":"Performance"}
+{"Message":"Displaying series verification for: Interspecies Reviewers (ID: 371662)","Timestamp":"2025-08-24 18:27:07.664","Level":"INFO","Category":"UserInterface"}
+{"Message":"User confirmed series: Interspecies Reviewers","Timestamp":"2025-08-24 18:27:09.517","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected working directory: Z:\\Media\\NSFW\\Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:27:14.406","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected operation type: Rename Only","Timestamp":"2025-08-24 18:27:16.664","Level":"INFO","Category":"UserInterface"}
+{"Message":"Found 15 video files in directory: Z:\\Media\\NSFW\\Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:27:16.688","Level":"INFO","Category":"FileOperations"}
+{"Message":"Operation \u0027Episode Info Retrieval\u0027 completed in 1.3276ms","Timestamp":"2025-08-24 18:27:16.699","Level":"INFO","ExtraData":{"Operation":"Episode Info Retrieval","Success":true,"DurationMs":1.3276000000000001},"Category":"Performance"}
+{"Message":"Displaying preview of 12 file operations","Timestamp":"2025-08-24 18:27:16.825","Level":"INFO","Category":"UserInterface"}
+{"Message":"Preview displayed - Operations: 12, Folders: 12","Timestamp":"2025-08-24 18:27:16.850","Level":"INFO","Category":"UserInterface"}
+{"Message":"Displaying confirmation dialog","Timestamp":"2025-08-24 18:27:16.863","Level":"INFO","Category":"UserInterface"}
+{"Message":"User confirmed to proceed with file operations","Timestamp":"2025-08-24 18:27:18.057","Level":"INFO","Category":"UserInterface"}
+{"Message":"Log creation error: The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:27:18.074","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Starting file operations for 12 files","Timestamp":"2025-08-24 18:27:18.078","Level":"INFO","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:27:18.099","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:27:18.120","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:27:18.141","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:27:18.161","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:27:18.182","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:27:18.201","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:27:18.223","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:27:18.243","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:27:18.264","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:27:18.285","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:27:18.307","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot retrieve the dynamic parameters for the cmdlet. The specified wildcard character pattern is not valid: Interspecies Reviewers [tvdb-371662]","Timestamp":"2025-08-24 18:27:18.327","Level":"ERROR","Category":"FileOperations"}
+{"Message":"File operations completed - Success: 0, Errors: 12, Folders: 0","Timestamp":"2025-08-24 18:27:18.335","Level":"INFO","Category":"FileOperations"}
+{"Message":"12 operations failed","Timestamp":"2025-08-24 18:27:18.335","Level":"ERROR","Category":"FileOperations"}

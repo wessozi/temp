@@ -1,0 +1,20 @@
+﻿{"Message":"Logging module loaded successfully","Timestamp":"2025-08-24 17:51:48.355","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"TheTVDB module loaded successfully","Timestamp":"2025-08-24 17:51:48.439","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileParser module loaded successfully","Timestamp":"2025-08-24 17:51:48.459","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"ErrorHandling module loaded successfully","Timestamp":"2025-08-24 17:51:48.481","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileOperations module loaded successfully","Timestamp":"2025-08-24 17:51:48.499","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"UserInterface module loaded successfully","Timestamp":"2025-08-24 17:51:48.513","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:51:48.589","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 458.9019ms","Timestamp":"2025-08-24 17:51:49.055","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":458.9019},"Category":"Performance"}
+{"Message":"User entered Series ID: 371662","Timestamp":"2025-08-24 17:52:29.325","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 606.1279ms","Timestamp":"2025-08-24 17:52:29.937","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":606.12790000000007},"Category":"Performance"}
+{"Message":"Displaying series verification for: Interspecies Reviewers (ID: 371662)","Timestamp":"2025-08-24 17:52:29.945","Level":"INFO","Category":"UserInterface"}
+{"Message":"User confirmed series: Interspecies Reviewers","Timestamp":"2025-08-24 17:52:35.143","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected working directory: Z:\\Media\\NSFW\\[YURI] Interspecies Reviewers (Ishuzoku Reviewers) [BD 1080p HEVC FLAC]","Timestamp":"2025-08-24 17:52:46.760","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected operation type: Rename Only","Timestamp":"2025-08-24 17:52:58.026","Level":"INFO","Category":"UserInterface"}
+{"Message":"Found 15 video files in directory: Z:\\Media\\NSFW\\[YURI] Interspecies Reviewers (Ishuzoku Reviewers) [BD 1080p HEVC FLAC]","Timestamp":"2025-08-24 17:52:58.084","Level":"INFO","Category":"FileOperations"}
+{"Message":"Operation \u0027Episode Info Retrieval\u0027 completed in 3483.3378ms","Timestamp":"2025-08-24 17:53:01.580","Level":"INFO","ExtraData":{"Operation":"Episode Info Retrieval","Success":true,"DurationMs":3483.3378000000002},"Category":"Performance"}
+{"Message":"Error in main workflow: Cannot compare \"System.Collections.Hashtable\" because it is not IComparable.","Timestamp":"2025-08-24 17:53:01.630","Level":"ERROR","Category":"Workflow"}
+{"Message":"User chose to restart (Unexpected Error)","Timestamp":"2025-08-24 18:16:45.774","Level":"INFO","Category":"UserInterface"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 18:16:45.785","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 239.1455ms","Timestamp":"2025-08-24 18:16:46.026","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":239.1455},"Category":"Performance"}
