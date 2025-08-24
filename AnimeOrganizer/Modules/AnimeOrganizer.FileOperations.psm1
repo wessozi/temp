@@ -167,9 +167,42 @@ function Execute-FileOperations {
             if (Test-Path -LiteralPath $sourcePath) {
                 # Check if target already exists
                 if (Test-Path -LiteralPath $targetPath) {
-                    Write-Host "[WARNING] Target file already exists: $($operation.NewFileName)" -ForegroundColor Yellow
-                    Write-DebugLogFallback "Target file exists, skipping: $targetPath"
-                    continue
+                    # Extract episode key from both filenames to check if this is a duplicate episode conflict
+                    $sourceEpisodeKey = if ($operation.NewFileName -match '(S\d{2}E\d{2})') { $Matches[1] } else { $null }
+                    $targetEpisodeKey = if ((Split-Path $targetPath -Leaf) -match '(S\d{2}E\d{2})') { $Matches[1] } else { $null }
+                    
+                    # Only apply versioning if this is a duplicate episode conflict
+                    if ($sourceEpisodeKey -and $targetEpisodeKey -and $sourceEpisodeKey -eq $targetEpisodeKey) {
+                        # Version resolution logic for duplicate episodes
+                        $baseName = $operation.NewFileName -replace '\.v\d+', ''
+                        $existingVersions = @()
+                        
+                        # Find all existing versions for this episode in the target directory
+                        $targetDir = Split-Path $targetPath
+                        Get-ChildItem -Path $targetDir -Filter "*$sourceEpisodeKey*" | ForEach-Object {
+                            if ($_.Name -match '\.v(\d+)\.') {
+                                $existingVersions += [int]$Matches[1]
+                            } elseif ($_.Name -match "$sourceEpisodeKey[^v]") {
+                                $existingVersions += 1  # No suffix = version 1
+                            }
+                        }
+                        
+                        $nextVersion = if ($existingVersions.Count -gt 0) { ($existingVersions | Measure-Object -Maximum).Maximum + 1 } else { 2 }
+                        # Insert version number after episode number but before title
+                        $newTargetName = $operation.NewFileName -replace '(S\d{2}E\d{2})\.', "`$1.v$nextVersion."
+                        $newTargetPath = Join-Path $targetDir $newTargetName
+                        
+                        Write-Host "[VERSION] Duplicate episode conflict resolved: $($operation.NewFileName) -> $newTargetName" -ForegroundColor Yellow
+                        Write-DebugLogFallback "Version conflict resolved: $targetPath -> $newTargetPath"
+                        
+                        # Update target path for this operation
+                        $targetPath = $newTargetPath
+                    } else {
+                        # Regular file conflict - skip with warning
+                        Write-Host "[WARNING] Target file already exists: $($operation.NewFileName)" -ForegroundColor Yellow
+                        Write-DebugLogFallback "Target file exists, skipping: $targetPath"
+                        continue
+                    }
                 }
                 
                 # Use safe file operation if available
