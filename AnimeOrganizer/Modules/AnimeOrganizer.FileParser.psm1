@@ -258,9 +258,12 @@ function Test-IsRomanizedJapaneseName {
 function Get-SafeFileName {
     param([string]$FileName)
     
+    # Replace spaces with dots FIRST
+    $safeFileName = $FileName -replace '\s+', '.'
+    
     # Windows invalid characters: < > : " / \ | ? *
     # Replace with safe alternatives
-    $safeFileName = $FileName -replace ':', '-'        # Replace colons with dash
+    $safeFileName = $safeFileName -replace ':', '-'        # Replace colons with dash
     $safeFileName = $safeFileName -replace '/', '-'    # Replace forward slashes with dash
     $safeFileName = $safeFileName -replace '\\', '-'   # Replace backslashes with dash
     $safeFileName = $safeFileName -replace '\|', '-'   # Replace pipes with dash
@@ -270,13 +273,13 @@ function Get-SafeFileName {
     $safeFileName = $safeFileName -replace '>', ''     # Remove greater than
     $safeFileName = $safeFileName -replace '"', ''     # Remove double quotes
     
-    # Clean up multiple dashes and trim
-    $safeFileName = $safeFileName -replace '\s*-\s*', '-'  # Normalize spacing around dashes
-    $safeFileName = $safeFileName -replace '-+', '-'       # Replace multiple dashes with single dash
+    # Clean up multiple dots and dashes
+    $safeFileName = $safeFileName -replace '\.+', '.'       # Multiple dots -> single dot
+    $safeFileName = $safeFileName -replace '-+', '-'       # Multiple dashes -> single dash
+    $safeFileName = $safeFileName -replace '^\.|\.$', ''   # Remove leading/trailing dots
     $safeFileName = $safeFileName -replace '^-|-$', ''     # Remove leading/trailing dashes
-    $safeFileName = $safeFileName.Trim()
     
-    return $safeFileName
+    return $safeFileName.Trim()
 }
 
 function Parse-EpisodeNumber {

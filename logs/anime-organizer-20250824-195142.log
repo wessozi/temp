@@ -1,0 +1,28 @@
+﻿{"Message":"Logging module loaded successfully","Timestamp":"2025-08-24 19:51:42.260","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"TheTVDB module loaded successfully","Timestamp":"2025-08-24 19:51:42.347","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileParser module loaded successfully","Timestamp":"2025-08-24 19:51:42.362","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"ErrorHandling module loaded successfully","Timestamp":"2025-08-24 19:51:42.394","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileOperations module loaded successfully","Timestamp":"2025-08-24 19:51:42.411","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"UserInterface module loaded successfully","Timestamp":"2025-08-24 19:51:42.423","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 19:51:42.471","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 311.2978ms","Timestamp":"2025-08-24 19:51:42.790","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":311.2978},"Category":"Performance"}
+{"Message":"User entered Series ID: 452826","Timestamp":"2025-08-24 19:51:53.022","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 554.4865ms","Timestamp":"2025-08-24 19:51:53.601","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":554.4865},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 19:51:53.610","Level":"INFO","Category":"UserInterface"}
+{"Message":"User confirmed series: Please Put Them On, Takamine-san","Timestamp":"2025-08-24 19:51:57.612","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected working directory: Z:\\Media\\NSFW\\Haite Kudasai, Takamine-san [tvdb-452826]","Timestamp":"2025-08-24 19:51:59.093","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected operation type: Rename Only","Timestamp":"2025-08-24 19:52:00.872","Level":"INFO","Category":"UserInterface"}
+{"Message":"Found 14 video files in directory: Z:\\Media\\NSFW\\Haite Kudasai, Takamine-san [tvdb-452826]","Timestamp":"2025-08-24 19:52:00.909","Level":"INFO","Category":"FileOperations"}
+{"Message":"Operation \u0027Episode Info Retrieval\u0027 completed in 3062.7283ms","Timestamp":"2025-08-24 19:52:03.987","Level":"INFO","ExtraData":{"Operation":"Episode Info Retrieval","Success":true,"DurationMs":3062.7283},"Category":"Performance"}
+{"Message":"Displaying preview of 14 file operations","Timestamp":"2025-08-24 19:52:04.159","Level":"INFO","Category":"UserInterface"}
+{"Message":"Preview displayed - Operations: 14, Folders: 14","Timestamp":"2025-08-24 19:52:04.201","Level":"INFO","Category":"UserInterface"}
+{"Message":"Displaying confirmation dialog","Timestamp":"2025-08-24 19:52:04.209","Level":"INFO","Category":"UserInterface"}
+{"Message":"User confirmed to proceed with file operations","Timestamp":"2025-08-24 19:52:31.632","Level":"INFO","Category":"UserInterface"}
+{"Message":"Rename log written to: Z:\\Media\\NSFW\\Haite Kudasai, Takamine-san [tvdb-452826]\\rename_log_Please.Put.Them.On,.Takamine-san_2025-08-24_19-52-31.txt","Timestamp":"2025-08-24 19:52:31.665","Level":"INFO","Category":"FileOperations"}
+{"Message":"Starting file operations for 14 files","Timestamp":"2025-08-24 19:52:31.674","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: Haite Kudasai, Takamine-san - S01E11 v3 - I\u0027ll Let You Do a Dry Run.mkv -\u003e Please.Put.Them.On,.Takamine-san.S01E11.v2.I\u0027ll.Let.You.Do.a.Dry.Run.mkv","Timestamp":"2025-08-24 19:52:31.732","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: Please.Put.Them.On,.Takamine-san.S01E11.I\u0027ll.Let.You.Do.a.Dry.Run.mkv -\u003e Please.Put.Them.On,.Takamine-san.S01E11.v3.I\u0027ll.Let.You.Do.a.Dry.Run.mkv","Timestamp":"2025-08-24 19:52:31.854","Level":"INFO","Category":"FileOperations"}
+{"Message":"File operations completed - Success: 2, Errors: 0, Folders: 0","Timestamp":"2025-08-24 19:52:31.874","Level":"INFO","Category":"FileOperations"}
+{"Message":"All operations completed without errors","Timestamp":"2025-08-24 19:52:31.874","Level":"INFO","Category":"FileOperations"}
+{"Message":"Folder already has TVDB ID format: Haite Kudasai, Takamine-san [tvdb-452826]","Timestamp":"2025-08-24 19:52:31.883","Level":"INFO","Category":"FileOperations"}
+{"Message":"Anime organization completed successfully for: Please Put Them On, Takamine-san","Timestamp":"2025-08-24 19:52:31.883","Level":"INFO","Category":"Complete"}
