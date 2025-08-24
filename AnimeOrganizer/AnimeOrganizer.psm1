@@ -195,18 +195,32 @@ function Start-AnimeOrganization {
             
             # Parse files and create operations
             $operations = @()
+            $episodeVersionCounts = @{}
+            
             foreach ($file in $videoFiles) {
                 $parseResult = Parse-EpisodeNumber -FileName $file.Name
                 if ($parseResult -and $parseResult.EpisodeNumber -gt 0 -and $parseResult.EpisodeNumber -le $episodes.Count) {
                     $episodeNum = $parseResult.EpisodeNumber
                     $episode = $episodes[$episodeNum - 1]
-                    $newFileName = Get-SafeFileName -FileName "$($seriesInfo.name).S01E$($episodeNum.ToString('00')).$($episode.name)$($file.Extension)"
+                    
+                    # Check for duplicate episodes and add version numbers
+                    $episodeKey = "S{0:D2}E{1:D2}" -f $parseResult.SeasonNumber, $episodeNum
+                    if ($episodeVersionCounts.ContainsKey($episodeKey)) {
+                        $episodeVersionCounts[$episodeKey]++
+                        $versionSuffix = ".v$($episodeVersionCounts[$episodeKey])"
+                        Write-DebugLog "Duplicate episode detected: $episodeKey - adding version $($episodeVersionCounts[$episodeKey])" -Category "Versioning"
+                    } else {
+                        $episodeVersionCounts[$episodeKey] = 1
+                        $versionSuffix = ""
+                    }
+                    
+                    $newFileName = Get-SafeFileName -FileName "$($seriesInfo.name).$episodeKey$versionSuffix.$($episode.name)$($file.Extension)"
                     
                     $operations += [PSCustomObject]@{
                         OriginalFile = $file.Name
                         SourcePath = $file.FullName
                         NewFileName = $newFileName
-                        TargetFolder = if ($renameOnly) { "." } else { "Season 1" }
+                        TargetFolder = if ($renameOnly) { "." } else { "Season $($parseResult.SeasonNumber.ToString('00'))" }
                         EpisodeNumber = $episodeNum
                         EpisodeName = $episode.name
                     }
