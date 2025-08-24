@@ -1108,7 +1108,7 @@ if ($specialFiles.Count -gt 0) {
             $versionSuffix = ""
         }
         
-        $newFileName = "$safeSeriesName - $episodeKey$versionSuffix - $episodeTitle$($file.Extension)"
+        $newFileName = "$safeSeriesName.$episodeKey$versionSuffix.$episodeTitle$($file.Extension)"
             
         # Skip if filename is already correct (optimization for NAS performance)
         if ($file.Name -eq $newFileName) {
@@ -1156,7 +1156,7 @@ if ($specialFiles.Count -gt 0) {
             $versionSuffix = ""
         }
         
-        $newFileName = "$safeSeriesName - $episodeKey$versionSuffix - $($file.BaseName)$($file.Extension)"
+        $newFileName = "$safeSeriesName.$episodeKey$versionSuffix.$($file.BaseName)$($file.Extension)"
             
         # Skip if filename is already correct (optimization for NAS performance)
         if ($file.Name -eq $newFileName) {
@@ -1238,7 +1238,7 @@ foreach ($file in $regularFiles) {
             $versionSuffix = ""
         }
         
-        $newFileName = "$safeSeriesName - $episodeKey$versionSuffix - $episodeTitle$($file.Extension)"
+        $newFileName = "$safeSeriesName.$episodeKey$versionSuffix.$episodeTitle$($file.Extension)"
     
     # Skip if filename is already correct (optimization for NAS performance)
     if ($file.Name -eq $newFileName) {

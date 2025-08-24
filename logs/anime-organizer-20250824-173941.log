@@ -1,0 +1,4 @@
+﻿{"Message":"Logging module loaded successfully","Timestamp":"2025-08-24 17:39:41.662","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"TheTVDB module loaded successfully","Timestamp":"2025-08-24 17:39:41.754","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileParser module loaded successfully","Timestamp":"2025-08-24 17:39:41.778","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"ErrorHandling module loaded successfully","Timestamp":"2025-08-24 17:39:41.804","Level":"INFO","Category":"ModuleLoad"}

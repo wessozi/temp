@@ -1,0 +1,529 @@
+﻿{"Message":"Logging module loaded successfully","Timestamp":"2025-08-24 17:48:39.900","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"TheTVDB module loaded successfully","Timestamp":"2025-08-24 17:48:39.975","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileParser module loaded successfully","Timestamp":"2025-08-24 17:48:39.988","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"ErrorHandling module loaded successfully","Timestamp":"2025-08-24 17:48:40.004","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileOperations module loaded successfully","Timestamp":"2025-08-24 17:48:40.021","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"UserInterface module loaded successfully","Timestamp":"2025-08-24 17:48:40.030","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:40.106","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 394.1905ms","Timestamp":"2025-08-24 17:48:40.508","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":394.19050000000004},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 425.1699ms","Timestamp":"2025-08-24 17:48:40.939","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":425.16990000000004},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:40.949","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:40.958","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:41.025","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 243.228ms","Timestamp":"2025-08-24 17:48:41.271","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":243.228},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 6.8353ms","Timestamp":"2025-08-24 17:48:41.280","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":6.8353},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:41.284","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:41.288","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:41.318","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 209.0263ms","Timestamp":"2025-08-24 17:48:41.531","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":209.02630000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.233ms","Timestamp":"2025-08-24 17:48:41.534","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.233},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:41.539","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:41.541","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:41.573","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 211.6476ms","Timestamp":"2025-08-24 17:48:41.784","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":211.6476},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.224ms","Timestamp":"2025-08-24 17:48:41.790","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.224},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:41.792","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:41.796","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:41.825","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 208.1087ms","Timestamp":"2025-08-24 17:48:42.039","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":208.1087},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1765ms","Timestamp":"2025-08-24 17:48:42.041","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1765},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:42.047","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:42.049","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:42.081","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 210.2408ms","Timestamp":"2025-08-24 17:48:42.294","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":210.2408},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1159ms","Timestamp":"2025-08-24 17:48:42.294","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1159000000000001},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:42.301","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:42.301","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:42.335","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 208.5932ms","Timestamp":"2025-08-24 17:48:42.545","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":208.5932},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1659ms","Timestamp":"2025-08-24 17:48:42.549","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1659000000000002},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:42.553","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:42.555","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:42.588","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 208.2532ms","Timestamp":"2025-08-24 17:48:42.797","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":208.25320000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1267ms","Timestamp":"2025-08-24 17:48:42.800","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1267},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:42.805","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:42.807","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:42.839","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 208.895ms","Timestamp":"2025-08-24 17:48:43.050","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":208.895},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.2102ms","Timestamp":"2025-08-24 17:48:43.052","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.2102000000000002},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:43.058","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:43.060","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:43.092","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 229.7187ms","Timestamp":"2025-08-24 17:48:43.324","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":229.7187},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1255ms","Timestamp":"2025-08-24 17:48:43.327","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1255},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:43.331","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:43.333","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:43.367","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 254.889ms","Timestamp":"2025-08-24 17:48:43.633","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":254.889},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.3676ms","Timestamp":"2025-08-24 17:48:43.637","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.3676000000000001},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:43.645","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:43.645","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:43.678","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 218.0132ms","Timestamp":"2025-08-24 17:48:43.900","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":218.0132},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.3937ms","Timestamp":"2025-08-24 17:48:43.903","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.3937000000000002},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:43.908","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:43.910","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:43.943","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 208.9366ms","Timestamp":"2025-08-24 17:48:44.154","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":208.9366},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.5026ms","Timestamp":"2025-08-24 17:48:44.177","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.5026000000000002},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:44.181","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:44.186","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:44.219","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 248.1137ms","Timestamp":"2025-08-24 17:48:44.468","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":248.11370000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.2741ms","Timestamp":"2025-08-24 17:48:44.471","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.2741},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:44.476","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:44.478","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:44.512","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 211.4332ms","Timestamp":"2025-08-24 17:48:44.726","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":211.4332},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1334ms","Timestamp":"2025-08-24 17:48:44.726","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1334},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:44.729","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:44.735","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:44.768","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 212.6896ms","Timestamp":"2025-08-24 17:48:44.980","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":212.6896},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.3837ms","Timestamp":"2025-08-24 17:48:44.985","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.3837000000000002},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:44.988","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:44.988","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:45.026","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 241.8695ms","Timestamp":"2025-08-24 17:48:45.268","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":241.86950000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 2.0239ms","Timestamp":"2025-08-24 17:48:45.272","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":2.0239000000000003},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:45.276","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:45.280","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:45.314","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 208.5036ms","Timestamp":"2025-08-24 17:48:45.522","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":208.5036},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 2.2542ms","Timestamp":"2025-08-24 17:48:45.527","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":2.2542},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:45.531","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:45.535","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:45.569","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 207.406ms","Timestamp":"2025-08-24 17:48:45.778","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":207.406},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1233ms","Timestamp":"2025-08-24 17:48:45.781","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1233},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:45.785","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:45.787","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:45.820","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 207.0816ms","Timestamp":"2025-08-24 17:48:46.028","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":207.0816},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1946ms","Timestamp":"2025-08-24 17:48:46.029","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1946},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:46.036","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:46.036","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:46.069","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 209.7171ms","Timestamp":"2025-08-24 17:48:46.281","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":209.71710000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1117ms","Timestamp":"2025-08-24 17:48:46.285","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1117000000000001},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:46.289","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:46.289","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:46.323","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 221.0635ms","Timestamp":"2025-08-24 17:48:46.545","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":221.0635},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1368ms","Timestamp":"2025-08-24 17:48:46.548","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1368},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:46.553","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:46.558","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:46.590","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 252.7477ms","Timestamp":"2025-08-24 17:48:46.844","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":252.7477},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.3249ms","Timestamp":"2025-08-24 17:48:46.845","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.3249},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:46.848","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:46.854","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:46.887","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 294.1197ms","Timestamp":"2025-08-24 17:48:47.183","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":294.1197},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.3464ms","Timestamp":"2025-08-24 17:48:47.186","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.3464},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:47.192","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:47.194","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:47.226","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 238.0394ms","Timestamp":"2025-08-24 17:48:47.466","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":238.0394},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1935ms","Timestamp":"2025-08-24 17:48:47.466","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1935},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:47.474","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:47.474","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:47.508","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 283.8933ms","Timestamp":"2025-08-24 17:48:47.796","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":283.8933},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.3034ms","Timestamp":"2025-08-24 17:48:47.796","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.3034000000000001},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:47.804","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:47.804","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:47.838","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 220.9936ms","Timestamp":"2025-08-24 17:48:48.058","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":220.99360000000001},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.3589ms","Timestamp":"2025-08-24 17:48:48.063","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.3589},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:48.067","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:48.071","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:48.104","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 224.8564ms","Timestamp":"2025-08-24 17:48:48.330","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":224.8564},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.2284ms","Timestamp":"2025-08-24 17:48:48.333","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.2284000000000002},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:48.338","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:48.338","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:48.372","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 225.7346ms","Timestamp":"2025-08-24 17:48:48.602","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":225.7346},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.2655ms","Timestamp":"2025-08-24 17:48:48.604","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.2655},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:48.614","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:48.616","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:48.650","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 226.35ms","Timestamp":"2025-08-24 17:48:48.877","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":226.35000000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 2.3792ms","Timestamp":"2025-08-24 17:48:48.882","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":2.3792},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:48.883","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:48.893","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:48.925","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 216.9524ms","Timestamp":"2025-08-24 17:48:49.144","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":216.9524},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.3973ms","Timestamp":"2025-08-24 17:48:49.148","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.3973},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:49.149","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:49.153","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:49.187","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 209.8628ms","Timestamp":"2025-08-24 17:48:49.398","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":209.86280000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.2554ms","Timestamp":"2025-08-24 17:48:49.402","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.2554},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:49.406","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:49.406","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:49.443","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 209.0368ms","Timestamp":"2025-08-24 17:48:49.657","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":209.0368},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.2063ms","Timestamp":"2025-08-24 17:48:49.658","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.2063000000000001},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:49.665","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:49.666","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:49.701","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 210.1033ms","Timestamp":"2025-08-24 17:48:49.914","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":210.10330000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.2873ms","Timestamp":"2025-08-24 17:48:49.916","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.2873},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:49.919","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:49.923","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:49.956","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 209.7873ms","Timestamp":"2025-08-24 17:48:50.167","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":209.78730000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0961ms","Timestamp":"2025-08-24 17:48:50.170","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0961},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:50.175","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:50.178","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:50.210","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 211.6187ms","Timestamp":"2025-08-24 17:48:50.423","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":211.61870000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0891ms","Timestamp":"2025-08-24 17:48:50.427","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0891},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:50.431","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:50.432","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:50.465","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 208.0594ms","Timestamp":"2025-08-24 17:48:50.674","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":208.0594},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0771ms","Timestamp":"2025-08-24 17:48:50.674","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0771},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:50.682","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:50.682","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:50.715","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 342.7836ms","Timestamp":"2025-08-24 17:48:51.060","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":342.78360000000004},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1472ms","Timestamp":"2025-08-24 17:48:51.062","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1472},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:51.067","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:51.071","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:51.101","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 214.3173ms","Timestamp":"2025-08-24 17:48:51.318","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":214.31730000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1718ms","Timestamp":"2025-08-24 17:48:51.321","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1718},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:51.326","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:51.330","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:51.362","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 345.5204ms","Timestamp":"2025-08-24 17:48:51.710","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":345.5204},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0817ms","Timestamp":"2025-08-24 17:48:51.712","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0817},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:51.717","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:51.718","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:51.751","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 210.8008ms","Timestamp":"2025-08-24 17:48:51.961","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":210.8008},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1349ms","Timestamp":"2025-08-24 17:48:51.964","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1349},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:51.968","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:51.971","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:52.005","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 210.9304ms","Timestamp":"2025-08-24 17:48:52.217","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":210.93040000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.3178ms","Timestamp":"2025-08-24 17:48:52.226","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.3178},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:52.229","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:52.229","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:52.262","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 208.8417ms","Timestamp":"2025-08-24 17:48:52.475","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":208.8417},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1244ms","Timestamp":"2025-08-24 17:48:52.478","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1244},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:52.483","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:52.484","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:52.517","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 207.4346ms","Timestamp":"2025-08-24 17:48:52.727","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":207.43460000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1074ms","Timestamp":"2025-08-24 17:48:52.727","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1074000000000002},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:52.734","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:52.736","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:52.768","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 208.3123ms","Timestamp":"2025-08-24 17:48:52.977","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":208.31230000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0887ms","Timestamp":"2025-08-24 17:48:52.981","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0887},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:52.985","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:52.986","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:53.018","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 210.7316ms","Timestamp":"2025-08-24 17:48:53.231","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":210.73160000000001},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1432ms","Timestamp":"2025-08-24 17:48:53.234","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1432},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:53.239","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:53.240","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:53.273","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 210.3053ms","Timestamp":"2025-08-24 17:48:53.484","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":210.30530000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.2128ms","Timestamp":"2025-08-24 17:48:53.487","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.2128},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:53.490","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:53.494","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:53.527","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 208.5889ms","Timestamp":"2025-08-24 17:48:53.735","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":208.58890000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.5955ms","Timestamp":"2025-08-24 17:48:53.739","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.5955000000000001},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:53.744","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:53.747","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:53.781","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 215.1903ms","Timestamp":"2025-08-24 17:48:53.998","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":215.1903},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0739ms","Timestamp":"2025-08-24 17:48:53.998","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0739},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:54.002","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:54.006","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:54.039","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 207.0255ms","Timestamp":"2025-08-24 17:48:54.246","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":207.02550000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1317ms","Timestamp":"2025-08-24 17:48:54.246","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1317000000000002},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:54.258","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:54.262","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:54.295","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 211.9981ms","Timestamp":"2025-08-24 17:48:54.506","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":211.99810000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.7206ms","Timestamp":"2025-08-24 17:48:54.511","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.7206000000000001},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:54.519","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:54.519","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:54.552","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 356.0296ms","Timestamp":"2025-08-24 17:48:54.909","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":356.0296},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.2769ms","Timestamp":"2025-08-24 17:48:54.912","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.2769000000000001},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:54.917","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:54.919","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:54.949","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 342.1942ms","Timestamp":"2025-08-24 17:48:55.295","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":342.1942},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1392ms","Timestamp":"2025-08-24 17:48:55.299","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1392},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:55.304","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:55.304","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:55.337","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 217.2065ms","Timestamp":"2025-08-24 17:48:55.554","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":217.2065},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0529ms","Timestamp":"2025-08-24 17:48:55.559","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0529},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:55.562","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:55.565","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:55.595","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 206.9667ms","Timestamp":"2025-08-24 17:48:55.804","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":206.9667},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0542ms","Timestamp":"2025-08-24 17:48:55.808","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0542},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:55.812","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:55.815","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:55.846","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 210.5964ms","Timestamp":"2025-08-24 17:48:56.059","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":210.59640000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.4176ms","Timestamp":"2025-08-24 17:48:56.062","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.4176},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:56.066","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:56.071","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:56.100","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 212.9817ms","Timestamp":"2025-08-24 17:48:56.318","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":212.98170000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.2611ms","Timestamp":"2025-08-24 17:48:56.320","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.2611},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:56.325","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:56.325","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:56.360","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 207.9199ms","Timestamp":"2025-08-24 17:48:56.570","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":207.9199},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.3346ms","Timestamp":"2025-08-24 17:48:56.571","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.3346},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:56.576","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:56.580","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:56.613","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 218.255ms","Timestamp":"2025-08-24 17:48:56.834","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":218.25500000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1352ms","Timestamp":"2025-08-24 17:48:56.838","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1352},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:56.842","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:56.842","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:56.875","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 207.0805ms","Timestamp":"2025-08-24 17:48:57.084","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":207.0805},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.5069ms","Timestamp":"2025-08-24 17:48:57.089","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.5069000000000001},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:57.093","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:57.097","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:57.130","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 209.2931ms","Timestamp":"2025-08-24 17:48:57.339","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":209.2931},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0527ms","Timestamp":"2025-08-24 17:48:57.342","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0527},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:57.347","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:57.351","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:57.382","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 206.2672ms","Timestamp":"2025-08-24 17:48:57.589","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":206.2672},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.132ms","Timestamp":"2025-08-24 17:48:57.594","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1320000000000001},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:57.597","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:57.597","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:57.631","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 352.0621ms","Timestamp":"2025-08-24 17:48:57.985","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":352.06210000000004},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.19ms","Timestamp":"2025-08-24 17:48:57.989","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.19},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:57.994","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:57.994","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:58.026","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 345.2429ms","Timestamp":"2025-08-24 17:48:58.373","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":345.2429},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0715ms","Timestamp":"2025-08-24 17:48:58.377","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0715000000000001},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:58.381","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:58.381","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:58.416","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 207.1395ms","Timestamp":"2025-08-24 17:48:58.623","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":207.1395},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.9167ms","Timestamp":"2025-08-24 17:48:58.627","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.9167},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:58.632","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:58.635","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:58.667","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 205.3565ms","Timestamp":"2025-08-24 17:48:58.874","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":205.3565},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.3779ms","Timestamp":"2025-08-24 17:48:58.878","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.3779000000000001},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:58.882","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:58.882","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:58.915","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 207.1267ms","Timestamp":"2025-08-24 17:48:59.124","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":207.1267},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1628ms","Timestamp":"2025-08-24 17:48:59.128","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1628},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:59.132","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:59.132","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:59.166","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 205.5626ms","Timestamp":"2025-08-24 17:48:59.375","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":205.5626},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0935ms","Timestamp":"2025-08-24 17:48:59.377","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0935000000000001},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:59.382","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:59.384","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:59.416","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 223.6615ms","Timestamp":"2025-08-24 17:48:59.641","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":223.66150000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0835ms","Timestamp":"2025-08-24 17:48:59.641","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0835000000000001},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:59.646","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:59.649","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:59.683","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 207.6934ms","Timestamp":"2025-08-24 17:48:59.892","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":207.6934},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.213ms","Timestamp":"2025-08-24 17:48:59.895","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.213},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:48:59.900","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:48:59.900","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:48:59.933","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 214.519ms","Timestamp":"2025-08-24 17:49:00.150","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":214.519},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0548ms","Timestamp":"2025-08-24 17:49:00.150","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0548},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:00.154","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:00.158","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:00.191","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 208.3236ms","Timestamp":"2025-08-24 17:49:00.401","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":208.3236},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.2936ms","Timestamp":"2025-08-24 17:49:00.403","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.2936},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:00.409","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:00.409","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:00.442","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 268.4721ms","Timestamp":"2025-08-24 17:49:00.714","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":268.4721},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1482ms","Timestamp":"2025-08-24 17:49:00.718","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1482},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:00.722","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:00.724","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:00.755","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 206.0936ms","Timestamp":"2025-08-24 17:49:00.963","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":206.0936},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1002ms","Timestamp":"2025-08-24 17:49:00.966","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1002},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:00.971","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:00.973","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:01.006","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 207.2465ms","Timestamp":"2025-08-24 17:49:01.213","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":207.2465},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.2294ms","Timestamp":"2025-08-24 17:49:01.218","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.2294},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:01.222","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:01.222","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:01.256","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 210.5561ms","Timestamp":"2025-08-24 17:49:01.469","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":210.55610000000001},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.197ms","Timestamp":"2025-08-24 17:49:01.473","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.197},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:01.476","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:01.476","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:01.510","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 212.3364ms","Timestamp":"2025-08-24 17:49:01.722","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":212.3364},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1449ms","Timestamp":"2025-08-24 17:49:01.727","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1449},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:01.731","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:01.735","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:01.766","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 212.5175ms","Timestamp":"2025-08-24 17:49:01.981","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":212.5175},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.203ms","Timestamp":"2025-08-24 17:49:01.981","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.203},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:01.989","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:01.989","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:02.022","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 204.7823ms","Timestamp":"2025-08-24 17:49:02.229","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":204.78230000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1003ms","Timestamp":"2025-08-24 17:49:02.232","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1003},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:02.236","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:02.239","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:02.271","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 233.7691ms","Timestamp":"2025-08-24 17:49:02.507","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":233.7691},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1713ms","Timestamp":"2025-08-24 17:49:02.510","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1713},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:02.514","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:02.517","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:02.547","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 293.4233ms","Timestamp":"2025-08-24 17:49:02.840","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":293.42330000000004},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0961ms","Timestamp":"2025-08-24 17:49:02.844","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0961},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:02.848","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:02.853","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:02.882","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 235.6522ms","Timestamp":"2025-08-24 17:49:03.120","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":235.65220000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0916ms","Timestamp":"2025-08-24 17:49:03.123","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0916000000000001},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:03.130","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:03.132","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:03.161","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 213.4484ms","Timestamp":"2025-08-24 17:49:03.378","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":213.44840000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1016ms","Timestamp":"2025-08-24 17:49:03.382","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1016000000000001},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:03.387","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:03.387","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:03.420","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 286.5145ms","Timestamp":"2025-08-24 17:49:03.709","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":286.5145},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0759ms","Timestamp":"2025-08-24 17:49:03.712","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0759},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:03.716","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:03.718","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:03.750","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 206.4378ms","Timestamp":"2025-08-24 17:49:03.958","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":206.4378},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1893ms","Timestamp":"2025-08-24 17:49:03.961","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1893},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:03.965","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:03.968","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:04.001","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 210.6987ms","Timestamp":"2025-08-24 17:49:04.212","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":210.6987},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.4069ms","Timestamp":"2025-08-24 17:49:04.216","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.4069},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:04.221","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:04.221","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:04.254","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 224.4482ms","Timestamp":"2025-08-24 17:49:04.479","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":224.4482},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0692ms","Timestamp":"2025-08-24 17:49:04.483","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0692000000000002},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:04.488","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:04.488","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:04.521","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 214.2748ms","Timestamp":"2025-08-24 17:49:04.738","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":214.2748},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0694ms","Timestamp":"2025-08-24 17:49:04.738","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0694000000000001},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:04.742","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:04.746","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:04.775","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 207.6014ms","Timestamp":"2025-08-24 17:49:04.988","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":207.6014},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.2157ms","Timestamp":"2025-08-24 17:49:04.992","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.2157},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:04.997","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:04.997","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:05.030","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 204.7604ms","Timestamp":"2025-08-24 17:49:05.238","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":204.7604},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0948ms","Timestamp":"2025-08-24 17:49:05.240","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0948},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:05.245","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:05.246","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:05.279","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 205.8296ms","Timestamp":"2025-08-24 17:49:05.486","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":205.8296},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.2214ms","Timestamp":"2025-08-24 17:49:05.489","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.2214},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:05.494","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:05.496","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:05.528","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 207.1582ms","Timestamp":"2025-08-24 17:49:05.735","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":207.15820000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.2022ms","Timestamp":"2025-08-24 17:49:05.739","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.2022000000000002},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:05.743","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:05.743","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:05.779","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 205.353ms","Timestamp":"2025-08-24 17:49:05.985","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":205.353},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0439ms","Timestamp":"2025-08-24 17:49:05.985","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0439},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:05.989","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:05.993","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:06.027","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 206.5093ms","Timestamp":"2025-08-24 17:49:06.243","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":206.5093},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 2.0603ms","Timestamp":"2025-08-24 17:49:06.251","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":2.0603000000000002},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:06.256","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:06.256","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:06.290","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 206.1427ms","Timestamp":"2025-08-24 17:49:06.497","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":206.14270000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.094ms","Timestamp":"2025-08-24 17:49:06.501","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.094},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:06.503","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:06.506","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:06.535","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 207.2253ms","Timestamp":"2025-08-24 17:49:06.747","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":207.2253},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.114ms","Timestamp":"2025-08-24 17:49:06.750","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.114},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:06.754","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:06.757","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:06.789","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 205.1444ms","Timestamp":"2025-08-24 17:49:06.997","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":205.14440000000002},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1262ms","Timestamp":"2025-08-24 17:49:07.000","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1262},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:07.004","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:07.005","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:07.035","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 206.9905ms","Timestamp":"2025-08-24 17:49:07.244","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":206.9905},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1345ms","Timestamp":"2025-08-24 17:49:07.249","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1345},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:07.253","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:07.253","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:07.286","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 222.4591ms","Timestamp":"2025-08-24 17:49:07.511","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":222.4591},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0626ms","Timestamp":"2025-08-24 17:49:07.511","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0626},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:07.516","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:07.520","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:07.553","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 204.9187ms","Timestamp":"2025-08-24 17:49:07.758","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":204.9187},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.1295ms","Timestamp":"2025-08-24 17:49:07.762","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.1295},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:07.767","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:07.768","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:07.799","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 207.4165ms","Timestamp":"2025-08-24 17:49:08.008","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":207.4165},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.3346ms","Timestamp":"2025-08-24 17:49:08.012","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.3346},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:08.016","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:08.016","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:08.050","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 207.0165ms","Timestamp":"2025-08-24 17:49:08.261","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":207.0165},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0684ms","Timestamp":"2025-08-24 17:49:08.264","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0684},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:08.268","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:08.270","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:08.302","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 346.4507ms","Timestamp":"2025-08-24 17:49:08.650","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":346.45070000000004},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.074ms","Timestamp":"2025-08-24 17:49:08.650","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.074},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:08.654","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:08.659","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:08.692","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 207.007ms","Timestamp":"2025-08-24 17:49:08.901","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":207.007},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.0978ms","Timestamp":"2025-08-24 17:49:08.901","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.0978},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:49:08.905","Level":"INFO","Category":"UserInterface"}
+{"Message":"Error in main workflow: You cannot call a method on a null-valued expression.","Timestamp":"2025-08-24 17:49:08.909","Level":"ERROR","Category":"Workflow"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:49:08.942","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 224.2838ms","Timestamp":"2025-08-24 17:49:09.168","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":224.2838},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 1.3329ms","Timestamp":"2025-08-24 17:49:09.205","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":1.3329},"Category":"Performance"}

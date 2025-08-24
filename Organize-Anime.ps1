@@ -92,3 +92,32 @@ Write-Host "  .\Organize-Anime.ps1 -SeriesId 452826" -ForegroundColor White
 Write-Host ""
 Write-Host "For full functionality, use the original script:" -ForegroundColor Cyan
 Write-Host "  .\Anime-File-Organizer.ps1" -ForegroundColor White
+Write-Host ""
+do {
+    Write-Host ""
+    Write-Host "Would you like to:" -ForegroundColor Cyan
+    Write-Host "  [R] Restart the organizer" -ForegroundColor White
+    Write-Host "  [Q] Quit" -ForegroundColor White
+    Write-Host ""
+    $choice = Read-Host "Choose (R/Q)"
+    
+    switch ($choice.ToUpper()) {
+        'R' {
+            Write-Host "Restarting..." -ForegroundColor Green
+            Write-Host ""
+            try {
+                Start-AnimeOrganization -ApiKey $ApiKey -Pin $Pin -WorkingDirectory $WorkingDirectory -SeriesId $SeriesId -Interactive:$Interactive
+            }
+            catch {
+                Write-Error "Error during anime organization: $($_.Exception.Message)"
+            }
+        }
+        'Q' {
+            Write-Host "Goodbye!" -ForegroundColor Green
+            break
+        }
+        default {
+            Write-Host "Invalid choice. Please select R or Q." -ForegroundColor Red
+        }
+    }
+} while ($choice.ToUpper() -ne 'Q')

@@ -51,13 +51,14 @@
     }
   },
   "naming": {
-    "series_format": "{series} - S{season:D2}E{episode:D2} - {title}",
-    "special_format": "{series} - S00E{episode:D2} - {title}",
+    "series_format": "{series}.S{season:D2}E{episode:D2}.{title}",
+    "special_format": "{series}.S00E{episode:D2}.{title}",
     "include_tvdb_id": true
   },
   "behavior": {
     "interactive": true,
     "debug_mode": true,
-    "auto_rename_folders": true
+    "auto_rename_folders": true,
+    "enable_rollback": false
   }
 }

@@ -156,28 +156,28 @@ function Invoke-SafeFileOperation {
     $backupPath = $null
     
     # Create backup if source file exists and rollback is enabled
-    if ($script:ErrorConfig.EnableRollback -and (Test-Path $SourcePath)) {
-        $backupDir = Join-Path $env:TEMP "AnimeOrganizerBackups"
+    if ($script:ErrorConfig.EnableRollback -and (Test-Path -LiteralPath $SourcePath)) {
+        $backupDir = [System.IO.Path]::Combine($env:TEMP, "AnimeOrganizerBackups")
         if (-not (Test-Path $backupDir)) {
             New-Item -ItemType Directory -Path $backupDir -Force | Out-Null
         }
         
-        $backupPath = Join-Path $backupDir "$(Get-Date -Format 'yyyyMMdd-HHmmss')-$(Split-Path $SourcePath -Leaf)"
-        Copy-Item -Path $SourcePath -Destination $backupPath -Force
+        $backupPath = [System.IO.Path]::Combine($backupDir, "$(Get-Date -Format 'yyyyMMdd-HHmmss')-$(Split-Path $SourcePath -Leaf)")
+        Copy-Item -LiteralPath $SourcePath -Destination $backupPath -Force
         
         Write-DebugFallback "Created backup of '$SourcePath' at '$backupPath'"
     }
     
     # Rollback operation: restore from backup if exists
     $rollbackOperation = {
-        if ($backupPath -and (Test-Path $backupPath)) {
+        if ($backupPath -and (Test-Path -LiteralPath $backupPath)) {
             Write-InfoFallback "Restoring file from backup: $SourcePath"
-            Copy-Item -Path $backupPath -Destination $SourcePath -Force
-            Remove-Item -Path $backupPath -Force
+            Copy-Item -LiteralPath $backupPath -Destination $SourcePath -Force
+            Remove-Item -LiteralPath $backupPath -Force
         }
-        elseif ($DestinationPath -and (Test-Path $DestinationPath)) {
+        elseif ($DestinationPath -and (Test-Path -LiteralPath $DestinationPath)) {
             Write-InfoFallback "Cleaning up destination file: $DestinationPath"
-            Remove-Item -Path $DestinationPath -Force
+            Remove-Item -LiteralPath $DestinationPath -Force
         }
     }
     

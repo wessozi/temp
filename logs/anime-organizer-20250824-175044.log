@@ -1,0 +1,11 @@
+﻿{"Message":"Logging module loaded successfully","Timestamp":"2025-08-24 17:50:44.798","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"TheTVDB module loaded successfully","Timestamp":"2025-08-24 17:50:44.865","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileParser module loaded successfully","Timestamp":"2025-08-24 17:50:44.878","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"ErrorHandling module loaded successfully","Timestamp":"2025-08-24 17:50:44.894","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileOperations module loaded successfully","Timestamp":"2025-08-24 17:50:44.907","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"UserInterface module loaded successfully","Timestamp":"2025-08-24 17:50:44.919","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 17:50:45.011","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 407.0087ms","Timestamp":"2025-08-24 17:50:45.425","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":407.00870000000003},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 421.1221ms","Timestamp":"2025-08-24 17:50:45.852","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":421.12210000000005},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 17:50:45.860","Level":"INFO","Category":"UserInterface"}
+{"Message":"User confirmed series: Please Put Them On, Takamine-san","Timestamp":"2025-08-24 17:50:45.866","Level":"INFO","Category":"UserInterface"}
