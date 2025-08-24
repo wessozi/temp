@@ -51,9 +51,50 @@
     }
   },
   "naming": {
-    "series_format": "{series}.S{season:D2}E{episode:D2}.{title}",
-    "special_format": "{series}.S00E{episode:D2}.{title}",
-    "include_tvdb_id": true
+    "active_convention": "standard",
+    "include_tvdb_id": true,
+    "conventions": {
+      "standard": {
+        "series_format": "{series}.S{season:D2}E{episode:D2}.{title}",
+        "special_format": "{series}.S00E{episode:D2}.{title}",
+        "version_format": "{base}.v{version}",
+        "metadata": {
+          "include_resolution": false,
+          "include_codec": false,
+          "include_source": false,
+          "include_year": false
+        }
+      },
+      "metadata_rich": {
+        "series_format": "{series}.{year}.S{season:D2}E{episode:D2}.{title}.{resolution}.{codec}",
+        "special_format": "{series}.{year}.S00E{episode:D2}.{title}.{resolution}.{codec}",
+        "version_format": "{base}.v{version}",
+        "metadata": {
+          "include_resolution": true,
+          "include_codec": true,
+          "include_source": true,
+          "include_year": true
+        }
+      },
+      "minimal": {
+        "series_format": "{series}.{season}{episode}.{title}",
+        "special_format": "{series}.00{episode}.{title}",
+        "version_format": "{base}.v{version}",
+        "metadata": {
+          "include_resolution": false,
+          "include_codec": false,
+          "include_source": false,
+          "include_year": false
+        }
+      }
+    }
+  },
+  "versioning": {
+    "mode": "temporary",
+    "temporary_suffix": "z",
+    "version_format": "v",
+    "auto_process_step2": true,
+    "prompt_user": true
   },
   "behavior": {
     "interactive": true,

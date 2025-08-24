@@ -261,6 +261,9 @@ function Get-SafeFileName {
     # Replace spaces with dots FIRST
     $safeFileName = $FileName -replace '\s+', '.'
     
+    # Remove commas (grammatically should be followed by dots, so just remove them)
+    $safeFileName = $safeFileName -replace ',', ''
+    
     # Windows invalid characters: < > : " / \ | ? *
     # Replace with safe alternatives
     $safeFileName = $safeFileName -replace ':', '-'        # Replace colons with dash
