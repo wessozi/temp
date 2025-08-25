@@ -34,7 +34,8 @@ function Get-TheTVDBToken {
     param($ApiKey, $Pin)
     
     Write-Debug-Info "Starting authentication process"
-    Write-Debug-Info "API Key: $($ApiKey.Substring(0,8))..." "Gray"
+    $keyPreview = if ($ApiKey.Length -ge 8) { $ApiKey.Substring(0,8) } else { $ApiKey }
+    Write-Debug-Info "API Key: ${keyPreview}..." "Gray"
     
     $loginBody = @{
         apikey = $ApiKey
