@@ -267,9 +267,59 @@ function Test-IsRomanizedJapaneseName {
     return ($hasMacrons -or $hasParticles -or $hasRomajiTerms)
 }
 
+function Get-SeasonFromFolderPath {
+    param([string]$FullPath)
+    
+    if ([string]::IsNullOrEmpty($FullPath)) {
+        return $null
+    }
+    
+    # Extract folder path components
+    $folderPath = Split-Path $FullPath -Parent
+    if ([string]::IsNullOrEmpty($folderPath)) {
+        return $null
+    }
+    
+    # Check each folder component for season indicators
+    $pathComponents = $folderPath -split [regex]::Escape([IO.Path]::DirectorySeparatorChar)
+    
+    foreach ($component in $pathComponents) {
+        # Match patterns like "Season 1", "Season 01", "Season 02"
+        if ($component -match '(?i)^Season\s+(\d+)$') {
+            $seasonNum = [int]$matches[1]
+            Write-Debug-Info "Detected season $seasonNum from folder: $component"
+            return $seasonNum
+        }
+        
+        # Match patterns like "S1", "S01", "S02"  
+        if ($component -match '(?i)^S(\d+)$') {
+            $seasonNum = [int]$matches[1]
+            Write-Debug-Info "Detected season $seasonNum from folder: $component"
+            return $seasonNum
+        }
+        
+        # Match patterns like "Season One", "Season Two" (basic text numbers)
+        $textNumbers = @{
+            'one' = 1; 'two' = 2; 'three' = 3; 'four' = 4; 'five' = 5
+        }
+        if ($component -match '(?i)^Season\s+(\w+)$') {
+            $textNumber = $matches[1].ToLower()
+            if ($textNumbers.ContainsKey($textNumber)) {
+                $seasonNum = $textNumbers[$textNumber]
+                Write-Debug-Info "Detected season $seasonNum from folder: $component"
+                return $seasonNum
+            }
+        }
+    }
+    
+    return $null
+}
 
 function Parse-EpisodeNumber {
-    param([string]$FileName)
+    param(
+        [string]$FileName,
+        [string]$FullPath = ""
+    )
     
     # Validate input parameter
     if ([string]::IsNullOrEmpty($FileName)) {
@@ -282,12 +332,24 @@ function Parse-EpisodeNumber {
     # Try basic patterns first (faster and more reliable)
     $basicResult = Test-BasicPatterns -FileName $FileName
     if ($basicResult) {
+        # Apply folder-based season override if available
+        $folderSeason = Get-SeasonFromFolderPath -FullPath $FullPath
+        if ($folderSeason -and $folderSeason -ne $basicResult.SeasonNumber) {
+            Write-Debug-Info "Overriding filename season $($basicResult.SeasonNumber) with folder season $folderSeason"
+            $basicResult.SeasonNumber = $folderSeason
+        }
         return $basicResult
     }
     
     # Try advanced patterns if basic patterns failed
     $advancedResult = Test-AdvancedPatterns -FileName $FileName
     if ($advancedResult) {
+        # Apply folder-based season override if available
+        $folderSeason = Get-SeasonFromFolderPath -FullPath $FullPath
+        if ($folderSeason -and $folderSeason -ne $advancedResult.SeasonNumber) {
+            Write-Debug-Info "Overriding filename season $($advancedResult.SeasonNumber) with folder season $folderSeason"
+            $advancedResult.SeasonNumber = $folderSeason
+        }
         return $advancedResult
     }
     
@@ -296,4 +358,4 @@ function Parse-EpisodeNumber {
 }
 
 # Export functions
-Export-ModuleMember -Function Test-IsRomanizedJapaneseName, Parse-EpisodeNumber
+Export-ModuleMember -Function Test-IsRomanizedJapaneseName, Parse-EpisodeNumber, Get-SeasonFromFolderPath

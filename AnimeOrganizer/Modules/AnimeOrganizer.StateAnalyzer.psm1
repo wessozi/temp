@@ -123,16 +123,25 @@ function Group-FilesByEpisode {
             continue
         }
         
-        # Parse episode number from filename
-        $parseResult = Parse-EpisodeNumber -FileName $file.Name
+        # Parse episode number from filename (with folder-based season detection)
+        $parseResult = Parse-EpisodeNumber -FileName $file.Name -FullPath $file.FullName
         
         if ($parseResult -and $parseResult.EpisodeNumber -gt 0) {
             $episodeNum = $parseResult.EpisodeNumber
-            $episode = $Episodes | Where-Object { $_.number -eq $episodeNum -and $_.seasonNumber -eq $parseResult.SeasonNumber } | Select-Object -First 1
             
-            if (-not $episode) {
-                Write-Warning "[ANALYSIS] No episode found for Season $($parseResult.SeasonNumber) Episode $episodeNum"
+            # Find matching episode(s) from TheTVDB data by episode number
+            $matchingEpisodes = $Episodes | Where-Object { $_.number -eq $episodeNum }
+            
+            if ($matchingEpisodes.Count -eq 0) {
+                Write-Warning "[ANALYSIS] No episode found for Episode $episodeNum"
                 continue
+            }
+            
+            # Select the episode that belongs to the detected season; fallback to any if not found
+            $episode = $matchingEpisodes | Where-Object { $_.seasonNumber -eq $parseResult.SeasonNumber } | Select-Object -First 1
+            if (-not $episode) {
+                $episode = $matchingEpisodes | Select-Object -First 1
+                Write-Warning "[ANALYSIS] No Season $($parseResult.SeasonNumber) match for E$episodeNum. Using closest available season $($episode.seasonNumber)."
             }
             
             # Generate target filename for this file
@@ -146,7 +155,7 @@ function Group-FilesByEpisode {
                 TargetName = $targetName
                 EpisodeNumber = $episodeNum
                 EpisodeInfo = $episode
-                IsCorrect = (Normalize-FileName $file.Name) -eq (Normalize-FileName $targetName)
+                IsCorrect = ($file.Name -eq $targetName)
             }
             
             # Add to episode group
@@ -222,23 +231,8 @@ function Get-AnalysisStatistics {
     return $stats
 }
 
-# Simple placeholder for episode parsing - will be replaced by real implementation
-function Parse-EpisodeNumber {
-    param([string]$FileName)
-    
-    # Basic patterns to detect episode numbers
-    if ($FileName -match 'S\d+E(\d+)') {
-        return @{ EpisodeNumber = [int]$matches[1] }
-    }
-    if ($FileName -match '\.(\d{1,2})\.') {
-        return @{ EpisodeNumber = [int]$matches[1] }
-    }
-    if ($FileName -match '-(\d{1,2})-') {
-        return @{ EpisodeNumber = [int]$matches[1] }
-    }
-    
-    return $null
-}
+# Parse-EpisodeNumber function is imported from FileParser module
+# No local implementation needed
 
 function Normalize-FileName {
     param([string]$FileName)
