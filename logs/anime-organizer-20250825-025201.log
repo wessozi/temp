@@ -1,0 +1,44 @@
+﻿{"Message":"Logging module loaded successfully","Timestamp":"2025-08-25 02:52:01.632","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"TheTVDB module loaded successfully","Timestamp":"2025-08-25 02:52:01.713","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileParser module loaded successfully","Timestamp":"2025-08-25 02:52:01.726","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"ErrorHandling module loaded successfully","Timestamp":"2025-08-25 02:52:01.753","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileOperations module loaded successfully","Timestamp":"2025-08-25 02:52:01.773","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"UserInterface module loaded successfully","Timestamp":"2025-08-25 02:52:01.787","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"NamingConvention module loaded successfully","Timestamp":"2025-08-25 02:52:01.806","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"StateAnalyzer module loaded successfully","Timestamp":"2025-08-25 02:52:01.838","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"VersionManager module loaded successfully","Timestamp":"2025-08-25 02:52:01.855","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"PlanManager module loaded successfully","Timestamp":"2025-08-25 02:52:01.872","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-25 02:52:01.924","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 324.3576ms","Timestamp":"2025-08-25 02:52:02.256","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":324.3576},"Category":"Performance"}
+{"Message":"User entered Series ID: 388644","Timestamp":"2025-08-25 02:52:12.546","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 444.6789ms","Timestamp":"2025-08-25 02:52:12.995","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":444.6789},"Category":"Performance"}
+{"Message":"Displaying series verification for: World\u0027s End Harem (ID: 388644)","Timestamp":"2025-08-25 02:52:13.003","Level":"INFO","Category":"UserInterface"}
+{"Message":"User confirmed series: World\u0027s End Harem","Timestamp":"2025-08-25 02:52:14.440","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected working directory: Z:\\Media\\NSFW\\World\u0027s End Harem [tvdb-388644]","Timestamp":"2025-08-25 02:52:17.572","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected operation type: Rename Only","Timestamp":"2025-08-25 02:52:19.588","Level":"INFO","Category":"UserInterface"}
+{"Message":"Found 13 video files in directory: Z:\\Media\\NSFW\\World\u0027s End Harem [tvdb-388644]","Timestamp":"2025-08-25 02:52:19.626","Level":"INFO","Category":"FileOperations"}
+{"Message":"Operation \u0027Episode Info Retrieval\u0027 completed in 3895.3237ms","Timestamp":"2025-08-25 02:52:23.532","Level":"INFO","ExtraData":{"Operation":"Episode Info Retrieval","Success":true,"DurationMs":3895.3237000000004},"Category":"Performance"}
+{"Message":"Using new modular naming and versioning system","Timestamp":"2025-08-25 02:52:23.537","Level":"INFO","Category":"ModularSystem"}
+{"Message":"Creating comprehensive operation plan","Timestamp":"2025-08-25 02:52:23.808","Level":"INFO","Category":"Planning"}
+{"Message":"File Analysis Complete - Total: 11, Skip: 0, Rename: 11, Duplicates: 0, Specials: 0","Timestamp":"2025-08-25 02:52:23.976","Level":"INFO","Category":"Analysis"}
+{"Message":"Displaying preview of 11 file operations","Timestamp":"2025-08-25 02:52:23.984","Level":"INFO","Category":"UserInterface"}
+{"Message":"Preview displayed - Operations: 11, Folders: 11","Timestamp":"2025-08-25 02:52:24.021","Level":"INFO","Category":"UserInterface"}
+{"Message":"Displaying confirmation dialog","Timestamp":"2025-08-25 02:52:24.034","Level":"INFO","Category":"UserInterface"}
+{"Message":"User confirmed to proceed with file operations","Timestamp":"2025-08-25 02:52:43.368","Level":"INFO","Category":"UserInterface"}
+{"Message":"Rename log written to: Z:\\Media\\NSFW\\World\u0027s End Harem [tvdb-388644]\\rename_log_World\u0027s.End.Harem_2025-08-25_02-52-43.txt","Timestamp":"2025-08-25 02:52:43.389","Level":"INFO","Category":"FileOperations"}
+{"Message":"Starting file operations for 11 files","Timestamp":"2025-08-25 02:52:43.401","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: World\u0027s End Harem.S01E11.Escape.mkv -\u003e World\u0027s.End.Harem.S01E11.Escape.mkv","Timestamp":"2025-08-25 02:52:43.459","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: World\u0027s End Harem.S01E10.The Two Numbers.mkv -\u003e World\u0027s.End.Harem.S01E10.The.Two.Numbers.mkv","Timestamp":"2025-08-25 02:52:43.484","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: World\u0027s End Harem.S01E09.Feast of Debauchery.mkv -\u003e World\u0027s.End.Harem.S01E09.Feast.of.Debauchery.mkv","Timestamp":"2025-08-25 02:52:43.506","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: World\u0027s End Harem.S01E08.Revenge.mkv -\u003e World\u0027s.End.Harem.S01E08.Revenge.mkv","Timestamp":"2025-08-25 02:52:43.530","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: World\u0027s End Harem.S01E07.Assigned to Me.mkv -\u003e World\u0027s.End.Harem.S01E07.Assigned.to.Me.mkv","Timestamp":"2025-08-25 02:52:43.550","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: World\u0027s End Harem.S01E06.Intertwining Plots.mkv -\u003e World\u0027s.End.Harem.S01E06.Intertwining.Plots.mkv","Timestamp":"2025-08-25 02:52:43.575","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: World\u0027s End Harem.S01E05.First Victim.mkv -\u003e World\u0027s.End.Harem.S01E05.First.Victim.mkv","Timestamp":"2025-08-25 02:52:43.596","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: World\u0027s End Harem.S01E04.School\u0027s Secret.mkv -\u003e World\u0027s.End.Harem.S01E04.School\u0027s.Secret.mkv","Timestamp":"2025-08-25 02:52:43.621","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: World\u0027s End Harem.S01E03.3rd Man.mkv -\u003e World\u0027s.End.Harem.S01E03.3rd.Man.mkv","Timestamp":"2025-08-25 02:52:43.642","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: World\u0027s End Harem.S01E02.Two Women.mkv -\u003e World\u0027s.End.Harem.S01E02.Two.Women.mkv","Timestamp":"2025-08-25 02:52:43.663","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: World\u0027s End Harem.S01E01.World of Women.mkv -\u003e World\u0027s.End.Harem.S01E01.World.of.Women.mkv","Timestamp":"2025-08-25 02:52:43.687","Level":"INFO","Category":"FileOperations"}
+{"Message":"File operations completed - Success: 11, Errors: 0, Folders: 0","Timestamp":"2025-08-25 02:52:43.694","Level":"INFO","Category":"FileOperations"}
+{"Message":"All operations completed without errors","Timestamp":"2025-08-25 02:52:43.694","Level":"INFO","Category":"FileOperations"}
+{"Message":"Folder already has TVDB ID format: World\u0027s End Harem [tvdb-388644]","Timestamp":"2025-08-25 02:52:43.703","Level":"INFO","Category":"FileOperations"}
+{"Message":"Anime organization completed successfully for: World\u0027s End Harem","Timestamp":"2025-08-25 02:52:43.704","Level":"INFO","Category":"Complete"}

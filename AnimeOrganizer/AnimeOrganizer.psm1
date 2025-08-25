@@ -309,15 +309,18 @@ function Start-AnimeOrganization {
             $stats = Get-AnalysisStatistics -Analysis $fileAnalysis
             Write-InfoLog "File Analysis Complete - Total: $($stats.total_files), Skip: $($stats.already_correct), Rename: $($stats.need_renaming), Duplicates: $($stats.duplicate_episodes), Specials: $($stats.special_files)" -Category "Analysis"
             
+            # Show enhanced preview using new PlanManager (regardless of operation count)
+            Show-OperationPreview -Plan $comprehensivePlan
+            
+            # Check if no operations are needed (all files already correct)
             if ($operations.Count -eq 0) {
-                Write-Host "[ERROR] No episodes could be matched to files" -ForegroundColor Red
-                $restartChoice = Show-RestartOptions -Context "Episode Matching"
+                Write-Host ""
+                Write-Host "[SUCCESS] All files are already correctly named! No changes needed." -ForegroundColor Green
+                Write-Host ""
+                $restartChoice = Show-RestartOptions -Context "All Files Correct"
                 if ($restartChoice -eq "quit") { return }
                 continue
             }
-            
-            # Show enhanced preview using new PlanManager
-            Show-OperationPreview -Plan $comprehensivePlan
             
             # Get user confirmation with enhanced interface
             if ($Interactive) {
@@ -409,7 +412,7 @@ Export-ModuleMember -Function Start-AnimeOrganization, Get-AnimeOrganizerConfig
 Export-ModuleMember -Function Get-TheTVDBToken, Get-SeriesInfo, Get-SeriesEpisodes, Clear-Cache
 
 # Re-export FileParser functions for direct access
-Export-ModuleMember -Function Test-IsRomanizedJapaneseName, Get-SafeFileName, Parse-EpisodeNumber
+Export-ModuleMember -Function Test-IsRomanizedJapaneseName, Get-SafeFileName, Parse-EpisodeNumber, Get-SeasonFromFolderPath
 
 # Re-export Logging functions for direct access
 Export-ModuleMember -Function Initialize-Logging, Write-DebugLog, Write-InfoLog, Write-WarningLog, Write-ErrorLog, Measure-Performance

@@ -20,7 +20,7 @@ function Detect-DuplicateEpisodes {
     $episodeGroups = @{}
     
     foreach ($file in $VideoFiles) {
-        $parseResult = Parse-EpisodeNumber -FileName $file.Name
+        $parseResult = Parse-EpisodeNumber -FileName $file.Name -FullPath $file.FullName
         if ($parseResult -and $parseResult.EpisodeNumber -gt 0 -and $parseResult.EpisodeNumber -le $Episodes.Count) {
             $episodeNum = $parseResult.EpisodeNumber
             
@@ -142,11 +142,19 @@ function Apply-DirectVersioning {
     
     foreach ($episodeNum in $DuplicateGroups.Keys) {
         $files = $DuplicateGroups[$episodeNum]
-        $episode = $Episodes | Where-Object { $_.number -eq $episodeNum -and $_.seasonNumber -eq 1 } | Select-Object -First 1
+        # Find matching episode(s) from TheTVDB data by episode number
+        $matchingEpisodes = $Episodes | Where-Object { $_.number -eq $episodeNum }
         
-        if (-not $episode) {
-            Write-Warning "[VERSIONING] No episode found for Season 1 Episode $episodeNum"
+        if ($matchingEpisodes.Count -eq 0) {
+            Write-Warning "[VERSIONING] No episode found for Episode $episodeNum"
             continue
+        }
+        
+        # Select the episode that belongs to season 1; fallback to any if not found
+        $episode = $matchingEpisodes | Where-Object { $_.seasonNumber -eq 1 } | Select-Object -First 1
+        if (-not $episode) {
+            $episode = $matchingEpisodes | Select-Object -First 1
+            Write-Warning "[VERSIONING] No Season 1 match for E$episodeNum. Using closest available season $($episode.seasonNumber)."
         }
         
         for ($i = 0; $i -lt $files.Count; $i++) {
@@ -211,11 +219,19 @@ function Apply-FinalVersioning {
         if ($tempOperation.OperationType -eq "TemporaryVersioning") {
             $episodeNum = $tempOperation.EpisodeNumber
             $versionNum = $tempOperation.VersionNumber
-            $episode = $Episodes | Where-Object { $_.number -eq $episodeNum -and $_.seasonNumber -eq 1 } | Select-Object -First 1
+            # Find matching episode(s) from TheTVDB data by episode number
+            $matchingEpisodes = $Episodes | Where-Object { $_.number -eq $episodeNum }
             
-            if (-not $episode) {
-                Write-Warning "[VERSIONING] No episode found for Season 1 Episode $episodeNum"
+            if ($matchingEpisodes.Count -eq 0) {
+                Write-Warning "[VERSIONING] No episode found for Episode $episodeNum"
                 continue
+            }
+            
+            # Select the episode that belongs to season 1; fallback to any if not found
+            $episode = $matchingEpisodes | Where-Object { $_.seasonNumber -eq 1 } | Select-Object -First 1
+            if (-not $episode) {
+                $episode = $matchingEpisodes | Select-Object -First 1
+                Write-Warning "[VERSIONING] No Season 1 match for E$episodeNum. Using closest available season $($episode.seasonNumber)."
             }
             
             # Generate final name
@@ -358,16 +374,8 @@ function Show-DuplicateAnalysis {
     Write-Host "=== END DUPLICATE ANALYSIS ===`n" -ForegroundColor Red
 }
 
-# Import required function (placeholder - will be provided by main system)
-function Parse-EpisodeNumber {
-    param([string]$FileName)
-    # This will be imported from the main parsing system
-    # Placeholder implementation
-    if ($FileName -match 'S\d+E(\d+)') {
-        return @{ EpisodeNumber = [int]$matches[1] }
-    }
-    return $null
-}
+# Parse-EpisodeNumber function is imported from FileParser module
+# No local implementation needed
 
 # Export all functions
 Export-ModuleMember -Function Detect-DuplicateEpisodes, Enter-VersioningMode, Apply-TemporaryVersioning, Apply-DirectVersioning, Apply-FinalVersioning, Resolve-ExistingVersions, Parse-ExistingVersionNumber, Get-VersioningConfig, Show-DuplicateAnalysis
