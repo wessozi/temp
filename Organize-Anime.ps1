@@ -54,49 +54,60 @@ do {
     # Debug: Check Interactive parameter value
     Write-Host "[DEBUG] Interactive mode is: $Interactive" -ForegroundColor Magenta
 
-    # Get Series ID (for both interactive and non-interactive)
-    if ($Interactive -and $SeriesId -eq 0) {
-        $SeriesId = Get-SeriesIdFromUser
-        if (-not $SeriesId) {
-            Write-Host "Exiting..." -ForegroundColor Yellow
-            exit 0
+    # Interactive mode - exact structure from original
+    if ($Interactive) {
+        if ($SeriesId -eq 0) {
+            Write-Host "Enter the TheTVDB Series ID for your anime series." -ForegroundColor Cyan
+            Write-Host "You can find this on TheTVDB.com in the series URL." -ForegroundColor Gray
+            Write-Host "Example: For Attack on Titan, use ID: 290434" -ForegroundColor Gray
+            Write-Host ""
+            
+            while ($SeriesId -eq 0) {
+                $input = Read-Host "TheTVDB Series ID (or 'Q' to quit)"
+                if ($input.ToUpper() -eq "Q" -or $input.ToLower() -eq "quit") {
+                    Write-Host "Exiting..." -ForegroundColor Yellow
+                    exit 0
+                }
+                
+                if ([int]::TryParse($input, [ref]$SeriesId) -and $SeriesId -gt 0) {
+                    # Authenticate with TheTVDB
+                    Write-Host ""
+                    Write-Host "[INFO] Authenticating with TheTVDB..." -ForegroundColor Cyan
+                    $token = Get-TheTVDBToken -ApiKey $ApiKey -Pin $Pin
+                    if (-not $token) {
+                        Write-Host "[ERROR] Cannot proceed without authentication. Please try again." -ForegroundColor Red
+                        $SeriesId = 0
+                        continue
+                    }
+                    
+                    # Get and verify series information
+                    Write-Host "[INFO] Fetching series information for ID: $SeriesId..." -ForegroundColor Cyan
+                    $seriesInfo = Get-SeriesInfo -Token $token -SeriesId $SeriesId
+                    if (-not $seriesInfo) {
+                        Write-Host "[ERROR] Cannot retrieve series information. Please check the Series ID." -ForegroundColor Red
+                        Write-Host "Try a different Series ID or check TheTVDB.com" -ForegroundColor Yellow
+                        $SeriesId = 0
+                        continue
+                    }
+                } else {
+                    Write-Host "[ERROR] Please enter a valid positive number" -ForegroundColor Red
+                }
+            }
         }
-    }
-
-    # Authenticate with TheTVDB (for both modes)
-    Write-Host ""
-    Write-Host "[INFO] Authenticating with TheTVDB..." -ForegroundColor Cyan
-    $token = Get-TheTVDBToken -ApiKey $ApiKey -Pin $Pin
-    if (-not $token) {
-        if ($Interactive) {
-            Write-Host "[ERROR] Cannot proceed without authentication. Please try again." -ForegroundColor Red
-            $SeriesId = 0
-            continue
-        } else {
+    } else {
+        # Non-interactive mode
+        Write-Host ""
+        Write-Host "[INFO] Authenticating with TheTVDB..." -ForegroundColor Cyan
+        $token = Get-TheTVDBToken -ApiKey $ApiKey -Pin $Pin
+        if (-not $token) {
             Write-Host "[ERROR] Cannot proceed without authentication. Exiting." -ForegroundColor Red
             exit 1
         }
-    }
-    
-    # Get series information (for both modes) with proper error handling
-    Write-Host "[INFO] Fetching series information for ID: $SeriesId..." -ForegroundColor Cyan
-    
-    try {
+        
+        Write-Host "[INFO] Fetching series information for ID: $SeriesId..." -ForegroundColor Cyan
         $seriesInfo = Get-SeriesInfo -Token $token -SeriesId $SeriesId
         if (-not $seriesInfo) {
-            throw "Series information could not be retrieved"
-        }
-    }
-    catch {
-        if ($Interactive) {
-            Write-Host "[ERROR] Cannot retrieve series information. Please check the Series ID." -ForegroundColor Red
-            Write-Host "Try a different Series ID or check TheTVDB.com" -ForegroundColor Yellow
-            Write-Host "[HINT] Common series IDs: Attack on Titan (290434), Demon Slayer (355567), One Piece (81797)" -ForegroundColor Gray
-            $SeriesId = 0
-            continue
-        } else {
             Write-Host "[ERROR] Cannot retrieve series information for Series ID: $SeriesId" -ForegroundColor Red
-            Write-Host "[HINT] Please verify the Series ID exists on TheTVDB.com" -ForegroundColor Yellow
             exit 1
         }
     }
