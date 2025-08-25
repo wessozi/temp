@@ -77,6 +77,12 @@ function Get-ParsingPatterns {
 function Test-BasicPatterns {
     param([string]$FileName)
     
+    # Validate input parameter
+    if ([string]::IsNullOrEmpty($FileName)) {
+        Write-Warning "Test-BasicPatterns called with empty FileName parameter"
+        return $null
+    }
+    
     Write-Debug-Info "Testing basic patterns first..."
     $patterns = Get-ParsingPatterns
     
@@ -140,6 +146,12 @@ function Test-BasicPatterns {
 
 function Test-AdvancedPatterns {
     param([string]$FileName)
+    
+    # Validate input parameter
+    if ([string]::IsNullOrEmpty($FileName)) {
+        Write-Warning "Test-AdvancedPatterns called with empty FileName parameter"
+        return $null
+    }
     
     $patterns = Get-ParsingPatterns
     
@@ -255,38 +267,15 @@ function Test-IsRomanizedJapaneseName {
     return ($hasMacrons -or $hasParticles -or $hasRomajiTerms)
 }
 
-function Get-SafeFileName {
-    param([string]$FileName)
-    
-    # Replace spaces with dots FIRST
-    $safeFileName = $FileName -replace '\s+', '.'
-    
-    # Remove commas (grammatically should be followed by dots, so just remove them)
-    $safeFileName = $safeFileName -replace ',', ''
-    
-    # Windows invalid characters: < > : " / \ | ? *
-    # Replace with safe alternatives
-    $safeFileName = $safeFileName -replace ':', '-'        # Replace colons with dash
-    $safeFileName = $safeFileName -replace '/', '-'    # Replace forward slashes with dash
-    $safeFileName = $safeFileName -replace '\\', '-'   # Replace backslashes with dash
-    $safeFileName = $safeFileName -replace '\|', '-'   # Replace pipes with dash
-    $safeFileName = $safeFileName -replace '\?', ''    # Remove question marks
-    $safeFileName = $safeFileName -replace '\*', ''    # Remove asterisks
-    $safeFileName = $safeFileName -replace '<', ''     # Remove less than
-    $safeFileName = $safeFileName -replace '>', ''     # Remove greater than
-    $safeFileName = $safeFileName -replace '"', ''     # Remove double quotes
-    
-    # Clean up multiple dots and dashes
-    $safeFileName = $safeFileName -replace '\.+', '.'       # Multiple dots -> single dot
-    $safeFileName = $safeFileName -replace '-+', '-'       # Multiple dashes -> single dash
-    $safeFileName = $safeFileName -replace '^\.|\.$', ''   # Remove leading/trailing dots
-    $safeFileName = $safeFileName -replace '^-|-$', ''     # Remove leading/trailing dashes
-    
-    return $safeFileName.Trim()
-}
 
 function Parse-EpisodeNumber {
     param([string]$FileName)
+    
+    # Validate input parameter
+    if ([string]::IsNullOrEmpty($FileName)) {
+        Write-Warning "Parse-EpisodeNumber called with empty FileName parameter"
+        return $null
+    }
     
     Write-Debug-Info "Parsing filename: $FileName"
     
@@ -307,4 +296,4 @@ function Parse-EpisodeNumber {
 }
 
 # Export functions
-Export-ModuleMember -Function Test-IsRomanizedJapaneseName, Get-SafeFileName, Parse-EpisodeNumber
+Export-ModuleMember -Function Test-IsRomanizedJapaneseName, Parse-EpisodeNumber

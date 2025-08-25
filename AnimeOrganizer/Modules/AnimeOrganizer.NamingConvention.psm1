@@ -259,8 +259,11 @@ function Get-SafeFileName {
         [string]$FileName
     )
     
+    # Remove commas first (grammatically should be followed by dots, so just remove them)
+    $safeFileName = $FileName -replace ',', ''
+
     # Replace all spaces with dots (as requested)
-    $safeFileName = $FileName -replace '\s+', '.'
+    $safeFileName = $safeFileName -replace '\s+', '.'
     
     # Replace invalid filename characters
     $safeFileName = $safeFileName -replace ':', '-'

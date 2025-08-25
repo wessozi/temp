@@ -1,0 +1,46 @@
+﻿{"Message":"Logging module loaded successfully","Timestamp":"2025-08-24 23:48:50.767","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"TheTVDB module loaded successfully","Timestamp":"2025-08-24 23:48:50.852","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileParser module loaded successfully","Timestamp":"2025-08-24 23:48:50.887","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"ErrorHandling module loaded successfully","Timestamp":"2025-08-24 23:48:50.915","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileOperations module loaded successfully","Timestamp":"2025-08-24 23:48:50.949","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"UserInterface module loaded successfully","Timestamp":"2025-08-24 23:48:50.961","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"NamingConvention module loaded successfully","Timestamp":"2025-08-24 23:48:50.994","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"StateAnalyzer module loaded successfully","Timestamp":"2025-08-24 23:48:51.007","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"VersionManager module loaded successfully","Timestamp":"2025-08-24 23:48:51.033","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"PlanManager module loaded successfully","Timestamp":"2025-08-24 23:48:51.059","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 23:48:51.106","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 309.1638ms","Timestamp":"2025-08-24 23:48:51.421","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":309.16380000000004},"Category":"Performance"}
+{"Message":"User entered Series ID: 452826","Timestamp":"2025-08-24 23:48:54.946","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 459.4942ms","Timestamp":"2025-08-24 23:48:55.415","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":459.49420000000003},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 23:48:55.422","Level":"INFO","Category":"UserInterface"}
+{"Message":"User confirmed series: Please Put Them On, Takamine-san","Timestamp":"2025-08-24 23:48:57.132","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected working directory: Z:\\Media\\NSFW\\Haite Kudasai, Takamine-san [tvdb-452826]","Timestamp":"2025-08-24 23:49:01.428","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected operation type: Rename Only","Timestamp":"2025-08-24 23:49:03.588","Level":"INFO","Category":"UserInterface"}
+{"Message":"Found 14 video files in directory: Z:\\Media\\NSFW\\Haite Kudasai, Takamine-san [tvdb-452826]","Timestamp":"2025-08-24 23:49:03.629","Level":"INFO","Category":"FileOperations"}
+{"Message":"Operation \u0027Episode Info Retrieval\u0027 completed in 2988.7751ms","Timestamp":"2025-08-24 23:49:06.632","Level":"INFO","ExtraData":{"Operation":"Episode Info Retrieval","Success":true,"DurationMs":2988.7751000000003},"Category":"Performance"}
+{"Message":"Using new modular naming and versioning system","Timestamp":"2025-08-24 23:49:06.636","Level":"INFO","Category":"ModularSystem"}
+{"Message":"Processing 1 episodes with duplicates using versioning system","Timestamp":"2025-08-24 23:49:06.724","Level":"INFO","Category":"Versioning"}
+{"Message":"Creating comprehensive operation plan","Timestamp":"2025-08-24 23:49:06.744","Level":"INFO","Category":"Planning"}
+{"Message":"File Analysis Complete - Total: 14, Skip: 0, Rename: 11, Duplicates: 1","Timestamp":"2025-08-24 23:49:06.787","Level":"INFO","Category":"Analysis"}
+{"Message":"Displaying preview of 14 file operations","Timestamp":"2025-08-24 23:49:06.795","Level":"INFO","Category":"UserInterface"}
+{"Message":"Preview displayed - Operations: 14, Folders: 14","Timestamp":"2025-08-24 23:49:06.836","Level":"INFO","Category":"UserInterface"}
+{"Message":"Displaying confirmation dialog","Timestamp":"2025-08-24 23:49:06.874","Level":"INFO","Category":"UserInterface"}
+{"Message":"User confirmed to proceed with file operations","Timestamp":"2025-08-24 23:50:48.237","Level":"INFO","Category":"UserInterface"}
+{"Message":"Rename log written to: Z:\\Media\\NSFW\\Haite Kudasai, Takamine-san [tvdb-452826]\\rename_log_Please.Put.Them.On.Takamine-san_2025-08-24_23-50-48.txt","Timestamp":"2025-08-24 23:50:48.265","Level":"INFO","Category":"FileOperations"}
+{"Message":"Starting file operations for 14 files","Timestamp":"2025-08-24 23:50:48.283","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: Please.Put.Them.On,.Takamine-san.S01E12.Only.Look.At.Me.mkv -\u003e Please.Put.Them.On.Takamine-san.S01E12.Only.Look.At.Me.mkv","Timestamp":"2025-08-24 23:50:48.332","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: Please.Put.Them.On,.Takamine-san.S01E10.It.Rains,.and.Shirota.Freezes.Up.mkv -\u003e Please.Put.Them.On.Takamine-san.S01E10.It.Rains.and.Shirota.Freezes.Up.mkv","Timestamp":"2025-08-24 23:50:48.356","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: Please.Put.Them.On,.Takamine-san.S01E09.Let.Me.Do.It!!.mkv -\u003e Please.Put.Them.On.Takamine-san.S01E09.Let.Me.Do.It!!.mkv","Timestamp":"2025-08-24 23:50:48.379","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: Please.Put.Them.On,.Takamine-san.S01E08.You.Two.Seem.Quite.Intimate.mkv -\u003e Please.Put.Them.On.Takamine-san.S01E08.You.Two.Seem.Quite.Intimate.mkv","Timestamp":"2025-08-24 23:50:48.403","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: Please.Put.Them.On,.Takamine-san.S01E07.Even.That.Which.Isn\u0027t.Visible.From.There.mkv -\u003e Please.Put.Them.On.Takamine-san.S01E07.Even.That.Which.Isn\u0027t.Visible.From.There.mkv","Timestamp":"2025-08-24 23:50:48.428","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: Please.Put.Them.On,.Takamine-san.S01E06.Honey,.Let.Me.Wash.Your.Back.mkv -\u003e Please.Put.Them.On.Takamine-san.S01E06.Honey.Let.Me.Wash.Your.Back.mkv","Timestamp":"2025-08-24 23:50:48.449","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: Please.Put.Them.On,.Takamine-san.S01E05.I.Want.You.to.Make.This.Cat.Purr,.Meow.mkv -\u003e Please.Put.Them.On.Takamine-san.S01E05.I.Want.You.to.Make.This.Cat.Purr.Meow.mkv","Timestamp":"2025-08-24 23:50:48.474","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: Please.Put.Them.On,.Takamine-san.S01E04.Don\u0027t.Be.Dense,.Be.Sharp.mkv -\u003e Please.Put.Them.On.Takamine-san.S01E04.Don\u0027t.Be.Dense.Be.Sharp.mkv","Timestamp":"2025-08-24 23:50:48.496","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: Please.Put.Them.On,.Takamine-san.S01E03.I.Want.You.to.Enjoy.the.Very.Best.mkv -\u003e Please.Put.Them.On.Takamine-san.S01E03.I.Want.You.to.Enjoy.the.Very.Best.mkv","Timestamp":"2025-08-24 23:50:48.518","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: Please.Put.Them.On,.Takamine-san.S01E02.Let.Me.Redo.It.Until.I\u0027m.Satisfied.mkv -\u003e Please.Put.Them.On.Takamine-san.S01E02.Let.Me.Redo.It.Until.I\u0027m.Satisfied.mkv","Timestamp":"2025-08-24 23:50:48.539","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: Please.Put.Them.On,.Takamine-san.S01E01.Become.My.Closet.mkv -\u003e Please.Put.Them.On.Takamine-san.S01E01.Become.My.Closet.mkv","Timestamp":"2025-08-24 23:50:48.562","Level":"INFO","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot bind argument to parameter \u0027LiteralPath\u0027 because it is null.","Timestamp":"2025-08-24 23:50:48.574","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot bind argument to parameter \u0027LiteralPath\u0027 because it is null.","Timestamp":"2025-08-24 23:50:48.578","Level":"ERROR","Category":"FileOperations"}
+{"Message":"Move operation failed: Cannot bind argument to parameter \u0027LiteralPath\u0027 because it is null.","Timestamp":"2025-08-24 23:50:48.582","Level":"ERROR","Category":"FileOperations"}
+{"Message":"File operations completed - Success: 11, Errors: 3, Folders: 0","Timestamp":"2025-08-24 23:50:48.588","Level":"INFO","Category":"FileOperations"}
+{"Message":"3 operations failed","Timestamp":"2025-08-24 23:50:48.590","Level":"ERROR","Category":"FileOperations"}

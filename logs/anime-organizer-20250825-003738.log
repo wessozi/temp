@@ -1,0 +1,12 @@
+﻿{"Message":"Logging module loaded successfully","Timestamp":"2025-08-25 00:37:38.110","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"TheTVDB module loaded successfully","Timestamp":"2025-08-25 00:37:38.180","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileParser module loaded successfully","Timestamp":"2025-08-25 00:37:38.192","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"ErrorHandling module loaded successfully","Timestamp":"2025-08-25 00:37:38.217","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileOperations module loaded successfully","Timestamp":"2025-08-25 00:37:38.230","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"UserInterface module loaded successfully","Timestamp":"2025-08-25 00:37:38.239","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"NamingConvention module loaded successfully","Timestamp":"2025-08-25 00:37:38.250","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"StateAnalyzer module loaded successfully","Timestamp":"2025-08-25 00:37:38.260","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"VersionManager module loaded successfully","Timestamp":"2025-08-25 00:37:38.273","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"PlanManager module loaded successfully","Timestamp":"2025-08-25 00:37:38.284","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"Displaying preview of 3 file operations","Timestamp":"2025-08-25 00:37:38.361","Level":"INFO","Category":"UserInterface"}
+{"Message":"Preview displayed - Operations: 3, Folders: 3","Timestamp":"2025-08-25 00:37:38.381","Level":"INFO","Category":"UserInterface"}
