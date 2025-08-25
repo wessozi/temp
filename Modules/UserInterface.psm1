@@ -36,6 +36,13 @@ function Get-SeriesIdFromUser {
     $SeriesId = 0
     while ($SeriesId -eq 0) {
         $input = Read-Host "TheTVDB Series ID (or 'Q' to quit)"
+        
+        # Handle null input (non-interactive environments)
+        if ([string]::IsNullOrEmpty($input)) {
+            Write-Host "[ERROR] Please enter a valid positive number" -ForegroundColor Red
+            continue
+        }
+        
         if ($input.ToUpper() -eq "Q" -or $input.ToLower() -eq "quit") {
             Write-Host "Exiting..." -ForegroundColor Yellow
             return $null
@@ -63,6 +70,7 @@ function Confirm-SeriesSelection {
     
     do {
         $confirm = Read-Host "Is this the correct series? (Y/N/Q, default: Y)"
+        if ([string]::IsNullOrEmpty($confirm)) { $confirm = "Y" } # Default to Y
         switch ($confirm.ToUpper()) {
             "Y" {
                 Write-Host "[SUCCESS] Series confirmed!" -ForegroundColor Green
@@ -92,6 +100,10 @@ function Get-WorkingDirectoryFromUser {
     
     do {
         $newDir = Read-Host "Enter working directory path (or '.' for current directory, 'Q' to quit)"
+        if ([string]::IsNullOrEmpty($newDir)) {
+            Write-Host "[ERROR] Directory cannot be empty. Please enter a valid path." -ForegroundColor Red
+            continue
+        }
         if ($newDir.ToUpper() -eq "Q" -or $newDir.ToLower() -eq "quit") {
             Write-Host "Exiting..." -ForegroundColor Yellow
             return $null
@@ -128,6 +140,10 @@ function Get-OperationTypeFromUser {
     
     do {
         $operation = Read-Host "Select operation (1/2/Q)"
+        if ([string]::IsNullOrEmpty($operation)) {
+            Write-Host "[ERROR] Please enter 1, 2, or Q" -ForegroundColor Red
+            continue
+        }
         if ($operation.ToUpper() -eq "Q" -or $operation.ToLower() -eq "quit") {
             Write-Host "Exiting..." -ForegroundColor Yellow
             return $null
@@ -189,6 +205,7 @@ function Confirm-Operations {
     
     do {
         $choice = Read-Host "Do you want to proceed? (Y/N/Q/R, default: Y)"
+        if ([string]::IsNullOrEmpty($choice)) { $choice = "Y" } # Default to Y
         $choice = $choice.ToUpper()
         
         Write-Debug-Info "User choice: $choice"
@@ -241,6 +258,7 @@ function Rename-SeriesFolder {
     
     do {
         $choice = Read-Host "Rename folder for Hama compatibility? (Y/N, default: Y)"
+        if ([string]::IsNullOrEmpty($choice)) { $choice = "Y" } # Default to Y
         switch ($choice.ToUpper()) {
             "Y" {
                 try {
@@ -292,6 +310,10 @@ function Show-RestartOptions {
         Write-Host "  R/Restart - Try again with different settings" -ForegroundColor Green
         Write-Host "  Q/Quit    - Exit the program" -ForegroundColor Red
         $choice = Read-Host "Choose (R/Q)"
+        if ([string]::IsNullOrEmpty($choice)) {
+            Write-Host "Please enter R (Restart) or Q (Quit)" -ForegroundColor Red
+            continue
+        }
         $choice = $choice.ToUpper()
         
         if ($choice -eq "R" -or $choice -eq "RESTART") {
@@ -323,6 +345,10 @@ function Show-CompletionOptions {
         Write-Host "  R/Restart - Run the script again" -ForegroundColor Green
         Write-Host "  Q/Quit    - Exit the program" -ForegroundColor Red
         $choice = Read-Host "Choose (R/Q)"
+        if ([string]::IsNullOrEmpty($choice)) {
+            Write-Host "Please enter R (Restart) or Q (Quit)" -ForegroundColor Red
+            continue
+        }
         $choice = $choice.ToUpper()
         
         if ($choice -eq "R" -or $choice -eq "RESTART") {
