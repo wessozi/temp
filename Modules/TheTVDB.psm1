@@ -55,7 +55,7 @@ function Get-TheTVDBToken {
         return $response.data.token
     }
     catch {
-        Write-Error "[ERROR] Authentication failed: $($_.Exception.Message)"
+        Write-Host "[ERROR] Authentication failed: $($_.Exception.Message)" -ForegroundColor Red
         Write-Debug-Info "Authentication error details: $($_.Exception)" "Red"
         Write-Host "Please check your API key and PIN, or try without PIN for basic access." -ForegroundColor Red
         return $null
@@ -147,7 +147,7 @@ function Get-SeriesInfo {
         return $seriesData
     }
     catch {
-        Write-Error "[ERROR] Failed to get series information: $($_.Exception.Message)"
+        Write-Host "[ERROR] Failed to get series information: $($_.Exception.Message)" -ForegroundColor Red
         Write-Debug-Info "Series info error: $($_.Exception.Message)" "Red"
         return $null
     }
@@ -213,7 +213,7 @@ function Get-SeriesEpisodes {
         return $allEpisodes
     }
     catch {
-        Write-Error "[ERROR] Failed to get episodes: $($_.Exception.Message)"
+        Write-Host "[ERROR] Failed to get episodes: $($_.Exception.Message)" -ForegroundColor Red
         Write-Debug-Info "Episodes fetch error: $($_.Exception.Message)" "Red"
         return @()
     }
