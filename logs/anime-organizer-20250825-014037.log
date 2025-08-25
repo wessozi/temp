@@ -1,0 +1,26 @@
+﻿{"Message":"Logging module loaded successfully","Timestamp":"2025-08-25 01:40:37.820","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"TheTVDB module loaded successfully","Timestamp":"2025-08-25 01:40:37.899","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileParser module loaded successfully","Timestamp":"2025-08-25 01:40:37.914","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"ErrorHandling module loaded successfully","Timestamp":"2025-08-25 01:40:37.942","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileOperations module loaded successfully","Timestamp":"2025-08-25 01:40:37.957","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"UserInterface module loaded successfully","Timestamp":"2025-08-25 01:40:37.974","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"NamingConvention module loaded successfully","Timestamp":"2025-08-25 01:40:37.989","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"StateAnalyzer module loaded successfully","Timestamp":"2025-08-25 01:40:38.014","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"VersionManager module loaded successfully","Timestamp":"2025-08-25 01:40:38.040","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"PlanManager module loaded successfully","Timestamp":"2025-08-25 01:40:38.053","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-25 01:40:38.102","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 309.4215ms","Timestamp":"2025-08-25 01:40:38.419","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":309.42150000000004},"Category":"Performance"}
+{"Message":"User entered Series ID: 388644","Timestamp":"2025-08-25 01:40:49.795","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 434.3151ms","Timestamp":"2025-08-25 01:40:50.235","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":434.31510000000003},"Category":"Performance"}
+{"Message":"Displaying series verification for: World\u0027s End Harem (ID: 388644)","Timestamp":"2025-08-25 01:40:50.245","Level":"INFO","Category":"UserInterface"}
+{"Message":"User confirmed series: World\u0027s End Harem","Timestamp":"2025-08-25 01:40:51.847","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected working directory: Z:\\Media\\NSFW\\World\u0027s End Harem [tvdb-388644]","Timestamp":"2025-08-25 01:41:06.518","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected operation type: Rename Only","Timestamp":"2025-08-25 01:41:08.415","Level":"INFO","Category":"UserInterface"}
+{"Message":"Found 13 video files in directory: Z:\\Media\\NSFW\\World\u0027s End Harem [tvdb-388644]","Timestamp":"2025-08-25 01:41:08.460","Level":"INFO","Category":"FileOperations"}
+{"Message":"Operation \u0027Episode Info Retrieval\u0027 completed in 4050.0395ms","Timestamp":"2025-08-25 01:41:12.522","Level":"INFO","ExtraData":{"Operation":"Episode Info Retrieval","Success":true,"DurationMs":4050.0395000000003},"Category":"Performance"}
+{"Message":"Using new modular naming and versioning system","Timestamp":"2025-08-25 01:41:12.525","Level":"INFO","Category":"ModularSystem"}
+{"Message":"Creating comprehensive operation plan","Timestamp":"2025-08-25 01:41:12.653","Level":"INFO","Category":"Planning"}
+{"Message":"File Analysis Complete - Total: 11, Skip: 0, Rename: 11, Duplicates: 0, Specials: 0","Timestamp":"2025-08-25 01:41:12.696","Level":"INFO","Category":"Analysis"}
+{"Message":"Displaying preview of 11 file operations","Timestamp":"2025-08-25 01:41:12.707","Level":"INFO","Category":"UserInterface"}
+{"Message":"Preview displayed - Operations: 11, Folders: 11","Timestamp":"2025-08-25 01:41:12.747","Level":"INFO","Category":"UserInterface"}
+{"Message":"Displaying confirmation dialog","Timestamp":"2025-08-25 01:41:12.763","Level":"INFO","Category":"UserInterface"}

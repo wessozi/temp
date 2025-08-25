@@ -1,0 +1,69 @@
+﻿{"Message":"Logging module loaded successfully","Timestamp":"2025-08-25 00:59:19.024","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"TheTVDB module loaded successfully","Timestamp":"2025-08-25 00:59:19.125","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileParser module loaded successfully","Timestamp":"2025-08-25 00:59:19.144","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"ErrorHandling module loaded successfully","Timestamp":"2025-08-25 00:59:19.180","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileOperations module loaded successfully","Timestamp":"2025-08-25 00:59:19.199","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"UserInterface module loaded successfully","Timestamp":"2025-08-25 00:59:19.210","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"NamingConvention module loaded successfully","Timestamp":"2025-08-25 00:59:19.226","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"StateAnalyzer module loaded successfully","Timestamp":"2025-08-25 00:59:19.255","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"VersionManager module loaded successfully","Timestamp":"2025-08-25 00:59:19.269","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"PlanManager module loaded successfully","Timestamp":"2025-08-25 00:59:19.284","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-25 00:59:19.334","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 321.8057ms","Timestamp":"2025-08-25 00:59:19.662","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":321.8057},"Category":"Performance"}
+{"Message":"User entered Series ID: 286856","Timestamp":"2025-08-25 00:59:30.161","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 440.4282ms","Timestamp":"2025-08-25 00:59:30.607","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":440.4282},"Category":"Performance"}
+{"Message":"Displaying series verification for: Maria the Virgin Witch (ID: 286856)","Timestamp":"2025-08-25 00:59:30.615","Level":"INFO","Category":"UserInterface"}
+{"Message":"User confirmed series: Maria the Virgin Witch","Timestamp":"2025-08-25 00:59:34.383","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected working directory: Z:\\Media\\NSFW\\Maria the Virgin Witch [tvdb-286856]","Timestamp":"2025-08-25 01:00:01.870","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected operation type: Rename Only","Timestamp":"2025-08-25 01:00:03.383","Level":"INFO","Category":"UserInterface"}
+{"Message":"Found 14 video files in directory: Z:\\Media\\NSFW\\Maria the Virgin Witch [tvdb-286856]","Timestamp":"2025-08-25 01:00:03.430","Level":"INFO","Category":"FileOperations"}
+{"Message":"Operation \u0027Episode Info Retrieval\u0027 completed in 2828.4531ms","Timestamp":"2025-08-25 01:00:06.270","Level":"INFO","ExtraData":{"Operation":"Episode Info Retrieval","Success":true,"DurationMs":2828.4531},"Category":"Performance"}
+{"Message":"Using new modular naming and versioning system","Timestamp":"2025-08-25 01:00:06.273","Level":"INFO","Category":"ModularSystem"}
+{"Message":"Creating comprehensive operation plan","Timestamp":"2025-08-25 01:00:06.369","Level":"INFO","Category":"Planning"}
+{"Message":"File Analysis Complete - Total: 12, Skip: 9, Rename: 3, Duplicates: 0","Timestamp":"2025-08-25 01:00:06.406","Level":"INFO","Category":"Analysis"}
+{"Message":"Displaying preview of 12 file operations","Timestamp":"2025-08-25 01:00:06.416","Level":"INFO","Category":"UserInterface"}
+{"Message":"Preview displayed - Operations: 12, Folders: 12","Timestamp":"2025-08-25 01:00:06.452","Level":"INFO","Category":"UserInterface"}
+{"Message":"Displaying confirmation dialog","Timestamp":"2025-08-25 01:00:06.469","Level":"INFO","Category":"UserInterface"}
+{"Message":"User confirmed to proceed with file operations","Timestamp":"2025-08-25 01:00:24.592","Level":"INFO","Category":"UserInterface"}
+{"Message":"Rename log written to: Z:\\Media\\NSFW\\Maria the Virgin Witch [tvdb-286856]\\rename_log_Maria.the.Virgin.Witch_2025-08-25_01-00-24.txt","Timestamp":"2025-08-25 01:00:24.612","Level":"INFO","Category":"FileOperations"}
+{"Message":"Starting file operations for 3 files","Timestamp":"2025-08-25 01:00:24.625","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: Maria.the.Virgin.Witch.S01E11.If.You.Wish.to.Be.Loved,.Love.mkv -\u003e Maria.the.Virgin.Witch.S01E11.If.You.Wish.to.Be.Loved.Love.mkv","Timestamp":"2025-08-25 01:00:24.681","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: Maria.the.Virgin.Witch.S01E05.Courage,.Prudence.mkv -\u003e Maria.the.Virgin.Witch.S01E05.Courage.Prudence.mkv","Timestamp":"2025-08-25 01:00:24.717","Level":"INFO","Category":"FileOperations"}
+{"Message":"Successfully moved file: Maria.the.Virgin.Witch.S01E03.By.Faith,.Not.Arms.mkv -\u003e Maria.the.Virgin.Witch.S01E03.By.Faith.Not.Arms.mkv","Timestamp":"2025-08-25 01:00:24.741","Level":"INFO","Category":"FileOperations"}
+{"Message":"File operations completed - Success: 3, Errors: 0, Folders: 0","Timestamp":"2025-08-25 01:00:24.747","Level":"INFO","Category":"FileOperations"}
+{"Message":"All operations completed without errors","Timestamp":"2025-08-25 01:00:24.749","Level":"INFO","Category":"FileOperations"}
+{"Message":"Folder already has TVDB ID format: Maria the Virgin Witch [tvdb-286856]","Timestamp":"2025-08-25 01:00:24.755","Level":"INFO","Category":"FileOperations"}
+{"Message":"Anime organization completed successfully for: Maria the Virgin Witch","Timestamp":"2025-08-25 01:00:24.758","Level":"INFO","Category":"Complete"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-25 01:00:53.476","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 195.5537ms","Timestamp":"2025-08-25 01:00:53.674","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":195.55370000000002},"Category":"Performance"}
+{"Message":"User entered Series ID: 445390","Timestamp":"2025-08-25 01:00:55.422","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 555.7278ms","Timestamp":"2025-08-25 01:00:55.980","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":555.7278},"Category":"Performance"}
+{"Message":"Displaying series verification for: NUKITASHI THE ANIMATION (ID: 445390)","Timestamp":"2025-08-25 01:00:55.986","Level":"INFO","Category":"UserInterface"}
+{"Message":"User confirmed series: NUKITASHI THE ANIMATION","Timestamp":"2025-08-25 01:00:58.449","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected working directory: Z:\\Media\\NSFW\\NUKITASHI THE ANIMATION [tvdb-445390]","Timestamp":"2025-08-25 01:01:05.597","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected operation type: Rename Only","Timestamp":"2025-08-25 01:01:07.280","Level":"INFO","Category":"UserInterface"}
+{"Message":"Found 6 video files in directory: Z:\\Media\\NSFW\\NUKITASHI THE ANIMATION [tvdb-445390]","Timestamp":"2025-08-25 01:01:07.296","Level":"INFO","Category":"FileOperations"}
+{"Message":"Operation \u0027Episode Info Retrieval\u0027 completed in 9501.1654ms","Timestamp":"2025-08-25 01:01:16.804","Level":"INFO","ExtraData":{"Operation":"Episode Info Retrieval","Success":true,"DurationMs":9501.1654},"Category":"Performance"}
+{"Message":"Using new modular naming and versioning system","Timestamp":"2025-08-25 01:01:16.807","Level":"INFO","Category":"ModularSystem"}
+{"Message":"Creating comprehensive operation plan","Timestamp":"2025-08-25 01:01:16.820","Level":"INFO","Category":"Planning"}
+{"Message":"File Analysis Complete - Total: 1, Skip: 0, Rename: 1, Duplicates: 0","Timestamp":"2025-08-25 01:01:16.834","Level":"INFO","Category":"Analysis"}
+{"Message":"Displaying preview of 1 file operations","Timestamp":"2025-08-25 01:01:16.840","Level":"INFO","Category":"UserInterface"}
+{"Message":"Preview displayed - Operations: 1, Folders: 1","Timestamp":"2025-08-25 01:01:16.848","Level":"INFO","Category":"UserInterface"}
+{"Message":"Displaying confirmation dialog","Timestamp":"2025-08-25 01:01:16.858","Level":"INFO","Category":"UserInterface"}
+{"Message":"User chose to restart script","Timestamp":"2025-08-25 01:01:52.449","Level":"INFO","Category":"UserInterface"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-25 01:01:52.457","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 323.4836ms","Timestamp":"2025-08-25 01:01:52.782","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":323.4836},"Category":"Performance"}
+{"Message":"User entered Series ID: 388644","Timestamp":"2025-08-25 01:02:25.675","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 648.1782ms","Timestamp":"2025-08-25 01:02:26.325","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":648.17820000000006},"Category":"Performance"}
+{"Message":"Displaying series verification for: World\u0027s End Harem (ID: 388644)","Timestamp":"2025-08-25 01:02:26.331","Level":"INFO","Category":"UserInterface"}
+{"Message":"User confirmed series: World\u0027s End Harem","Timestamp":"2025-08-25 01:02:41.712","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected working directory: Z:\\Media\\NSFW\\World\u0027s End Harem [tvdb-388644]","Timestamp":"2025-08-25 01:02:43.527","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected operation type: Rename Only","Timestamp":"2025-08-25 01:02:45.483","Level":"INFO","Category":"UserInterface"}
+{"Message":"Found 13 video files in directory: Z:\\Media\\NSFW\\World\u0027s End Harem [tvdb-388644]","Timestamp":"2025-08-25 01:02:45.501","Level":"INFO","Category":"FileOperations"}
+{"Message":"Operation \u0027Episode Info Retrieval\u0027 completed in 8017.6746ms","Timestamp":"2025-08-25 01:02:53.529","Level":"INFO","ExtraData":{"Operation":"Episode Info Retrieval","Success":true,"DurationMs":8017.6746},"Category":"Performance"}
+{"Message":"Using new modular naming and versioning system","Timestamp":"2025-08-25 01:02:53.531","Level":"INFO","Category":"ModularSystem"}
+{"Message":"Creating comprehensive operation plan","Timestamp":"2025-08-25 01:02:53.550","Level":"INFO","Category":"Planning"}
+{"Message":"File Analysis Complete - Total: 11, Skip: 0, Rename: 11, Duplicates: 0","Timestamp":"2025-08-25 01:02:53.574","Level":"INFO","Category":"Analysis"}
+{"Message":"Displaying preview of 11 file operations","Timestamp":"2025-08-25 01:02:53.581","Level":"INFO","Category":"UserInterface"}
+{"Message":"Preview displayed - Operations: 11, Folders: 11","Timestamp":"2025-08-25 01:02:53.607","Level":"INFO","Category":"UserInterface"}
+{"Message":"Displaying confirmation dialog","Timestamp":"2025-08-25 01:02:53.617","Level":"INFO","Category":"UserInterface"}

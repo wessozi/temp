@@ -237,7 +237,7 @@ function Start-AnimeOrganization {
             Write-DebugLog "Imported naming convention: $($namingConvention.series_format)" -Category "NamingConvention"
             
             # Analyze file states and create comprehensive plan
-            $fileAnalysis = Analyze-FileStates -VideoFiles $videoFiles -Episodes $episodes -SeriesInfo $seriesInfo -NamingConvention $namingConvention
+            $fileAnalysis = Analyze-FileStates -VideoFiles $videoFiles -Episodes $episodes -SeriesInfo $seriesInfo -NamingConvention $namingConvention -WorkingDirectory $WorkingDirectory
             
             # Build operations from analysis
             $operations = @()
@@ -248,16 +248,18 @@ function Start-AnimeOrganization {
             }
             
             # Add rename operations (normal files needing rename)
-            $renameOps = Build-RenameOperations -FilesToRename $fileAnalysis.rename
-            foreach ($op in $renameOps) {
-                $operations += [PSCustomObject]@{
-                    OriginalFile = $op.OriginalFile
-                    SourcePath = $op.SourcePath
-                    NewFileName = $op.NewFileName
-                    TargetFolder = if ($renameOnly) { "." } else { "Season 01" }
-                    EpisodeNumber = $op.EpisodeNumber
-                    EpisodeName = $op.EpisodeInfo.name
-                    OperationType = "Rename"
+            if ($fileAnalysis.rename.Count -gt 0) {
+                $renameOps = Build-RenameOperations -FilesToRename $fileAnalysis.rename
+                foreach ($op in $renameOps) {
+                    $operations += [PSCustomObject]@{
+                        OriginalFile = $op.OriginalFile
+                        SourcePath = $op.SourcePath
+                        NewFileName = $op.NewFileName
+                        TargetFolder = if ($renameOnly) { "." } else { "Season 01" }
+                        EpisodeNumber = $op.EpisodeNumber
+                        EpisodeName = $op.EpisodeInfo.name
+                        OperationType = "Rename"
+                    }
                 }
             }
             
@@ -271,12 +273,30 @@ function Start-AnimeOrganization {
                 foreach ($op in $versionOps) {
                     $operations += [PSCustomObject]@{
                         OriginalFile = $op.OriginalFile
-                        SourcePath = $op.SourcePath
+                        SourcePath = if ($op.SourcePath) { $op.SourcePath } else { $op.OriginalFile }
                         NewFileName = $op.NewFileName
                         TargetFolder = if ($renameOnly) { "." } else { "Season 01" }
                         EpisodeNumber = $op.EpisodeNumber
                         EpisodeName = if ($op.EpisodeInfo) { $op.EpisodeInfo.name } else { "Episode $($op.EpisodeNumber)" }
                         OperationType = $op.OperationType
+                    }
+                }
+            }
+            
+            # Add specials processing (season 0 files)
+            if ($fileAnalysis.specials.Count -gt 0) {
+                Write-InfoLog "Processing $($fileAnalysis.specials.Count) special files" -Category "Specials"
+                
+                # For now, add special files as skip operations (they need special handling)
+                foreach ($specialFile in $fileAnalysis.specials) {
+                    $operations += [PSCustomObject]@{
+                        OriginalFile = $specialFile.Name
+                        SourcePath = $specialFile.FullName
+                        NewFileName = $specialFile.Name  # Keep original name for now
+                        TargetFolder = "Specials"
+                        EpisodeNumber = 0
+                        EpisodeName = "Special Content"
+                        OperationType = "Special"
                     }
                 }
             }
@@ -287,7 +307,7 @@ function Start-AnimeOrganization {
             
             # Log analysis results
             $stats = Get-AnalysisStatistics -Analysis $fileAnalysis
-            Write-InfoLog "File Analysis Complete - Total: $($stats.total_files), Skip: $($stats.already_correct), Rename: $($stats.need_renaming), Duplicates: $($stats.duplicate_episodes)" -Category "Analysis"
+            Write-InfoLog "File Analysis Complete - Total: $($stats.total_files), Skip: $($stats.already_correct), Rename: $($stats.need_renaming), Duplicates: $($stats.duplicate_episodes), Specials: $($stats.special_files)" -Category "Analysis"
             
             if ($operations.Count -eq 0) {
                 Write-Host "[ERROR] No episodes could be matched to files" -ForegroundColor Red

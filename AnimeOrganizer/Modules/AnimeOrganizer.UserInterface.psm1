@@ -72,10 +72,28 @@ function Show-Preview {
         Write-Host "FOLDER: $($folderGroup.Name)" -ForegroundColor Cyan
         Write-DebugLogFallback "Folder '$($folderGroup.Name)' will contain $($folderGroup.Group.Count) files"
         
-        foreach ($op in $folderGroup.Group) {
-            Write-Host "   FROM: $($op.OriginalFile)" -ForegroundColor Yellow
-            Write-Host "     TO: $($op.NewFileName)" -ForegroundColor Green
-            Write-DebugLogFallback "Operation: Move '$($op.OriginalFile)' to '$($op.TargetFolder)\$($op.NewFileName)'"
+        # Sort operations by episode number for logical ordering
+        $sortedOperations = $folderGroup.Group | Sort-Object { 
+            if ($_.EpisodeNumber) { $_.EpisodeNumber } else { 999 } 
+        }
+        
+        foreach ($op in $sortedOperations) {
+            $fromDisplay = if ([string]::IsNullOrEmpty($op.OriginalFile)) { "(temporary file)" } else { $op.OriginalFile }
+            
+            # Handle different operation types with different colors
+            if ($op.OperationType -eq "Skip" -or $op.Status -eq "Already Correct") {
+                Write-Host "   FROM: $fromDisplay" -ForegroundColor Gray
+                Write-Host "     TO: NO CHANGE" -ForegroundColor Magenta
+                Write-DebugLogFallback "Operation: File '$fromDisplay' is already correct - no change needed"
+            } elseif ($op.OperationType -eq "Special") {
+                Write-Host "   FROM: $fromDisplay" -ForegroundColor Cyan
+                Write-Host "     TO: SPECIAL CONTENT (needs manual review)" -ForegroundColor Magenta
+                Write-DebugLogFallback "Operation: Special file '$fromDisplay' moved to Specials folder"
+            } else {
+                Write-Host "   FROM: $fromDisplay" -ForegroundColor Yellow
+                Write-Host "     TO: $($op.NewFileName)" -ForegroundColor Green
+                Write-DebugLogFallback "Operation: Move '$fromDisplay' to '$($op.TargetFolder)\$($op.NewFileName)'"
+            }
             Write-Host ""
         }
     }

@@ -1,0 +1,22 @@
+﻿{"Message":"Logging module loaded successfully","Timestamp":"2025-08-24 23:59:13.994","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"TheTVDB module loaded successfully","Timestamp":"2025-08-24 23:59:14.077","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileParser module loaded successfully","Timestamp":"2025-08-24 23:59:14.095","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"ErrorHandling module loaded successfully","Timestamp":"2025-08-24 23:59:14.136","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileOperations module loaded successfully","Timestamp":"2025-08-24 23:59:14.162","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"UserInterface module loaded successfully","Timestamp":"2025-08-24 23:59:14.178","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"NamingConvention module loaded successfully","Timestamp":"2025-08-24 23:59:14.197","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"StateAnalyzer module loaded successfully","Timestamp":"2025-08-24 23:59:14.215","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"VersionManager module loaded successfully","Timestamp":"2025-08-24 23:59:14.234","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"PlanManager module loaded successfully","Timestamp":"2025-08-24 23:59:14.251","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-24 23:59:14.300","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 403.7281ms","Timestamp":"2025-08-24 23:59:14.712","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":403.72810000000004},"Category":"Performance"}
+{"Message":"User entered Series ID: 452826","Timestamp":"2025-08-24 23:59:21.929","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 434.9385ms","Timestamp":"2025-08-24 23:59:22.369","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":434.93850000000003},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-24 23:59:22.377","Level":"INFO","Category":"UserInterface"}
+{"Message":"User confirmed series: Please Put Them On, Takamine-san","Timestamp":"2025-08-24 23:59:24.138","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected working directory: Z:\\Media\\NSFW\\Haite Kudasai, Takamine-san [tvdb-452826]","Timestamp":"2025-08-24 23:59:30.899","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected operation type: Rename Only","Timestamp":"2025-08-24 23:59:33.681","Level":"INFO","Category":"UserInterface"}
+{"Message":"Found 14 video files in directory: Z:\\Media\\NSFW\\Haite Kudasai, Takamine-san [tvdb-452826]","Timestamp":"2025-08-24 23:59:33.722","Level":"INFO","Category":"FileOperations"}
+{"Message":"Operation \u0027Episode Info Retrieval\u0027 completed in 2966.999ms","Timestamp":"2025-08-24 23:59:36.700","Level":"INFO","ExtraData":{"Operation":"Episode Info Retrieval","Success":true,"DurationMs":2966.9990000000003},"Category":"Performance"}
+{"Message":"Using new modular naming and versioning system","Timestamp":"2025-08-24 23:59:36.705","Level":"INFO","Category":"ModularSystem"}
+{"Message":"Error in main workflow: Cannot bind argument to parameter \u0027FilesToRename\u0027 because it is an empty collection.","Timestamp":"2025-08-24 23:59:36.796","Level":"ERROR","Category":"Workflow"}

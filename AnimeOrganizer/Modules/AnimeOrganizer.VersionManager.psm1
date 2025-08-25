@@ -92,7 +92,19 @@ function Apply-TemporaryVersioning {
         
         for ($i = 0; $i -lt $files.Count; $i++) {
             $file = $files[$i]
-            $tempSuffix = "z$($i + 1)"
+            
+            # Check if file already has a version number
+            $existingVersion = Parse-ExistingVersionNumber -FileName $file.Name -BaseName $file.BaseName
+            
+            if ($existingVersion) {
+                # File already has versioning - preserve it in temp name
+                $tempSuffix = "z$existingVersion"
+                Write-Host "[TEMP] File '$($file.Name)' already has version v$existingVersion - preserving in temp name" -ForegroundColor Yellow
+            } else {
+                # Apply new temporary versioning
+                $tempSuffix = "z$($i + 1)"
+            }
+            
             $tempName = "$($file.BaseName).$tempSuffix$($file.Extension)"
             
             $tempOperations += [PSCustomObject]@{
@@ -102,7 +114,7 @@ function Apply-TemporaryVersioning {
                 TargetFolder = "."
                 OperationType = "TemporaryVersioning"
                 EpisodeNumber = $episodeNum
-                VersionNumber = $i + 1
+                VersionNumber = if ($existingVersion) { $existingVersion } else { $i + 1 }
                 TempSuffix = $tempSuffix
             }
         }
@@ -130,7 +142,12 @@ function Apply-DirectVersioning {
     
     foreach ($episodeNum in $DuplicateGroups.Keys) {
         $files = $DuplicateGroups[$episodeNum]
-        $episode = $Episodes[$episodeNum - 1]
+        $episode = $Episodes | Where-Object { $_.number -eq $episodeNum -and $_.seasonNumber -eq 1 } | Select-Object -First 1
+        
+        if (-not $episode) {
+            Write-Warning "[VERSIONING] No episode found for Season 1 Episode $episodeNum"
+            continue
+        }
         
         for ($i = 0; $i -lt $files.Count; $i++) {
             $file = $files[$i]
@@ -144,8 +161,18 @@ function Apply-DirectVersioning {
                 -FileExtension $file.Extension `
                 -Convention $NamingConvention
             
-            # Apply versioning
-            $versionNumber = $i + 1
+            # Check if file already has a version number and extract it
+            $existingVersion = Parse-ExistingVersionNumber -FileName $file.Name -BaseName $baseName
+            
+            if ($existingVersion) {
+                # File already has versioning - use existing version
+                $versionNumber = $existingVersion
+                Write-Host "[VERSIONING] File '$($file.Name)' already has version v$versionNumber - preserving existing version" -ForegroundColor Yellow
+            } else {
+                # Apply new versioning
+                $versionNumber = $i + 1
+            }
+            
             $versionedName = Format-VersionedName -BaseName $baseName -VersionNumber $versionNumber -Convention $NamingConvention
             
             $versionedOperations += [PSCustomObject]@{
@@ -184,7 +211,12 @@ function Apply-FinalVersioning {
         if ($tempOperation.OperationType -eq "TemporaryVersioning") {
             $episodeNum = $tempOperation.EpisodeNumber
             $versionNum = $tempOperation.VersionNumber
-            $episode = $Episodes[$episodeNum - 1]
+            $episode = $Episodes | Where-Object { $_.number -eq $episodeNum -and $_.seasonNumber -eq 1 } | Select-Object -First 1
+            
+            if (-not $episode) {
+                Write-Warning "[VERSIONING] No episode found for Season 1 Episode $episodeNum"
+                continue
+            }
             
             # Generate final name
             $baseName = Format-SeriesEpisodeName `
@@ -253,6 +285,17 @@ function Parse-ExistingVersionNumber {
         [Parameter(Mandatory=$true)]
         [string]$BaseName
     )
+    
+    # Validate input parameters
+    if ([string]::IsNullOrEmpty($FileName)) {
+        Write-Warning "Parse-ExistingVersionNumber called with empty FileName parameter"
+        return $null
+    }
+    
+    if ([string]::IsNullOrEmpty($BaseName)) {
+        Write-Warning "Parse-ExistingVersionNumber called with empty BaseName parameter"
+        return $null
+    }
     
     # Look for version patterns like .v1, .v2, .z1, .z2
     if ($FileName -match "\.v(\d+)") {

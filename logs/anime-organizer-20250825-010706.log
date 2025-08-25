@@ -1,0 +1,40 @@
+﻿{"Message":"Logging module loaded successfully","Timestamp":"2025-08-25 01:07:06.946","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"TheTVDB module loaded successfully","Timestamp":"2025-08-25 01:07:07.048","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileParser module loaded successfully","Timestamp":"2025-08-25 01:07:07.072","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"ErrorHandling module loaded successfully","Timestamp":"2025-08-25 01:07:07.103","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileOperations module loaded successfully","Timestamp":"2025-08-25 01:07:07.120","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"UserInterface module loaded successfully","Timestamp":"2025-08-25 01:07:07.148","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"NamingConvention module loaded successfully","Timestamp":"2025-08-25 01:07:07.251","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"StateAnalyzer module loaded successfully","Timestamp":"2025-08-25 01:07:07.274","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"VersionManager module loaded successfully","Timestamp":"2025-08-25 01:07:07.287","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"PlanManager module loaded successfully","Timestamp":"2025-08-25 01:07:07.298","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-25 01:07:07.347","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 413.7869ms","Timestamp":"2025-08-25 01:07:07.769","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":413.7869},"Category":"Performance"}
+{"Message":"User entered Series ID: 452826","Timestamp":"2025-08-25 01:07:22.967","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 426.2572ms","Timestamp":"2025-08-25 01:07:23.399","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":426.2572},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-25 01:07:23.407","Level":"INFO","Category":"UserInterface"}
+{"Message":"User confirmed series: Please Put Them On, Takamine-san","Timestamp":"2025-08-25 01:07:25.925","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected working directory: Z:\\Media\\NSFW\\Haite Kudasai, Takamine-san [tvdb-452826]","Timestamp":"2025-08-25 01:07:40.880","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected operation type: Rename Only","Timestamp":"2025-08-25 01:07:42.500","Level":"INFO","Category":"UserInterface"}
+{"Message":"Found 14 video files in directory: Z:\\Media\\NSFW\\Haite Kudasai, Takamine-san [tvdb-452826]","Timestamp":"2025-08-25 01:07:42.542","Level":"INFO","Category":"FileOperations"}
+{"Message":"Operation \u0027Episode Info Retrieval\u0027 completed in 2631.7781ms","Timestamp":"2025-08-25 01:07:45.186","Level":"INFO","ExtraData":{"Operation":"Episode Info Retrieval","Success":true,"DurationMs":2631.7781},"Category":"Performance"}
+{"Message":"Using new modular naming and versioning system","Timestamp":"2025-08-25 01:07:45.189","Level":"INFO","Category":"ModularSystem"}
+{"Message":"Processing 1 episodes with duplicates using versioning system","Timestamp":"2025-08-25 01:07:45.277","Level":"INFO","Category":"Versioning"}
+{"Message":"Error in main workflow: Cannot bind argument to parameter \u0027FileName\u0027 because it is an empty string.","Timestamp":"2025-08-25 01:07:45.301","Level":"ERROR","Category":"Workflow"}
+{"Message":"User chose to restart (Unexpected Error)","Timestamp":"2025-08-25 01:09:23.986","Level":"INFO","Category":"UserInterface"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-25 01:09:23.994","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 391.2804ms","Timestamp":"2025-08-25 01:09:24.386","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":391.28040000000004},"Category":"Performance"}
+{"Message":"User entered Series ID: 388644","Timestamp":"2025-08-25 01:10:02.639","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 417.4023ms","Timestamp":"2025-08-25 01:10:03.057","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":417.4023},"Category":"Performance"}
+{"Message":"Displaying series verification for: World\u0027s End Harem (ID: 388644)","Timestamp":"2025-08-25 01:10:03.064","Level":"INFO","Category":"UserInterface"}
+{"Message":"User confirmed series: World\u0027s End Harem","Timestamp":"2025-08-25 01:10:06.043","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected working directory: Z:\\Media\\NSFW\\World\u0027s End Harem [tvdb-388644]","Timestamp":"2025-08-25 01:10:36.966","Level":"INFO","Category":"UserInterface"}
+{"Message":"User selected operation type: Rename Only","Timestamp":"2025-08-25 01:10:39.869","Level":"INFO","Category":"UserInterface"}
+{"Message":"Found 13 video files in directory: Z:\\Media\\NSFW\\World\u0027s End Harem [tvdb-388644]","Timestamp":"2025-08-25 01:10:39.888","Level":"INFO","Category":"FileOperations"}
+{"Message":"Operation \u0027Episode Info Retrieval\u0027 completed in 4084.5948ms","Timestamp":"2025-08-25 01:10:43.981","Level":"INFO","ExtraData":{"Operation":"Episode Info Retrieval","Success":true,"DurationMs":4084.5948000000003},"Category":"Performance"}
+{"Message":"Using new modular naming and versioning system","Timestamp":"2025-08-25 01:10:43.984","Level":"INFO","Category":"ModularSystem"}
+{"Message":"Creating comprehensive operation plan","Timestamp":"2025-08-25 01:10:44.013","Level":"INFO","Category":"Planning"}
+{"Message":"File Analysis Complete - Total: 11, Skip: 0, Rename: 11, Duplicates: 0","Timestamp":"2025-08-25 01:10:44.049","Level":"INFO","Category":"Analysis"}
+{"Message":"Displaying preview of 11 file operations","Timestamp":"2025-08-25 01:10:44.060","Level":"INFO","Category":"UserInterface"}
+{"Message":"Preview displayed - Operations: 11, Folders: 11","Timestamp":"2025-08-25 01:10:44.099","Level":"INFO","Category":"UserInterface"}
+{"Message":"Displaying confirmation dialog","Timestamp":"2025-08-25 01:10:44.115","Level":"INFO","Category":"UserInterface"}

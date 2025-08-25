@@ -1,0 +1,15 @@
+﻿{"Message":"Logging module loaded successfully","Timestamp":"2025-08-25 00:48:59.632","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"TheTVDB module loaded successfully","Timestamp":"2025-08-25 00:48:59.702","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileParser module loaded successfully","Timestamp":"2025-08-25 00:48:59.712","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"ErrorHandling module loaded successfully","Timestamp":"2025-08-25 00:48:59.756","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"FileOperations module loaded successfully","Timestamp":"2025-08-25 00:48:59.785","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"UserInterface module loaded successfully","Timestamp":"2025-08-25 00:48:59.796","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"NamingConvention module loaded successfully","Timestamp":"2025-08-25 00:48:59.821","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"StateAnalyzer module loaded successfully","Timestamp":"2025-08-25 00:48:59.831","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"VersionManager module loaded successfully","Timestamp":"2025-08-25 00:48:59.843","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"PlanManager module loaded successfully","Timestamp":"2025-08-25 00:48:59.855","Level":"INFO","Category":"ModuleLoad"}
+{"Message":"User interface header displayed","Timestamp":"2025-08-25 00:48:59.926","Level":"INFO","Category":"UserInterface"}
+{"Message":"Operation \u0027TheTVDB Authentication\u0027 completed in 309.5204ms","Timestamp":"2025-08-25 00:49:00.242","Level":"INFO","ExtraData":{"Operation":"TheTVDB Authentication","Success":true,"DurationMs":309.5204},"Category":"Performance"}
+{"Message":"Operation \u0027Series Info Retrieval\u0027 completed in 576.0022ms","Timestamp":"2025-08-25 00:49:00.824","Level":"INFO","ExtraData":{"Operation":"Series Info Retrieval","Success":true,"DurationMs":576.0022},"Category":"Performance"}
+{"Message":"Displaying series verification for: Please Put Them On, Takamine-san (ID: 452826)","Timestamp":"2025-08-25 00:49:00.833","Level":"INFO","Category":"UserInterface"}
+{"Message":"User confirmed series: Please Put Them On, Takamine-san","Timestamp":"2025-08-25 00:49:00.840","Level":"INFO","Category":"UserInterface"}
