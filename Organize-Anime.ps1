@@ -149,14 +149,71 @@ do {
         }
         
         # Choose operation type
-        $renameOnly = Get-OperationTypeFromUser
-        if ($renameOnly -eq $null) {
+        $operationChoice = Get-OperationTypeFromUser
+        if ($operationChoice -eq $null) {
             Write-Host "Exiting..." -ForegroundColor Yellow
             exit 0
         }
+        $renameOnly = $operationChoice.RenameOnly
+        $includeMetadata = $operationChoice.IncludeMetadata
     } else {
         # Non-interactive defaults
         $renameOnly = $false
+        $includeMetadata = $false
+    }
+
+    # Import VideoMetadata module and check dependencies if metadata extraction is requested
+    if ($includeMetadata) {
+        Write-Host ""
+        Write-Host "[INFO] Metadata extraction enabled - importing VideoMetadata module..." -ForegroundColor Cyan
+        
+        try {
+            Import-Module "$ModulesPath\VideoMetadata.psm1" -Force
+            Write-Debug-Info "VideoMetadata module imported successfully"
+            
+            # Check FFprobe dependency
+            if (-not (Test-FFprobeDependency)) {
+                Write-Host "[ERROR] Cannot proceed with metadata extraction - FFprobe dependency not met." -ForegroundColor Red
+                
+                if ($Interactive) {
+                    $choice = Show-RestartOptions -Context "Missing FFprobe"
+                    if ($choice -eq "quit") { 
+                        Write-Host "Goodbye!" -ForegroundColor Yellow
+                        exit 1 
+                    }
+                    if ($choice -eq "restart") {
+                        $shouldRestart = $true
+                        Reset-AllVariablesForRestart
+                        $SeriesId = 0
+                        $WorkingDirectory = (Get-Location).Path
+                        continue
+                    }
+                } else {
+                    exit 1
+                }
+            }
+            
+            Write-Host "[SUCCESS] FFprobe dependency verified - metadata extraction ready" -ForegroundColor Green
+        }
+        catch {
+            Write-Host "[ERROR] Failed to import VideoMetadata module: $($_.Exception.Message)" -ForegroundColor Red
+            if ($Interactive) {
+                $choice = Show-RestartOptions -Context "Module Import Error"
+                if ($choice -eq "quit") { 
+                    Write-Host "Goodbye!" -ForegroundColor Yellow
+                    exit 1 
+                }
+                if ($choice -eq "restart") {
+                    $shouldRestart = $true
+                    Reset-AllVariablesForRestart
+                    $SeriesId = 0
+                    $WorkingDirectory = (Get-Location).Path
+                    continue
+                }
+            } else {
+                exit 1
+            }
+        }
     }
 
     Write-Host "[SUCCESS] Series: $($seriesInfo.name)" -ForegroundColor Green
@@ -326,7 +383,20 @@ do {
                     $versionSuffix = ""
                 }
                 
-                $newFileName = Get-SpecialFileName -SeriesName $safeSeriesName -EpisodeNumber $parsedFile.EpisodeNumber -EpisodeTitle $episodeTitle -FileExtension $file.Extension -VersionSuffix $versionSuffix
+                # Extract metadata if requested
+                $qualityTag = ""
+                if ($includeMetadata) {
+                    Write-MetadataProgress -Current ($specialFiles.IndexOf($file) + 1) -Total $specialFiles.Count -FileName $file.Name
+                    $metadata = Get-VideoMetadata -FilePath $file.FullName
+                    if ($metadata) {
+                        $qualityTag = Get-QualityTag -Metadata $metadata
+                        Write-Debug-Info "Quality tag for special file '$($file.Name)': '$qualityTag'"
+                    } else {
+                        Write-Debug-Info "No metadata extracted for special file: $($file.Name)" "Yellow"
+                    }
+                }
+                
+                $newFileName = Get-SpecialFileName -SeriesName $safeSeriesName -EpisodeNumber $parsedFile.EpisodeNumber -EpisodeTitle $episodeTitle -FileExtension $file.Extension -VersionSuffix $versionSuffix -QualityTag $qualityTag
                 
                 # Skip if filename is already correct (optimization for NAS performance)
                 if ($file.Name -eq $newFileName) {
@@ -374,7 +444,20 @@ do {
                     $versionSuffix = ""
                 }
                 
-                $newFileName = Get-SpecialFileName -SeriesName $safeSeriesName -EpisodeNumber $specialEpisodeCounter -EpisodeTitle $file.BaseName -FileExtension $file.Extension -VersionSuffix $versionSuffix
+                # Extract metadata if requested
+                $qualityTag = ""
+                if ($includeMetadata) {
+                    Write-MetadataProgress -Current ($sortedSpecialFiles.IndexOf($file) + 1) -Total $sortedSpecialFiles.Count -FileName $file.Name
+                    $metadata = Get-VideoMetadata -FilePath $file.FullName
+                    if ($metadata) {
+                        $qualityTag = Get-QualityTag -Metadata $metadata
+                        Write-Debug-Info "Quality tag for sequential special file '$($file.Name)': '$qualityTag'"
+                    } else {
+                        Write-Debug-Info "No metadata extracted for sequential special file: $($file.Name)" "Yellow"
+                    }
+                }
+                
+                $newFileName = Get-SpecialFileName -SeriesName $safeSeriesName -EpisodeNumber $specialEpisodeCounter -EpisodeTitle $file.BaseName -FileExtension $file.Extension -VersionSuffix $versionSuffix -QualityTag $qualityTag
                 
                 # Skip if filename is already correct (optimization for NAS performance)
                 if ($file.Name -eq $newFileName) {
@@ -451,7 +534,20 @@ do {
             $versionSuffix = ""
         }
         
-        $newFileName = Get-EpisodeFileName -SeriesName $safeSeriesName -SeasonNumber $detectedSeason -EpisodeNumber $parsedFile.EpisodeNumber -EpisodeTitle $episodeTitle -FileExtension $file.Extension -VersionSuffix $versionSuffix
+        # Extract metadata if requested
+        $qualityTag = ""
+        if ($includeMetadata) {
+            Write-MetadataProgress -Current ($regularFiles.IndexOf($file) + 1) -Total $regularFiles.Count -FileName $file.Name
+            $metadata = Get-VideoMetadata -FilePath $file.FullName
+            if ($metadata) {
+                $qualityTag = Get-QualityTag -Metadata $metadata
+                Write-Debug-Info "Quality tag for regular file '$($file.Name)': '$qualityTag'"
+            } else {
+                Write-Debug-Info "No metadata extracted for regular file: $($file.Name)" "Yellow"
+            }
+        }
+        
+        $newFileName = Get-EpisodeFileName -SeriesName $safeSeriesName -SeasonNumber $detectedSeason -EpisodeNumber $parsedFile.EpisodeNumber -EpisodeTitle $episodeTitle -FileExtension $file.Extension -VersionSuffix $versionSuffix -QualityTag $qualityTag
         
         # Skip if filename is already correct (optimization for NAS performance)
         if ($file.Name -eq $newFileName) {

@@ -136,22 +136,57 @@ function Get-OperationTypeFromUser {
     Write-Host "Choose operation:" -ForegroundColor Cyan
     Write-Host "1. Rename only (keep current folder structure)" -ForegroundColor Yellow
     Write-Host "2. Reorganize (create Season folders and move files)" -ForegroundColor Yellow
+    Write-Host "3. Rename/Reorganize with metadata tags (⚠️ significantly slower)" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "Note: Option 3 extracts video quality info (resolution, codec, etc.)" -ForegroundColor Gray
+    Write-Host "      and requires FFprobe.exe. Processing time increases significantly." -ForegroundColor Gray
     Write-Host ""
     
     do {
-        $operation = Read-Host "Select operation (1/2/Q)"
+        $operation = Read-Host "Select operation (1/2/3/Q)"
         if ([string]::IsNullOrEmpty($operation)) {
-            Write-Host "[ERROR] Please enter 1, 2, or Q" -ForegroundColor Red
+            Write-Host "[ERROR] Please enter 1, 2, 3, or Q" -ForegroundColor Red
             continue
         }
         if ($operation.ToUpper() -eq "Q" -or $operation.ToLower() -eq "quit") {
             Write-Host "Exiting..." -ForegroundColor Yellow
             return $null
         }
-        if ($operation -eq "1" -or $operation -eq "2") {
-            return ($operation -eq "1")  # Return $true for rename only, $false for reorganize
+        if ($operation -eq "1" -or $operation -eq "2" -or $operation -eq "3") {
+            $renameOnly = ($operation -eq "1")  # Keep existing logic for options 1 and 2
+            $includeMetadata = ($operation -eq "3")
+            
+            if ($includeMetadata) {
+                Write-Host ""
+                Write-Host "[INFO] Metadata extraction selected - this will take significantly longer!" -ForegroundColor Yellow
+                Write-Host "[INFO] Requires FFprobe.exe in the 'bin' directory" -ForegroundColor Yellow
+                Write-Host ""
+                
+                # For option 3, ask if they want rename only or reorganize WITH metadata
+                do {
+                    Write-Host "Choose folder structure for metadata operation:" -ForegroundColor Cyan
+                    Write-Host "1. Keep current folder structure (rename only)" -ForegroundColor Yellow  
+                    Write-Host "2. Create Season folders and move files (reorganize)" -ForegroundColor Yellow
+                    $subChoice = Read-Host "Select (1/2)"
+                    
+                    if ($subChoice -eq "1") {
+                        $renameOnly = $true
+                        break
+                    } elseif ($subChoice -eq "2") {
+                        $renameOnly = $false
+                        break
+                    } else {
+                        Write-Host "[ERROR] Please enter 1 or 2" -ForegroundColor Red
+                    }
+                } while ($true)
+            }
+            
+            return @{
+                RenameOnly = $renameOnly
+                IncludeMetadata = $includeMetadata
+            }
         } else {
-            Write-Host "[ERROR] Please enter 1, 2, or Q" -ForegroundColor Red
+            Write-Host "[ERROR] Please enter 1, 2, 3, or Q" -ForegroundColor Red
         }
     } while ($true)
 }

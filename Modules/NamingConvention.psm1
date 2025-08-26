@@ -15,7 +15,8 @@ TO CHANGE NAMING FORMAT:
 CURRENT FORMAT:
 - Input:  "Series Name, Subtitle.S01E01.Episode Title.mkv"
 - Output: "Series.Name.Subtitle.S01E01.Episode.Title.mkv"  
-- Logic:  Remove ", " then replace spaces with dots
+- With metadata: "Series.Name.Subtitle.S01E01.Episode.Title.1080p.x264.mkv"
+- Logic:  Remove ", " then replace spaces with dots, append quality tag before extension
 
 COMMON FORMAT EXAMPLES:
 # Dots format (current):
@@ -50,11 +51,12 @@ function Get-EpisodeFileName {
         [string]$EpisodeTitle,
         [Parameter(Mandatory=$true)]
         [string]$FileExtension,
-        [string]$VersionSuffix = ""
+        [string]$VersionSuffix = "",
+        [string]$QualityTag = ""
     )
     
     $episodeKey = "S{0:D2}E{1:D2}" -f $SeasonNumber, $EpisodeNumber
-    $assembled = "$SeriesName.$episodeKey$VersionSuffix.$EpisodeTitle$FileExtension"
+    $assembled = "$SeriesName.$episodeKey$VersionSuffix.$EpisodeTitle$QualityTag$FileExtension"
     return $assembled -replace ', ', '' -replace ' ', '.'
 }
 
@@ -68,11 +70,12 @@ function Get-SpecialFileName {
         [string]$EpisodeTitle,
         [Parameter(Mandatory=$true)]
         [string]$FileExtension,
-        [string]$VersionSuffix = ""
+        [string]$VersionSuffix = "",
+        [string]$QualityTag = ""
     )
     
     $episodeKey = "S00E{0:D2}" -f $EpisodeNumber
-    $assembled = "$SeriesName.$episodeKey$VersionSuffix.$EpisodeTitle$FileExtension"
+    $assembled = "$SeriesName.$episodeKey$VersionSuffix.$EpisodeTitle$QualityTag$FileExtension"
     return $assembled -replace ', ', '' -replace ' ', '.'
 }
 

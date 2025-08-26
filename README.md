@@ -13,6 +13,7 @@ A comprehensive PowerShell solution for organizing anime files using TheTVDB API
 - **📁 Flexible Organization** - Rename-only or full reorganization with season folders
 - **🔄 Version Management** - Handles duplicate episodes with versioning (v1, v2, etc.)
 - **🎭 Special Content** - Automatic detection of OVAs, specials, and extras
+- **🎬 Metadata Extraction** - Optional video quality tags (resolution, codec, HDR, bit depth)
 - **🛡️ Safety First** - Preview mode, operation logging, and atomic file operations
 - **🔧 Customizable** - Easy naming convention modifications
 - **📖 Interactive & Automated** - Full CLI interaction or silent batch processing
@@ -21,7 +22,7 @@ A comprehensive PowerShell solution for organizing anime files using TheTVDB API
 
 | Feature | Original Script | Modular Version |
 |---------|----------------|-----------------|
-| **File Size** | 1,396 lines, single file | ~1,400 lines, 5 modules |
+| **File Size** | 1,396 lines, single file | ~1,600 lines, 6 modules |
 | **Maintainability** | Monolithic, all-in-one | Logical separation of concerns |
 | **Naming Changes** | Edit inline string formatting | Modify single `NamingConvention.psm1` |
 | **Testing** | Test entire script | Test individual modules |
@@ -35,6 +36,7 @@ A comprehensive PowerShell solution for organizing anime files using TheTVDB API
 - Windows PowerShell 5.1+ or PowerShell Core 6+
 - Internet connection for TheTVDB API
 - Free TheTVDB.com account (optional for basic usage)
+- FFprobe.exe (optional - required only for metadata extraction feature)
 
 ### Basic Usage
 
@@ -132,6 +134,33 @@ Series Episode 01.mkv             → Keyword format
 01a.mkv, 01b.mkv                  → Sub-episodes
 ```
 
+### Metadata Extraction (Modular Version Only)
+
+The modular version supports optional video metadata extraction to include quality information in filenames:
+
+#### Setup Requirements
+1. Download FFprobe.exe (see `bin/README-FFprobe.md` for instructions)
+2. Place in the `bin/` directory
+3. Select operation 3 during interactive setup
+
+#### Supported Quality Tags
+- **Resolution**: 2160p, 1440p, 1080p, 720p, 480p
+- **Video Codec**: x265 (HEVC), x264 (H.264), AV1
+- **Bit Depth**: 10bit, 12bit (8bit omitted as standard)
+- **HDR Format**: HDR10, HLG, Dolby.Vision (SDR omitted as standard)
+
+#### Output Examples
+```
+Without metadata: Series.Name.S01E01.Episode.Title.mkv
+With metadata:    Series.Name.S01E01.Episode.Title.1080p.x264.mkv
+Complex example:  Series.Name.S01E01.Episode.Title.2160p.x265.10bit.HDR10.mkv
+```
+
+#### Performance Notes
+- Metadata extraction adds significant processing time
+- Progress indicators show current file being processed
+- Failed extractions don't stop the process (graceful degradation)
+
 ## 🔧 Module Documentation (Modular Version)
 
 ### TheTVDB.psm1 (~220 lines)
@@ -166,6 +195,13 @@ Series Episode 01.mkv             → Keyword format
 - `Get-EpisodeFileName` - Standard episode naming
 - `Get-SpecialFileName` - Special episode naming
 - `Get-AlternativeFileName` - Alternative format support
+
+### VideoMetadata.psm1 (~150 lines)
+**Purpose:** Video metadata extraction using FFprobe
+- `Test-FFprobeDependency` - FFprobe availability verification
+- `Get-VideoMetadata` - Comprehensive video metadata extraction
+- `Get-QualityTag` - Format metadata into filename-compatible tags
+- `Write-MetadataProgress` - Progress indication during extraction
 
 ## ⚙️ Customizing Naming Conventions
 
@@ -278,7 +314,13 @@ Output:
 │   ├── 📄 FileParser.psm1            # Filename parsing (~250 lines)
 │   ├── 📄 UserInterface.psm1         # Interactive elements (~200 lines)
 │   ├── 📄 FileOperations.psm1        # File system operations (~150 lines)
-│   └── 📄 NamingConvention.psm1      # Naming patterns (~50 lines)
+│   ├── 📄 NamingConvention.psm1      # Naming patterns (~50 lines)
+│   └── 📄 VideoMetadata.psm1         # Metadata extraction (~150 lines)
+├── 📁 bin/                           # External dependencies
+│   └── 📁 ffprobe/                   # FFprobe and dependencies
+│       ├── 📄 README-FFprobe.md      # FFprobe setup instructions
+│       ├── ⚠️  ffprobe.exe           # FFprobe executable (user must download)
+│       └── 📄 *.dll                  # Required FFmpeg libraries
 ├── 📁 docs/                          # Development documentation
 └── 📁 old/                           # Previous implementation attempts
 ```
