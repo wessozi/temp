@@ -30,7 +30,9 @@
       "Bash(powershell -ExecutionPolicy Bypass -Command \"Import-Module .\\AnimeOrganizer\\Modules\\AnimeOrganizer.FileParser.psm1 -Force; $result = Parse-EpisodeNumber -FileName ''World''''s End Harem - S01E01 - World of Women.mkv''; Write-Host ''Parse result: Season '' $result.SeasonNumber '' Episode '' $result.EpisodeNumber\")",
       "Bash(powershell -ExecutionPolicy Bypass -File debug-parsing.ps1)",
       "Bash(powershell -ExecutionPolicy Bypass -Command \"Import-Module .\\AnimeOrganizer\\AnimeOrganizer.psm1 -Force; $token = Get-TheTVDBToken -ApiKey ''your-api-key''; $episodes = Get-SeriesEpisodes -Token $token -SeriesId 452826; Write-Host ''Total episodes: '' $episodes.Count; $episodes | Select-Object number, seasonNumber, name | Format-Table -AutoSize\")",
-      "Bash(claude mcp add:*)"
+      "Bash(claude mcp add:*)",
+      "Bash(git lfs:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []
