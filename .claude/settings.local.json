@@ -32,7 +32,8 @@
       "Bash(powershell -ExecutionPolicy Bypass -Command \"Import-Module .\\AnimeOrganizer\\AnimeOrganizer.psm1 -Force; $token = Get-TheTVDBToken -ApiKey ''your-api-key''; $episodes = Get-SeriesEpisodes -Token $token -SeriesId 452826; Write-Host ''Total episodes: '' $episodes.Count; $episodes | Select-Object number, seasonNumber, name | Format-Table -AutoSize\")",
       "Bash(claude mcp add:*)",
       "Bash(git lfs:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "WebSearch"
     ],
     "deny": [],
     "ask": []
