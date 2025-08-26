@@ -46,6 +46,22 @@ function Write-Debug-Info {
     }
 }
 
+# Helper function to reset all variables for restart
+function Reset-AllVariablesForRestart {
+    # Clear all variables that could persist from previous run
+    $Global:token = $null
+    $Global:seriesInfo = $null
+    $Global:episodes = $null
+    $Global:operations = @()
+    $Global:globalEnglishSeriesName = $null
+    $Global:episodeVersionCounts = @{}
+    $Global:videoFiles = @()
+    $Global:specialFiles = @()
+    $Global:regularFiles = @()
+    
+    Write-Debug-Info "All variables cleared for restart" "Green"
+}
+
 # Main execution starts here - FIXED authentication flow
 do {
     $shouldRestart = $false
@@ -161,6 +177,7 @@ do {
             }
             if ($choice -eq "restart") {
                 $shouldRestart = $true
+                Reset-AllVariablesForRestart
                 $SeriesId = 0
                 $WorkingDirectory = (Get-Location).Path
                 continue
@@ -194,6 +211,7 @@ do {
             }
             if ($choice -eq "restart") {
                 $shouldRestart = $true
+                Reset-AllVariablesForRestart
                 $SeriesId = 0
                 $WorkingDirectory = (Get-Location).Path
                 continue
@@ -463,6 +481,7 @@ do {
             }
             if ($choice -eq "restart") {
                 $shouldRestart = $true
+                Reset-AllVariablesForRestart
                 $SeriesId = 0
                 $WorkingDirectory = (Get-Location).Path
                 continue
@@ -499,6 +518,7 @@ do {
                 }
                 if ($choice -eq "restart") {
                     $shouldRestart = $true
+                    Reset-AllVariablesForRestart
                     $SeriesId = 0
                     $WorkingDirectory = (Get-Location).Path
                     continue
@@ -514,6 +534,7 @@ do {
                 Write-Debug-Info "User chose to restart script"
                 $shouldRestart = $true
                 # Reset variables for restart
+                Reset-AllVariablesForRestart
                 $SeriesId = 0
                 $WorkingDirectory = (Get-Location).Path
             }
@@ -539,6 +560,7 @@ do {
             $choice = Show-CompletionOptions
             if ($choice -eq "restart") {
                 $shouldRestart = $true
+                Reset-AllVariablesForRestart
                 $SeriesId = 0
                 $WorkingDirectory = (Get-Location).Path
             } else {
