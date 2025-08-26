@@ -66,6 +66,7 @@ function Parse-EpisodeNumber {
         '^[Ss](\d+)[Ee](\d+).*\..*$',                                         # S01E01 Title.mkv or s01e09.mkv
         '^(.+?)\s+[Ss](\d+)[Ee](\d+).*\..*$',                                 # Series S01E01 Title.mkv
         '^(.+?)[Ss](\d+)[Ee](\d+).*\..*$',                                    # Series.S01E01 Title.mkv (no spaces)
+        '^(.+?)[Ss](\d+)\s+[Ee](\d+).*\..*$',                                 # Series S01 E01 Title.mkv (space between S and E)
         
         # 4. Series - Episode formats (with dash separator)
         '^(.+?)\s*-\s*(\d+).*\..*$',                                          # Series - 01.mkv

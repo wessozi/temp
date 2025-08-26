@@ -224,20 +224,20 @@ function Get-QualityTag {
     
     $tags = @()
     
-    # Resolution - convert height to standard format
-    if ($Metadata.Height) {
-        $resolution = if ($Metadata.Height -ge 2160) {
+    # Resolution - convert width to standard format (better for ultrawide/cropped content)
+    if ($Metadata.Width) {
+        $resolution = if ($Metadata.Width -ge 3840) {
             "2160p"
-        } elseif ($Metadata.Height -ge 1440) {
+        } elseif ($Metadata.Width -ge 2560) {
             "1440p"
-        } elseif ($Metadata.Height -ge 1080) {
+        } elseif ($Metadata.Width -ge 1920) {
             "1080p"
-        } elseif ($Metadata.Height -ge 720) {
+        } elseif ($Metadata.Width -ge 1280) {
             "720p"
-        } elseif ($Metadata.Height -ge 480) {
+        } elseif ($Metadata.Width -ge 854) {
             "480p"
         } else {
-            "$($Metadata.Height)p"
+            "$($Metadata.Height)p"  # Fallback to height for unusual aspect ratios
         }
         $tags += $resolution
     }
